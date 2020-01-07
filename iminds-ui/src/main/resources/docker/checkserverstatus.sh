@@ -1,0 +1,1 @@
+curl -sL  -H "Content-Type: application/json" -w "%{http_code}\\n" "http://crestelcrm.backend.ngt.com:8083/CRMIntegration/monitoring/isServiceAvailable"  -o /dev/null

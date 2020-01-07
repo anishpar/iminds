@@ -1,0 +1,91 @@
+{
+	"responseMessage": "Operation is performed successfully.",
+	"responseCode": 0,
+	"responseObject": [
+		{
+			"eventAlias": "Add_On_Subscription",
+			"channelAlias": "SMS",
+			"templateRelation": [
+				{
+					"type": "DEFAULT",
+					"name": "Addon Subscription SMS Notification Template",
+					"priority": 1,
+					"sendTo": [
+						{
+							"name": "CUSTOMER",
+							"type": "RECIPIENTTYPE"
+						},
+						{
+							"name": "",
+							"type": "RECIPIENTADDRESS"
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventAlias": "Add_On_Subscription",
+			"channelAlias": "EMAILTEST32",
+			"templateRelation": [
+				{
+					"type": "DEFAULT",
+					"name": "addOn package_002",
+					"priority": 1,
+					"sendTo": [
+						{
+							"name": "STAFF",
+							"type": "RECIPIENTTYPE"
+						},
+						{
+							"name": "",
+							"type": "RECIPIENTADDRESS"
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventAlias": "Add_On_Subscription",
+			"channelAlias": "EMAILTEST33",
+			"templateRelation": [
+				{
+					"type": "DEFAULT",
+					"name": "test_image_001_Addonpackage",
+					"priority": 1,
+					"sendTo": [
+						{
+							"name": "STAFF",
+							"type": "RECIPIENTTYPE"
+						},
+						{
+							"name": "",
+							"type": "RECIPIENTADDRESS"
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventAlias": "Add_On_Subscription",
+			"channelAlias": "EMAIL",
+			"templateRelation": [
+				{
+					"type": "DEFAULT",
+					"name": "Addon Subscription Notification Template",
+					"priority": 1,
+					"sendTo": [
+						{
+							"name": "CUSTOMER",
+							"type": "RECIPIENTTYPE"
+						},
+						{
+							"name": "",
+							"type": "RECIPIENTADDRESS"
+						}
+					]
+				}
+			]
+		}
+	],
+	"error": false
+}

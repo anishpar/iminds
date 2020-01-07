@@ -1,0 +1,103 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+  <h2 class="h3 mb-0">{{ lang.notification.viewHistory }}</h2>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="panel panel-default">
+
+          <div class="panel-body">
+              <div class="row">
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.eventAlias}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ historyData.eventAlias ? historyData.eventAlias : config.emptyString }}
+                  </div>
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.channelAlias}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ channel ? channel : config.emptyString }}
+                  </div>
+                
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.transectionId}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ historyData.id ? historyData.id : config.emptyString }}
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.requestIdentifier}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ historyData.referenceEntityId ? historyData.referenceEntityId : config.emptyString }}
+                  </div>
+
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.receipientAddress}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ recipient ? recipient : config.emptyString }}
+                  </div>
+
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.language}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ language ? language : config.emptyString }}
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.dispatchStatus}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ status ? status : config.emptyString }}
+                  </div>
+
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.lastProcessDate}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ lastProcessDate ? (lastProcessDate|date:config.dateTimeFormat) : config.emptyString }}
+                  </div>
+
+                </div>
+
+                  <div class="row">
+                      <div class="{{config.viewLabelClass}}" *ngIf="messageContent && messageContent.length > 0">
+                            <label class="label-header">{{lang.notification.messageContent}}</label>
+                      </div>
+                      <div class="{{config.viewValueClass}} form-group col-md-9" *ngIf="messageContent && messageContent.length > 0" [innerHTML]="messageContent ? messageContent : config.emptyString">
+                          {{ messageContent ? messageContent : config.emptyString }}  
+                      </div>
+                  </div>    
+  
+                  <div class="clearfix"></div> 
+  
+                  <div class="row">
+                    <div class="{{config.viewLabelClass}}" *ngIf="statusMessage && statusMessage.length > 0">
+                      <label class="label-header">{{lang.notification.statusMessage}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}} form-group col-md-9" *ngIf="statusMessage && statusMessage.length > 0">
+                        {{ statusMessage ? statusMessage : config.emptyString }}  
+
+                    </div>
+                  </div>
+                  <div class="clearfix"></div> 
+      
+                <div class="clearfix">&nbsp;</div>
+                <div class="col-sm-10">
+                    <button class="btn btn-primary" routerLink="/notification/search_history"  type="button"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
+                </div> 
+                <div class="clearfix">&nbsp;</div>
+              </div>
+       </div>
+    </div>
+</div>

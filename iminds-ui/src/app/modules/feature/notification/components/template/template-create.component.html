@@ -1,0 +1,125 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+  <h2 class="h3 mb-0">{{ lang.notification.templateCreate }}</h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form #createTemplate="ngForm" (ngSubmit)="onSubmit(createTemplate.form.valid)">
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label class="required-label">{{lang.name}}</label>
+              <input class="form-control" type="text" name="name" stlValidate="REQ||alphaNumUnderscore"
+                     [stlLabel]="lang.name" [(ngModel)]="templateModel.name" [maxlength]="config.maxLength.name">
+            </div>
+            <div class="form-group col-md-3">
+              <label class="required-label">{{lang.notification.channelAlias}}</label>
+              <stl-input-typeahead [optionList]="channels" name="channelAlias" returnField="alias"
+                                   labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                   [(ngModel)]="templateModel.channelAlias" (ngModelChange)="onChannelChange()" >
+              </stl-input-typeahead>
+            </div>
+            <div class="form-group col-md-3">
+              <label class="required-label">{{lang.notification.eventAlias}}</label>
+              <stl-input-typeahead [optionList]="events" name="eventAlias" returnField="alias"
+                                   labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                   [(ngModel)]="templateModel.eventAlias" (ngModelChange)="onEventChange()">
+              </stl-input-typeahead>
+            </div>
+            <div class="form-group col-md-3">
+              <label class="label">{{lang.status}}</label>
+              <div>
+                <ui-switch [(ngModel)]="status" size="small" name="status"></ui-switch>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12" *ngIf="templateModel.dateRange">
+              <stl-input-daterange [(ngModel)]="templateModel.dateRange" name="dateRange"></stl-input-daterange>
+            </div>
+          </div>
+          <accordion *ngIf="languages">
+            <accordion-group [(isOpen)]="templateContent[i].selected" [isDisabled]="i === 0"
+                             *ngFor="let language of languages; index as i">
+              <div accordion-heading>
+                <input type="checkbox" [hidden]="i === 0" name="language" [(ngModel)]="templateContent[i].selected"/>
+                {{lang.notification.templateContent + language.name + ' ' + lang.notification.language}}
+              </div>
+              <div *ngIf="templateContent[i].selected">
+                <div class="row" *ngIf="templateModel.channelAlias !== 'SMS'">
+                  <div class="form-group col-md-6">
+                    <label class="required-label">{{lang.notification.subject}}</label>
+                    <div>
+                      <textarea class="form-control" id="subject[{{language.alias}}]" name="subject[{{language.alias}}]" stlValidate="REQ"
+                        [stlLabel]="lang.notification.subject" [(ngModel)]="templateContent[i].subject"
+                        [maxlength]="config.maxLength.maxName"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label class="label">{{lang.notification.messageTag}}</label>
+                    <div>
+                      <stl-input-typeahead [optionList]="defaultParamNameList" id="messageTag[{{language.alias}}]" name="messageTag[{{language.alias}}]" returnField="id" labelField="text" valueField="id" sortOptions="true" [label]="lang.selectOption" [(ngModel)]="eventTagModel[language.alias]" (ngModelChange)="onTagSelect(language.alias)">
+                      </stl-input-typeahead>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label class="label">{{lang.notification.imageTag}}</label>
+                    <div>
+                      <stl-input-typeahead [optionList]="images" id="imageTag[{{language.alias}}]" name="imageTag[{{language.alias}}]" returnField="alias" labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption" [(ngModel)]="imageRefId[language.alias]" (ngModelChange)="onImageSelect(language.alias)">
+                      </stl-input-typeahead>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="required-label">{{lang.notification.content}}</label>
+                    <div>
+                      <ckeditor editorUrl="./assets/vendor/ckeditor/ckeditor.js" (dataChange)="onDataChanged(i, language.alias)"
+                                [(data)]="templateContent[i].content" (ready)="onReady($event, language.alias)"
+                                (blur)="onBlurCkEditor(i, language.alias)" id="content[{{language.alias}}]">
+                      </ckeditor>
+                      <span *ngIf="invalidContent[language.alias]" class="text-danger error-span">
+                        {{lang.errors.REQ.replace('LABEL', lang.notification.content) }}</span>
+                      <span *ngIf="maxContent[language.alias]" class="text-danger error-span">
+                        {{ lang.errors.maxLength
+                              .replace('LABEL', lang.notification.content)
+                              .replace('NO_OF_CHARACTERS', config.maxLength.maxText) }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="templateModel.channelAlias === 'SMS'">
+                  <div class="form-group col-md-3">
+                    <label class="label">{{lang.notification.messageTag}}</label>
+                    <div>
+                      <stl-input-typeahead [optionList]="defaultParamNameList" name="messageTagSMS" returnField="id"
+                                           labelField="text" valueField="id" sortOptions="true" [label]="lang.selectOption"
+                                           [(ngModel)]="eventTagModel[language.alias]" (ngModelChange)="onTagSelectSMS(i, language.alias)">
+                      </stl-input-typeahead>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="required-label">{{lang.notification.content}}</label>
+                    <div>
+                        <textarea rows="5" style="width:100%;" [(ngModel)]="templateContent[i].content"
+                                  name="content[{{language.alias}}]" [maxlength]="config.maxLength.maxText">
+                        </textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </accordion-group>
+          </accordion>
+          <div class="clearfix">&nbsp;</div>
+          <div class="row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary"
+                      [disabled]="!createTemplate.form.valid">{{lang.create}}</button>
+              <button class="btn btn-primary" routerLink="/notification/search_template"  type="button"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
+            </div>
+          </div>
+          <div class="clearfix">&nbsp;</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

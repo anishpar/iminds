@@ -1,0 +1,62 @@
+{
+    "responseMessage": "Operation is performed successfully.",
+    "responseCode": 0,
+    "responseObject": [
+      {
+        "tagId": 78,
+        "tagName": "Mobile Number",
+        "tagAlias": "RECH_MOB_NUMBER",
+        "eventAlias": "BLOCK_CUSTOMER",
+        "status": "SHOW",
+        "createdate": "2019-11-20T05:48:50.000+0000",
+        "createdByStaff": "ADMIN",
+        "lastModifiedDate": "2019-11-20T05:48:50.000+0000",
+        "lastModifiedByStaff": "ADMIN"
+      },
+      {
+        "tagId": 79,
+        "tagName": "Block Reason",
+        "tagAlias": "BLOCK_REASON",
+        "eventAlias": "BLOCK_CUSTOMER",
+        "status": "SHOW",
+        "createdate": "2019-11-20T05:48:50.000+0000",
+        "createdByStaff": "ADMIN",
+        "lastModifiedDate": "2019-11-20T05:48:50.000+0000",
+        "lastModifiedByStaff": "ADMIN"
+      },
+      {
+        "tagId": 80,
+        "tagName": "Account Number",
+        "tagAlias": "RECH_ACCOUNT_NUMBER",
+        "eventAlias": "BLOCK_CUSTOMER",
+        "status": "SHOW",
+        "createdate": "2019-11-20T05:48:50.000+0000",
+        "createdByStaff": "ADMIN",
+        "lastModifiedDate": "2019-11-20T05:48:50.000+0000",
+        "lastModifiedByStaff": "ADMIN"
+      },
+      {
+        "tagId": 81,
+        "tagName": "Account Name",
+        "tagAlias": "RECH_ACCOUNT_NAME",
+        "eventAlias": "BLOCK_CUSTOMER",
+        "status": "SHOW",
+        "createdate": "2019-11-20T05:48:50.000+0000",
+        "createdByStaff": "ADMIN",
+        "lastModifiedDate": "2019-11-20T05:48:50.000+0000",
+        "lastModifiedByStaff": "ADMIN"
+      },
+      {
+        "tagId": 82,
+        "tagName": "Block Period",
+        "tagAlias": "BLOCK_PERIOD",
+        "eventAlias": "BLOCK_CUSTOMER",
+        "status": "SHOW",
+        "createdate": "2019-11-20T05:48:50.000+0000",
+        "createdByStaff": "ADMIN",
+        "lastModifiedDate": "2019-11-20T05:48:50.000+0000",
+        "lastModifiedByStaff": "ADMIN"
+      }
+    ],
+    "error": false
+  }

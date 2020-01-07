@@ -1,0 +1,3 @@
+<input type="text" class="form-control" [placeholder]="placeHolder" bsDatepicker [(ngModel)]="dateValue"  [bsConfig]="bsConfig" [isDisabled]="disabledComponent" [disabled]="disabledComponent" (bsValueChange)="onValueChange($event)" #inputDate="ngModel"/>
+
+<span class="error-span text-danger" *ngIf="errorMsg && (inputDate.touched || inputDate.value)">{{errorMsg}}</span>

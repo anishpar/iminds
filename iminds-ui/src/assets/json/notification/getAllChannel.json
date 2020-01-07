@@ -1,0 +1,200 @@
+{
+    "responseMessage": "Operation is performed successfully.",
+    "responseCode": 0,
+    "responseObject": [
+      {
+        "id": "SMSTes21",
+        "name": "SMSTest21",
+        "description": "SMSTest",
+        "className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+        "mimeType": "SMSTest",
+        "channelAttribute": null,
+        "status": "SHOW"
+      },
+      {
+        "id": "SMSTes22422",
+        "name": "SMSTest223ad",
+        "description": "SMSTest",
+        "className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+        "mimeType": "SMSTest",
+        "channelAttribute": [
+          {
+            "attributeName": "Send SMS URL",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "User Id",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Sender",
+            "attributeValue": "test"
+          }
+        ],
+        "status": "SHOW"
+      },
+      {
+        "id": "SMSTes221",
+        "name": "SMSTest221",
+        "description": "SMSTest",
+        "className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+        "mimeType": "SMSTest",
+        "channelAttribute": [
+          {
+            "attributeName": "User Id",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "User Id",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Send SMS URL",
+            "attributeValue": "test"
+          }
+        ],
+        "status": "SHOW"
+      },
+      {
+        "id": "SMSTes223",
+        "name": "SMSTest223",
+        "description": "SMSTest",
+        "className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+        "mimeType": "SMSTest",
+        "channelAttribute": [
+          {
+            "attributeName": "User Id",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Send SMS URL",
+            "attributeValue": "test"
+          }
+        ],
+        "status": "SHOW"
+      },
+      {
+        "id": "EMAIL",
+        "name": "Email",
+        "description": "Email notification channel",
+        "className": "com.stl.notification.message.channelplugin.EmailNotificationPlugin",
+        "mimeType": "html",
+        "channelAttribute": [
+          {
+            "attributeName": "SMTP Host",
+            "attributeValue": "192.168.0.252"
+          },
+          {
+            "attributeName": "SMTP Port",
+            "attributeValue": "25"
+          },
+          {
+            "attributeName": "SMTP User Name",
+            "attributeValue": "customercare"
+          },
+          {
+            "attributeName": "SMTP Password",
+            "attributeValue": "admin@321"
+          },
+          {
+            "attributeName": "SMTP Connection Type",
+            "attributeValue": "NONE"
+          },
+          {
+            "attributeName": "From mail id",
+            "attributeValue": "g5.bss@ec.com"
+          },
+          {
+            "attributeName": "Mailer",
+            "attributeValue": "MLLN Billing Mailer"
+          },
+          {
+            "attributeName": "Admin Id",
+            "attributeValue": "g5.bss@ec.com"
+          },
+          {
+            "attributeName": "Error Admin Id",
+            "attributeValue": "g5.bss@ec.com"
+          },
+          {
+            "attributeName": "Sender",
+            "attributeValue": "sterlite@stl.com"
+          }
+        ],
+        "status": "SHOW"
+      },
+      {
+        "id": "SMS",
+        "name": "SMS",
+        "description": "SMS notification channel",
+        "className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+        "mimeType": "text",
+        "channelAttribute": [
+          {
+            "attributeName": "User Id",
+            "attributeValue": "tester"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "foobar"
+          },
+          {
+            "attributeName": "Sender",
+            "attributeValue": "STL"
+          },
+          {
+            "attributeName": "Send SMS URL",
+            "attributeValue": "http://10.151.33.98:13013/cgi-bin/sendsms?username={userid}&password={password}&to={msisdn}&text={message}&from={from}"
+          }
+        ],
+        "status": "SHOW"
+      },
+      {
+        "id": "SMSTes222",
+        "name": "SMSTest222",
+        "description": "SMSTest",
+        "className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+        "mimeType": "SMSTest",
+        "channelAttribute": [
+          {
+            "attributeName": "Send SMS URL",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "User Id",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "User Id",
+            "attributeValue": "test"
+          },
+          {
+            "attributeName": "Password",
+            "attributeValue": "test"
+          }
+        ],
+        "status": "SHOW"
+      }
+    ],
+    "error": false
+  }

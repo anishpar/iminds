@@ -1,0 +1,1 @@
+<pagination *ngIf="totalItems" [totalItems]="totalItems" (pageChanged)="curerntPageChanged($event)" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" [maxSize]="maxSize" class="pagination-sm pull-right" (numPages)="totalPageChanged($event)"  [boundaryLinks]="boundaryLinks"></pagination>

@@ -1,0 +1,4 @@
+<ng-container>
+    <ng-select name="input"
+    [items]="_options" [placeholder]="label" (removed)="removed($event)" [(ngModel)]="inputValue" (data)="selectedOption($event)" [allowClear]="true" [disabled]="disabledComponent || _options.length==0"></ng-select>
+</ng-container>

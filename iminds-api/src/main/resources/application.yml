@@ -1,0 +1,91 @@
+server:
+   port: 9080
+   servlet:
+     context-path: /iminds
+dbconfig:
+   connection_pool: com.mchange.v2.c3p0.ComboPooledDataSource
+   datasource:
+      -
+         name: MASTERDS
+         url: jdbc:oracle:thin:@192.168.11.240:1522:oradev1
+         driverClassName: oracle.jdbc.driver.OracleDriver
+         username: CRESTELNOTIFICATION
+         password: wgAMJ4Flj+FxDFwWGYimDTvDP9FO9kr7sSsd7UmznRc=
+         min_pool_size: 5
+         max_pool_size: 10
+         max_idle_time: 600000
+         connection_timeout: 30000
+         max_connection_age: 1800000
+         leakDetectionThresholdMs: 60000
+         properties:
+            -
+               name: cachePrepStmts
+               value: true
+            -
+               name: prepStmtCacheSize
+               value: 400
+            -
+               name: prepStmtCacheSqlLimit
+               value: 4000
+            -
+               name: useServerPrepStmts
+               value: true
+      -
+         name: NOTIFICATIONDS
+         url: jdbc:oracle:thin:@192.168.11.240:1522:oradev1
+         driverClassName: oracle.jdbc.driver.OracleDriver
+         username: CRESTELNOTIFICATION
+         password: wgAMJ4Flj+FxDFwWGYimDTvDP9FO9kr7sSsd7UmznRc=
+         min_pool_size: 5
+         max_pool_size: 10
+         max_idle_time: 600000
+         connection_timeout: 30000
+         max_connection_age: 1800000
+         leakDetectionThresholdMs: 60000
+         properties:
+            -
+               name: cachePrepStmts
+               value: true
+            -
+               name: prepStmtCacheSize
+               value: 400
+            -
+               name: prepStmtCacheSqlLimit
+               value: 4000
+            -
+               name: useServerPrepStmts
+               value: true
+   jpa:
+       database-platform: org.hibernate.dialect.Oracle10gDialect
+       show-sql: true
+       properties:
+          hibernate.dialect: org.hibernate.dialect.Oracle10gDialect
+          hibernate.show_sql: true
+          hibernate.generate_statistics: true
+
+spring:
+  profiles:
+    active: demo
+    
+jwt:
+  header: authorization
+  secret: mySecret
+  expiration: 3600
+  refresh: 900  
+      
+sso:
+  available: true
+  url: http://localhost:8080/auth/
+  clientId: iminds
+  realm: IMinds
+  secret: a1f8dc8c-1777-4208-ae71-0f349e94e9c0
+  redirectUrl: http://localhost:8081/
+ 
+security:
+ basic:
+  enabled:false
+  
+management:
+ security:
+  enabled:false
+  

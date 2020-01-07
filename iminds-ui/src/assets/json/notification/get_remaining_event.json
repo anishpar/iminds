@@ -1,0 +1,43 @@
+{
+    "responseMessage": "Operation is performed successfully.",
+    "responseCode": 0,
+    "responseObject": [
+      {
+        "name": "Update Discount Management",
+        "alias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Dunning Email",
+        "alias": "DUNNING_EMAIL",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Update Access Validity",
+        "alias": "UPDATE_ACCESS_VALIDITY",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Remove Inventory",
+        "alias": "REMOVE_INVENTORY",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Create Resource Specification",
+        "alias": "CREATE_RESOURCE_SPECIFICATION",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Send Bill Information",
+        "alias": "SEND_BILL_AS_EMAIL",
+        "status": null,
+        "childs": null
+      }
+    ],
+    "error": false
+  }

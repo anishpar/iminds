@@ -1,0 +1,196 @@
+{
+    "responseMessage": "Operation is performed successfully.",
+    "responseCode": 0,
+    "responseObject": [
+      {
+        "id": 269,
+        "href": "http://localhost:8080/dNotification/template/269",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "template",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 270,
+        "href": "http://localhost:8080/dNotification/template/269",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "template 1",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 271,
+        "href": "http://localhost:8080/dNotification/template/269",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "template 2",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 270,
+        "href": "http://localhost:8080/dNotification/template/270",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "Template 1",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 271,
+        "href": "http://localhost:8080/dNotification/template/271",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "Template 2",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 272,
+        "href": "http://localhost:8080/dNotification/template/272",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "Template 3",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 270,
+        "href": "http://localhost:8080/dNotification/template/270",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "Template 1",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 271,
+        "href": "http://localhost:8080/dNotification/template/271",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "Template 2",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      },
+      {
+        "id": 272,
+        "href": "http://localhost:8080/dNotification/template/272",
+        "channelAlias": "EMAIL",
+        "eventAlias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "name": "Template 3",
+        "description": null,
+        "dateRange": {
+          "fromDate": "2019-12-10 15:30:43",
+          "toDate": null
+        },
+        "status": "SHOW",
+        "templateContent": [
+          {
+            "templateContentId": 257,
+            "language": "en",
+            "subject": "asds",
+            "content": "<p>assad</p>\n"
+          }
+        ]
+      }
+    ],
+    "error": false
+  }

@@ -1,0 +1,49 @@
+{
+  "responseMessage": "Operation is performed successfully.",
+  "responseCode": 0,
+  "responseObject": [
+    {
+      "name": "strSendSmsUrl",
+      "displayName": "Send SMS URL",
+      "value": "http://10.151.33.98:13013/cgi-bin/sendsms?username={username}&password={password}&to={to}&text={message}&from={from}",
+      "bIsMandatory": true,
+      "dataType": "STRING"
+    },
+    {
+      "name": "strUserId",
+      "displayName": "User Id",
+      "value": "test",
+      "bIsMandatory": true,
+      "dataType": "STRING"
+    },
+    {
+      "name": "strPassword",
+      "displayName": "Password",
+      "value": "test",
+      "bIsMandatory": true,
+      "dataType": "PASSWORD"
+    },
+    {
+      "name": "strFrom",
+      "displayName": "From",
+      "value": "STL",
+      "bIsMandatory": true,
+      "dataType": "STRING"
+    },
+    {
+      "name": "validationExp",
+      "displayName": "Communication address Validation Expression",
+      "value": "^[0-9]*",
+      "bIsMandatory": true,
+      "dataType": "STRING"
+    },
+    {
+      "name": "strSenderId",
+      "displayName": "Sender",
+      "value": "STL",
+      "bIsMandatory": true,
+      "dataType": "STRING"
+    }
+  ],
+  "error": false
+}

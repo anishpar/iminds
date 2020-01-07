@@ -1,0 +1,86 @@
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+archivesBaseName = 'iMinds'
+group = 'com.stl'
+version = '1.0'
+sourceCompatibility = '1.8'
+
+compileJava {
+    options.incremental = true
+    options.fork = true
+    options.failOnError = true
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+   /*flatDir {
+       dirs 'libs'
+   }*/
+    jcenter()
+    mavenCentral()
+}
+
+configurations.all {
+    // Check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+}
+
+dependencyManagement {
+    resolutionStrategy {
+        cacheChangingModulesFor 0, 'seconds'
+    }
+}
+
+dependencies {
+
+	implementation files('libs/stl-commons.jar','libs/ojdbc8.jar')
+	//compile group: 'com', name: 'stl', version: 'commons', changing: true
+
+    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
+    implementation(project(':iminds-ui'))
+    implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-log4j2'
+	compile group: 'com.mchange', name: 'c3p0', version: '0.9.5.2'
+	compile 'org.keycloak:keycloak-adapter-core:7.0.0'
+	compile 'org.keycloak:keycloak-servlet-filter-adapter:7.0.0'
+	compile 'org.keycloak:keycloak-authz-client:7.0.0'
+	compile 'org.keycloak:keycloak-admin-client:7.0.0'
+	compile 'org.keycloak:keycloak-core:7.0.0'
+	compile 'org.springframework:spring-jdbc'
+	compile 'com.zaxxer:HikariCP'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.6.0'
+	compile group: 'commons-io', name: 'commons-io', version: '2.6'
+	compile group: 'org.jboss.resteasy', name: 'resteasy-client', version: '3.0.19.Final'
+	compile group: 'org.jboss.resteasy', name: 'resteasy-jackson2-provider', version: '3.0.19.Final'
+	compile group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: '3.0.19.Final'
+	compile group: 'org.jboss.resteasy', name: 'resteasy-validator-provider-11', version: '3.0.19.Final'
+	
+}
+
+configurations {
+    all {
+          exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+      }
+}
+
+bootJar {
+	mainClassName = 'com.stl.iminds.IMindsApplication'
+	
+	bootInf {
+        into("classes/static") {
+			from("${project(":iminds-ui").projectDir}/dist")
+        }
+	}
+	
+}

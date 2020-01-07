@@ -1,0 +1,98 @@
+<div>
+  <tabset>
+    <tab heading="{{lang.orderModule.wohistory}}" id="tab1">
+      <ng-container *ngIf="woHistoryData && woHistoryData.length > 0; else noRecords">
+
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>{{lang.sr}}</th>
+                <th>{{lang.lead.assignGroup}}</th>
+                <th>{{lang.lead.assignstaff}}</th>
+                <th>{{lang.status}}</th>
+                <th>{{lang.fromDate}}</th>
+                <th>{{lang.toDate}}</th>
+                <th>{{lang.lastModifiedBy}}</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let history of woHistoryData.slice(((woPagination.currentPage-1)*woPagination.itemsPerPage),woPagination.currentPage*woPagination.itemsPerPage); let i= index;trackBy: trackbyfn">
+                <td>{{i+1}}</td>
+                <td>{{history.assignedToGroup ? history.assignedToGroup.name :config.emptyString}}</td>
+                <td>{{history.assignedTo ? history.assignedTo.name :config.emptyString}}</td>
+                <td>{{history.moduleStatusVO.name || config.emptyString}}</td>
+                <td>{{(history.startDate |date:config.dateTimeFormat) ||config.emptyString}}</td>
+                <td>{{(history.endDate | date:config.dateTimeFormat) || config.emptyString}}</td>
+                <td>{{history.lastModifiedBy ? history.lastModifiedBy :config.emptyString}}</td>
+              </tr>
+          </table>
+        </div>
+        <div class="row">
+
+          <div class="col-sm-6 pull-right text-right vbottomoffset1" *ngIf="woHistoryData && woHistoryData.length > 0 && woHistoryData.length > woPagination.itemsPerPage">
+            <stl-pagination name="wo_pagination" [totalItems]="woHistoryData.length" [(ngModel)]="woPagination.currentPage"
+              class="pagination-sm" [itemsPerPage]="woPagination.itemsPerPage" [maxSize]="woPagination.maxSize"
+              [boundaryLinks]="false"></stl-pagination>
+          </div>
+
+        </div>
+      </ng-container>
+    </tab>
+    <tab heading="{{entityHistoryTitle}}" id="tab2">
+
+
+      <ng-container *ngIf="entityHistoryData && entityHistoryData.length > 0; else noRecords">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>{{lang.sr}}</th>
+                <th>{{lang.name}}</th>
+                <th>{{lang.oldValue}}</th>
+                <th>{{lang.newValue}}</th>
+                <th>{{lang.reason}}</th>
+                <th>{{lang.staffName}}</th>
+                <th>{{lang.date}}</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let history of entityHistoryData.slice(((enPagination.currentPage-1)*enPagination.itemsPerPage),enPagination.currentPage*enPagination.itemsPerPage); let i= index;trackBy: trackbyfn">
+                <td>{{i+1}}</td>
+                <td>{{history.historyName ? history.historyName :config.emptyString}}</td>
+                <td>{{history.oldValue ? history.oldValue :config.emptyString}}</td>
+                <td>{{history.newValue ? history.newValue :config.emptyString}}</td>
+                <td>{{history.reason ? history.reason :config.emptyString}}</td>
+                <td>{{history.staffName ? history.staffName :config.emptyString}}</td>
+                <td>{{(history.historyDate |date:config.dateTimeFormat) ||config.emptyString}}</td>
+              </tr>
+          </table>
+        </div>
+        <div class="row">
+
+          <div class="col-sm-6 pull-right text-right vbottomoffset1" *ngIf="entityHistoryData && entityHistoryData.length > 0 && entityHistoryData.length > enPagination.itemsPerPage">
+            <stl-pagination name="wo_pagination" [totalItems]="entityHistoryData.length" [(ngModel)]="enPagination.currentPage"
+              class="pagination-sm" [itemsPerPage]="enPagination.itemsPerPage" [maxSize]="enPagination.maxSize"
+              [boundaryLinks]="false"></stl-pagination>
+          </div>
+
+        </div>
+      </ng-container>
+    </tab>
+
+  </tabset>
+</div>
+
+
+<ng-template #noRecords>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header col-sm-12 alert alert-info text-center">
+        {{lang.noDataFound}}
+      </div>
+    </div>
+  </div>
+
+</ng-template>

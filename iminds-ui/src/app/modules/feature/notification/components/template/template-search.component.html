@@ -1,0 +1,114 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+    <h2 class="h3 mb-0">{{ lang.notification.templateSearch }}</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form #searchTemplate="ngForm" (ngSubmit)="onSubmit (searchTemplate.form.valid)">
+                    <div class="row ">
+                        <div class="form-group col-md-3">
+                            <label>{{lang.name}}</label>
+                            <input class="form-control" type="text" id="name" name="name" stlValidate="NREQ||alphaNumUnderscore" 
+                            [stlLabel]="lang.name" [(ngModel)]="templateModel.name">
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <label class="label">{{lang.notification.eventAlias}}</label>                        
+                            
+                            <stl-input-typeahead [optionList]="events" id="eventAlias" name="eventAlias" returnField="alias"
+                                       labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                       [(ngModel)]="templateModel.eventAlias">
+                            </stl-input-typeahead>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                        <label class="label">{{lang.notification.channelAlias}}</label>                      
+                        <stl-input-typeahead [optionList]="channels" id="channelAlias" name="channelAlias" returnField="alias"
+                                       labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                       [(ngModel)]="templateModel.channelAlias" >
+                        </stl-input-typeahead>
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <label class="bold-text">{{lang.status}}</label>
+                            <div>
+                                <input type="radio" [(ngModel)] = "templateModel.status" value="{{lang.show}}" id="radioShow" name="status">&nbsp;{{lang.show}}&nbsp;&nbsp;
+                                <input type="radio" [(ngModel)] = "templateModel.status" value="{{lang.hide}}" id="radioHide" name="status">&nbsp;{{lang.hide}}&nbsp;&nbsp;
+                                <input type="radio" [(ngModel)] = "templateModel.status" value="{{lang.all}}" id="radioAll" name="status">&nbsp;{{lang.all}}
+                            </div>
+                        </div>
+                    </div>
+  
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <button id="submitBtn" type="submit" class="btn btn-primary" >
+                                <i class="fa fa-search"></i> {{lang.search}}
+                            </button>
+                            &nbsp;
+
+                            <a class="btn btn-primary" [routerLink]="['/notification/create_template']">
+                                <i class="fa fa-plus"></i> {{lang.create}}
+                            </a>
+                            &nbsp;
+                            
+                            <button type="button" id="resetBtn" class="btn btn-primary" (click)="resetSearch()">
+                                <i class="fa fa-undo"></i>&nbsp;{{lang.reset}}
+                            </button>
+                        </div>
+                    </div> 
+                </form>
+
+                <div class="row">
+                    <div class="col-md-12" *ngIf="searched && totalItems == 0">    
+                        <div class="page-header col-sm-12 alert alert-info text-center">    
+                            {{lang.searchComponent.noResults}}
+                        </div>
+                    </div>              
+                    
+                    <div class="col-sm-12 pull-right text-right vbottomoffset1" *ngIf="templateList && templateList.length > 0">                                        
+                        <stl-pagination *ngIf="totalItems" [totalItems]="totalItems" (changePage)="onChangePage($event)" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage" [maxSize]="10" (numPages)="numPages = $event" [boundaryLinks]="true"></stl-pagination>                    
+                    </div>
+                </div> 
+                      
+                <div class="table-responsive" *ngIf="searched">      
+                    <table class="table table-bordered" *ngIf="templateList && templateList.length > 0">        
+                        <tr>         
+                            <th>{{lang.sr}}</th>        
+                            <th>{{lang.name}}</th>
+                            <th>{{lang.notification.eventAlias}}</th>
+                            <th>{{lang.notification.channelAlias}}</th>
+                            <th>{{lang.status}}</th> 
+                            <th>{{lang.edit}}</th>                        
+                        </tr>
+              
+                        <tr *ngFor="let template of templateList.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
+                            <td>
+                                {{i+1+((pagination.currentPage-1)*pagination.itemsPerPage)}}        
+                            </td>
+                            
+                            <td>    
+                                <a title="{{template.name}}" routerLink="/notification/view_template" (click)="setNavParam('templateName',template.name)">{{template.name ? template.name : config.emptyString}}</a>                             
+                            </td>
+                                
+                            <td>
+                                {{template.eventAlias ? template.eventAlias : config.emptyString}}
+                            </td>
+                                
+                            <td>
+                                {{template.channelAlias ? template.channelAlias : config.emptyString}}
+                            </td>
+                                
+                            <td>
+                                {{template.status ? template.status : config.emptyString}}
+                            </td>   
+                            
+                            <td><a title="{{lang.edit}}" [routerLink]="" ><span class="fa fa-edit fa-2-action "></span></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

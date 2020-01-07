@@ -1,0 +1,62 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+    <h2 class="h3 mb-0">{{ lang.notification.viewTemplateAssociation }}</h2>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          
+            
+            
+          <div class="row">
+            <div class="{{config.viewLabelClass}}">
+                <label class="label-header">{{lang.notification.eventAlias}}</label>
+            </div>
+            <div class="{{config.viewValueClass}}">{{ eventName? eventName : config.emptyString }}</div>
+
+            <div class="{{config.viewLabelClass}}">
+                <label class="label-header">{{lang.notification.channelAlias}}</label>
+            </div>
+            <div class="{{config.viewValueClass}}">{{ channelName ?channelName : config.emptyString }}</div>
+        </div>  
+  
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
+              <h6 class="h6 mb-0">{{ lang.notification.templateAssociationDetail}}</h6>
+            </div>
+  
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>{{lang.sr}}</th>
+                    <th>{{lang.expression}}</th>
+                    <th>{{lang.notification.template}}</th>
+                    <th>{{lang.priority}}</th>
+                  </tr>
+                </thead>
+    
+                   <tbody>
+                        <tr *ngFor="let templateRelationData of  eventDataList.templateRelation ; let i = index;">
+
+                            <td class="text-center">{{i+1}}</td>
+                            <td>{{templateRelationData.conditionExpression ? (templateRelationData.conditionExpression) : 'Default'}}</td>
+                            <td>{{templateRelationData.name ? (templateRelationData.name) : config.emptyString}}</td>
+                            <td>{{templateRelationData.priority ? (templateRelationData.priority) : config.emptyString}}</td>
+                            
+
+                        </tr>
+                    </tbody>
+
+              </table>
+
+
+              <button class="btn btn-primary" routerLink="/notification/search_event_configuration" type="button" id="back"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
+              <button class="btn btn-primary" type="button" id="update" (click)="update()">{{lang.update}}</button>
+
+              
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

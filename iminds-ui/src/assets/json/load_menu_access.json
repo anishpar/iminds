@@ -1,0 +1,2930 @@
+{
+    "responseCode": 5003,
+    "responseMessage": "Authorization Loaded Successfully",
+    "responseObject": {
+        "menulist": [
+            {
+                "actionid": 901,
+                "parentActionId": 0,
+                "name": "Dashboard",
+                "alias": "DASHBOARD",
+                "type": "M",
+                "url": "",
+                "children": [
+                    {
+                        "actionid": 2001,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_CUSTOMER_BY_STATUS",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2002,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_PAYMENT_COLLECTION",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2003,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_TICKET_STATUS",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2004,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_CUSTOMER_GROWTH",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2005,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_FUTURE_POSSIBLE_RECHARGE",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2006,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_REVENUE_PER_USER",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2007,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_CUSTOMER_PAST_OPERATION",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2008,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_CUSTOMER_CHURN_RATE",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2009,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_LEAD_BY_TYPE",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 2010,
+                        "parentActionId": 901,
+                        "name": "",
+                        "alias": "ACTION_DASHBOARD_LEAD_BY_TYPE",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 9,
+                "parentActionId": 8,
+                "name": "Customer",
+                "alias": "CUSTOMER",
+                "type": "M",
+                "url": "listcustomer",
+                "children": [
+                    {
+                        "actionid": 20,
+                        "parentActionId": 9,
+                        "name": "Customer Account",
+                        "alias": "ACTION_CUSTOMER_ACCOUNT",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 21,
+                        "parentActionId": 9,
+                        "name": "Customer View",
+                        "alias": "ACTION_CUSTOMER_VIEW",
+                        "type": "A",
+                        "url": "customerview",
+                        "children": null
+                    },
+                    {
+                        "actionid": 22,
+                        "parentActionId": 9,
+                        "name": "Personal Data View/Edit",
+                        "alias": "ACTION_PERSONAL_DATA_VIEW_EDIT",
+                        "type": "A",
+                        "url": "personaldata",
+                        "children": null
+                    },
+                    {
+                        "actionid": 23,
+                        "parentActionId": 9,
+                        "name": "Change Installation Address",
+                        "alias": "ACTION_CHANGE_INSTALLATION_ADDRESS",
+                        "type": "A",
+                        "url": "installationaddress",
+                        "children": null
+                    },
+                    {
+                        "actionid": 24,
+                        "parentActionId": 9,
+                        "name": "Account History",
+                        "alias": "ACTION_ACCOUNT_HISTORY",
+                        "type": "A",
+                        "url": "accounthistory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 25,
+                        "parentActionId": 9,
+                        "name": "Ticket History",
+                        "alias": "ACTION_CUSTOMER_TICKET_HISTORY",
+                        "type": "A",
+                        "url": "tickethistory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 26,
+                        "parentActionId": 9,
+                        "name": "Enable Disable Web Self Care Login",
+                        "alias": "ACTION_ENABLE_DISABLE_WEBSELFCARE_LOGIN",
+                        "type": "A",
+                        "url": "enabledisablewebselfcare",
+                        "children": null
+                    },
+                    {
+                        "actionid": 26,
+                        "parentActionId": 9,
+                        "name": "Offers",
+                        "alias": "ACTION_CUSTOMER_OFFERS",
+                        "type": "A",
+                        "url": "offers",
+                        "children": null
+                    },
+                    {
+                        "actionid": 27,
+                        "parentActionId": 9,
+                        "name": "Reset Customer Password & Resend",
+                        "alias": "ACTION_RESET_CUSTOMER_PASSWORD_RESEND",
+                        "type": "A",
+                        "url": "resetcustomerpass",
+                        "children": null
+                    },
+                    {
+                        "actionid": 27,
+                        "parentActionId": 9,
+                        "name": "Radius Logs",
+                        "alias": "ACTION_CUSTOMER_RADIUS_LOG",
+                        "type": "A",
+                        "url": "radiuslog",
+                        "children": null
+                    },
+                    {
+                        "actionid": 28,
+                        "parentActionId": 9,
+                        "name": "Change Security Question",
+                        "alias": "ACTION_CHANGE_SECURITY_QUESTION",
+                        "type": "A",
+                        "url": "changesecurityquestion",
+                        "children": null
+                    },
+                    {
+                        "actionid": 29,
+                        "parentActionId": 9,
+                        "name": "Services",
+                        "alias": "ACTION_SERVICES",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 30,
+                        "parentActionId": 9,
+                        "name": "Change Service Status",
+                        "alias": "ACTION_CHANGE_SERVICE_STATUS",
+                        "type": "A",
+                        "url": "changeservicestatus",
+                        "children": null
+                    },
+                    {
+                        "actionid": 31,
+                        "parentActionId": 9,
+                        "name": "Change Base Plan",
+                        "alias": "ACTION_CHANGE_SERVICE_PLAN",
+                        "type": "A",
+                        "url": "changebaseplan",
+                        "children": null
+                    },
+                    {
+                        "actionid": 32,
+                        "parentActionId": 9,
+                        "name": "Renew Base Plan",
+                        "alias": "ACTION_RENEW_BASE_PLAN",
+                        "type": "A",
+                        "url": "renewbaseplan",
+                        "children": null
+                    },
+                    {
+                        "actionid": 33,
+                        "parentActionId": 9,
+                        "name": "Recharge by Plan/Price",
+                        "alias": "ACTION_RECHARGE_BY_PLAN_PRICE",
+                        "type": "A",
+                        "url": "recharge",
+                        "children": null
+                    },
+                    {
+                        "actionid": 34,
+                        "parentActionId": 9,
+                        "name": "Subscribe Add-on",
+                        "alias": "ACTION_SUBSCRIBE_ADD-ON",
+                        "type": "A",
+                        "url": "subscribeaddon",
+                        "children": null
+                    },
+                    {
+                        "actionid": 35,
+                        "parentActionId": 9,
+                        "name": "UnSubscribe Add-on",
+                        "alias": "ACTION_UNSUBSCRIBE_ADD-ON",
+                        "type": "A",
+                        "url": "unsubscribeaddon",
+                        "children": null
+                    },
+                    {
+                        "actionid": 36,
+                        "parentActionId": 9,
+                        "name": "View/Add Inventory",
+                        "alias": "ACTION_VIEW_ADD_INVENTORY",
+                        "type": "A",
+                        "url": "viewaddinventory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 37,
+                        "parentActionId": 9,
+                        "name": "View Service Balance",
+                        "alias": "ACTION_VIEW_SERVICE_BALANCE",
+                        "type": "A",
+                        "url": "viewbalance",
+                        "children": null
+                    },
+                    {
+                        "actionid": 38,
+                        "parentActionId": 9,
+                        "name": "Usage Information",
+                        "alias": "ACTION_USAGE_INFORMATION",
+                        "type": "A",
+                        "url": "usageinfo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 39,
+                        "parentActionId": 9,
+                        "name": "Billing",
+                        "alias": "ACTION_BILLING",
+                        "type": "A",
+                        "url": null,
+                        "children": null
+                    },
+                    {
+                        "actionid": 40,
+                        "parentActionId": 9,
+                        "name": "Change Billing Cycle",
+                        "alias": "ACTION_CHANGE_BILL_CYCLE",
+                        "type": "A",
+                        "url": "changebillingcycle",
+                        "children": null
+                    },
+                    {
+                        "actionid": 41,
+                        "parentActionId": 9,
+                        "name": "Change Billing Address",
+                        "alias": "ACTION_CHANGE_BILLING_ADDRESS",
+                        "type": "A",
+                        "url": "billingaddress",
+                        "children": null
+                    },
+                    {
+                        "actionid": 42,
+                        "parentActionId": 9,
+                        "name": "Make Payment",
+                        "alias": "ACTION_MAKE_PAYMENT",
+                        "type": "A",
+                        "url": "makepayment",
+                        "children": null
+                    },
+                    {
+                        "actionid": 43,
+                        "parentActionId": 9,
+                        "name": "Bill On Hold",
+                        "alias": "ACTION_BILL_ONHOLD",
+                        "type": "A",
+                        "url": "billonhold",
+                        "children": null
+                    },
+                    {
+                        "actionid": 44,
+                        "parentActionId": 9,
+                        "name": "Payment History",
+                        "alias": "ACTION_PAYMENT_HISTORY",
+                        "type": "A",
+                        "url": "paymenthistory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 45,
+                        "parentActionId": 9,
+                        "name": "View Bill",
+                        "alias": "ACTION_SERCHBILL_VIEWBILL",
+                        "type": "A",
+                        "url": "searchviewbill",
+                        "children": null
+                    },
+                    {
+                        "actionid": 67,
+                        "parentActionId": 9,
+                        "name": "Customer View",
+                        "alias": "ACTION_CUSTOMER_SEARCH_VIEW",
+                        "type": "A",
+                        "url": "viewcustomer",
+                        "children": null
+                    },
+                    {
+                        "actionid": 68,
+                        "parentActionId": 9,
+                        "name": "Manage Inventory",
+                        "alias": "ACTION_CUSTOMER_INVENTORY_MANAGE",
+                        "type": "A",
+                        "url": "viewinventory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 69,
+                        "parentActionId": 9,
+                        "name": "Add Inventory",
+                        "alias": "ACTION_CUSTOMER_INVENTORY_ADD",
+                        "type": "A",
+                        "url": "addinventory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 70,
+                        "parentActionId": 9,
+                        "name": "Edit Inventory",
+                        "alias": "ACTION_CUSTOMER_INVENTORY_EDIT",
+                        "type": "A",
+                        "url": "editinventory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 71,
+                        "parentActionId": 9,
+                        "name": "View Personal Info",
+                        "alias": "ACTION_CUSTOMER_PERSONALINFO_VIEW",
+                        "type": "A",
+                        "url": "viewpersonalinfo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 72,
+                        "parentActionId": 9,
+                        "name": "Edit Personal Info",
+                        "alias": "ACTION_CUSTOMER_PERSONALINFO_EDIT",
+                        "type": "A",
+                        "url": "editpersonalinfo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 73,
+                        "parentActionId": 9,
+                        "name": "Change Status",
+                        "alias": "ACTION_CUSTOMER_SI_CHANGESTATUS",
+                        "type": "A",
+                        "url": "changesistatus",
+                        "children": null
+                    },
+                    {
+                        "actionid": 89,
+                        "parentActionId": 9,
+                        "name": "Retrieve Problem Categories",
+                        "alias": "ACTION_CUSTOMER_RETRIEVE_PROBLEM_CATEGORY",
+                        "type": "A",
+                        "url": "retrieveProblemCategory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 90,
+                        "parentActionId": 9,
+                        "name": "Statement of Account",
+                        "alias": "ACTION_ACCOUNT_STATEMENT",
+                        "type": "A",
+                        "url": "accountstatement",
+                        "children": null
+                    },
+                    {
+                        "actionid": 91,
+                        "parentActionId": 9,
+                        "name": "Mac Management",
+                        "alias": "ACTION_MAC_MANAGEMENT",
+                        "type": "A",
+                        "url": "macmanagement",
+                        "children": null
+                    },
+                    {
+                        "actionid": 91,
+                        "parentActionId": 9,
+                        "name": "Document Management",
+                        "alias": "ACTION_DOCUMENT_MANAGEMENT",
+                        "type": "A",
+                        "url": "documentmanagement",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 13,
+                "parentActionId": 12,
+                "name": "Master Configuration",
+                "alias": "MASTER_CONFIGURATION",
+                "type": "M",
+                "url": "searchmaster",
+                "children": [
+                    {
+                        "actionid": 59,
+                        "parentActionId": 13,
+                        "name": "Create Master",
+                        "alias": "ACTION_MASTER_CREATE",
+                        "type": "A",
+                        "url": "createmaster",
+                        "children": null
+                    },
+                    {
+                        "actionid": 61,
+                        "parentActionId": 13,
+                        "name": "Update Master",
+                        "alias": "ACTION_MASTER_UPDATE",
+                        "type": "A",
+                        "url": "updatemaster",
+                        "children": null
+                    },
+                    {
+                        "actionid": 62,
+                        "parentActionId": 13,
+                        "name": "View Master",
+                        "alias": "ACTION_MASTER_VIEW",
+                        "type": "A",
+                        "url": "viewmaster",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 463,
+                "parentActionId": 453,
+                "name": "Manage Role",
+                "alias": "MANAGE_ROLE",
+                "type": "M",
+                "url": "searchrole",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 9,
+                "children": [
+                    {
+                        "actionid": 465,
+                        "parentActionId": 463,
+                        "name": "Create Role",
+                        "alias": "ACTION_ROLE_CREATE",
+                        "type": "A",
+                        "url": "createrole",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 466,
+                        "parentActionId": 463,
+                        "name": "View Role",
+                        "alias": "ACTION_ROLE_VIEW",
+                        "type": "A",
+                        "url": "viewrole",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 467,
+                        "parentActionId": 463,
+                        "name": "Update Role",
+                        "alias": "ACTION_ROLE_UPDATE",
+                        "type": "A",
+                        "url": "updaterole",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 464,
+                "parentActionId": 453,
+                "name": "Manage Access",
+                "alias": "MANAGE_ACCESS",
+                "type": "M",
+                "url": "searchaccess",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 10,
+                "children": [
+                    {
+                        "actionid": 468,
+                        "parentActionId": 464,
+                        "name": "Create Access",
+                        "alias": "ACTION_ACCESS_CREATE",
+                        "type": "A",
+                        "url": "createaccess",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 470,
+                        "parentActionId": 464,
+                        "name": "Update Access",
+                        "alias": "ACTION_ACCESS_UPDATE",
+                        "type": "A",
+                        "url": "updateaccess",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    },
+                    {
+                        "actionid": 469,
+                        "parentActionId": 464,
+                        "name": "View Access",
+                        "alias": "ACTION_ACCESS_VIEW",
+                        "type": "A",
+                        "url": "viewaccess",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 14,
+                "parentActionId": 12,
+                "name": "Question Bank",
+                "alias": "QUESTION_BANK",
+                "type": "M",
+                "url": "searchqamaster",
+                "children": [
+                    {
+                        "actionid": 63,
+                        "parentActionId": 14,
+                        "name": "Create Question Answer",
+                        "alias": "ACTION_QUESTION_MASTER_CREATE",
+                        "type": "A",
+                        "url": "createQuestionAnswer",
+                        "children": null
+                    },
+                    {
+                        "actionid": 65,
+                        "parentActionId": 14,
+                        "name": "Update Question Answer",
+                        "alias": "ACTION_QUESTION_MASTER_UPDATE",
+                        "type": "A",
+                        "url": "updateQuestionAnswer",
+                        "children": null
+                    },
+                    {
+                        "actionid": 66,
+                        "parentActionId": 14,
+                        "name": "View Question Answer",
+                        "alias": "ACTION_QUESTION_MASTER_VIEW",
+                        "type": "A",
+                        "url": "viewQuestionAnswer",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 15,
+                "parentActionId": 12,
+                "name": "Category",
+                "alias": "CATEGORY",
+                "type": "M",
+                "url": "searchproblemcategory",
+                "children": [
+                    {
+                        "actionid": 77,
+                        "parentActionId": 15,
+                        "name": "Create Problem Category",
+                        "alias": "ACTION_PROBLEM_CATEGORY_CREATE",
+                        "type": "A",
+                        "url": "createproblemcategory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 78,
+                        "parentActionId": 15,
+                        "name": "Update Problem Category",
+                        "alias": "ACTION_PROBLEM_CATEGORY_UPDATE",
+                        "type": "A",
+                        "url": "updateproblemcategory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 79,
+                        "parentActionId": 15,
+                        "name": "View Problem Category",
+                        "alias": "ACTION_PROBLEM_CATEGORY_VIEW",
+                        "type": "A",
+                        "url": "viewproblemcategory",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 16,
+                "parentActionId": 12,
+                "name": "Resolution Category",
+                "alias": "RESOLUTION_CATEGORY",
+                "type": "M",
+                "url": "searchresolutioncategory",
+                "children": [
+                    {
+                        "actionid": 74,
+                        "parentActionId": 16,
+                        "name": "Create Resolution Category",
+                        "alias": "ACTION_RESOLUTION_CATEGORY_CREATE",
+                        "type": "A",
+                        "url": "createresolutioncategory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 75,
+                        "parentActionId": 16,
+                        "name": "Update Resolution Category",
+                        "alias": "ACTION_RESOLUTION_CATEGORY_UPDATE",
+                        "type": "A",
+                        "url": "updateresolutioncategory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 76,
+                        "parentActionId": 16,
+                        "name": "View Resolution Category",
+                        "alias": "ACTION_RESOLUTION_CATEGORY_VIEW",
+                        "type": "A",
+                        "url": "viewresolutioncategory",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 803,
+                "parentActionId": 12,
+                "name": "Outage Pro",
+                "alias": "QUESTION_ANSWER_HIERARCHY",
+                "type": "M",
+                "url": "system/searchnetworkoutage",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 5,
+                "children": [
+                    {
+                        "actionid": 550,
+                        "parentActionId": 549,
+                        "name": "Create Network Outage",
+                        "alias": "ACTION_NETWORK_OUTAGE_CREATE",
+                        "type": "A",
+                        "url": "createnetworkoutage",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 551,
+                        "parentActionId": 549,
+                        "name": "Update Network Outage",
+                        "alias": "ACTION_NETWORK_OUTAGE_UPDATE",
+                        "type": "A",
+                        "url": "updatenetworkoutage",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 552,
+                        "parentActionId": 549,
+                        "name": "View Network Outage",
+                        "alias": "ACTION_NETWORK_OUTAGE_VIEW",
+                        "type": "A",
+                        "url": "viewnetworkoutage",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 17,
+                "parentActionId": 12,
+                "name": "Processing Flow",
+                "alias": "PROCESSING_FLOW",
+                "type": "M",
+                "url": "searchassignmentflow",
+                "children": [
+                    {
+                        "actionid": 80,
+                        "parentActionId": 17,
+                        "name": "Create Assignment Flow",
+                        "alias": "ACTION_ASSIGNMENT_CREATE",
+                        "type": "A",
+                        "url": "createassignmentflow",
+                        "children": null
+                    },
+                    {
+                        "actionid": 81,
+                        "parentActionId": 17,
+                        "name": "Update Assignment Flow",
+                        "alias": "ACTION_ASSIGNMENT_UPDATE",
+                        "type": "A",
+                        "url": "updateassignmentflow",
+                        "children": null
+                    },
+                    {
+                        "actionid": 82,
+                        "parentActionId": 17,
+                        "name": "View Assignment Flow",
+                        "alias": "ACTION_ASSIGNMENT_VIEW",
+                        "type": "A",
+                        "url": "viewassignmentflow",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 18,
+                "parentActionId": 12,
+                "name": "Ticket Processing",
+                "alias": "TICKET_PROCESSING",
+                "type": "M",
+                "url": "searchticket",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 7,
+                "children": [
+                    {
+                        "actionid": 102,
+                        "parentActionId": 18,
+                        "name": "Create Ticket",
+                        "alias": "ACTION_TICKET_CREATE",
+                        "type": "A",
+                        "url": "createticket",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 104,
+                        "parentActionId": 18,
+                        "name": "View Ticket",
+                        "alias": "ACTION_TICKET_VIEW",
+                        "type": "A",
+                        "url": "viewticket",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 108,
+                        "parentActionId": 18,
+                        "name": "Update Ticket",
+                        "alias": "ACTION_TICKET_UPDATE",
+                        "type": "A",
+                        "url": "updateticket",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 19,
+                "parentActionId": 12,
+                "name": "Ticket History",
+                "alias": "TICKET_HISTORY",
+                "type": "M",
+                "url": "tickethistory",
+                "children": null
+            },
+            {
+                "actionid": 83,
+                "parentActionId": 12,
+                "name": "Question Answer Hierarchy",
+                "alias": "QUESTION_ANSWER_HIERARCHY",
+                "type": "M",
+                "url": "searchqahierarchy",
+                "children": [
+                    {
+                        "actionid": 84,
+                        "parentActionId": 83,
+                        "name": "Create Question Answer Hierarchy",
+                        "alias": "ACTION_QUESTION_ANSWER_HIERARCHY_CREATE",
+                        "type": "A",
+                        "url": "createqahierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 85,
+                        "parentActionId": 83,
+                        "name": "Update Question Answer Hierarchy",
+                        "alias": "ACTION_QUESTION_ANSWER_HIERARCHY_UPDATE",
+                        "type": "A",
+                        "url": "updateqahierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 86,
+                        "parentActionId": 83,
+                        "name": "View Question Answer Hierarchy",
+                        "alias": "ACTION_QUESTION_ANSWER_HIERARCHY_VIEW",
+                        "type": "A",
+                        "url": "viewqahierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 88,
+                        "parentActionId": 83,
+                        "name": "Delete node from Question Answer Hierarchy",
+                        "alias": "ACTION_QUESTION_ANSWER_HIERARCHY_DELETE_NODE",
+                        "type": "A",
+                        "url": "deleteNodeQAHierarchy",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 11,
+                "parentActionId": 10,
+                "name": "Manage Partner",
+                "alias": "MANAGE_PARTNER",
+                "type": "M",
+                "url": "managepartner",
+                "children": [
+                    {
+                        "actionid": 200,
+                        "parentActionId": 11,
+                        "name": "Partner Account",
+                        "alias": "MANAGE_PARTNER_VIEW",
+                        "type": "A",
+                        "url": "viewpartner",
+                        "children": null
+                    },
+                    {
+                        "actionid": 201,
+                        "parentActionId": 11,
+                        "name": "Update Partner Account",
+                        "alias": "MANAGE_PARTNER_UPDATE",
+                        "type": "A",
+                        "url": "updatepartner",
+                        "children": null
+                    },
+                    {
+                        "actionid": 201,
+                        "parentActionId": 11,
+                        "name": "Manage Service Area",
+                        "alias": "ACTION_MANAGE_PARTNER_SERVICE_AREA",
+                        "type": "A",
+                        "url": "managepartnergeo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 201,
+                        "parentActionId": 11,
+                        "name": "Kitty Transaction History",
+                        "alias": "ACTION_PARTNER_KITTY_HISTORY_VIEW",
+                        "type": "A",
+                        "url": "kittyhistory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 201,
+                        "parentActionId": 10,
+                        "name": "Add Service Area",
+                        "alias": "ACTION_MANAGE_PARTNER_SERVICE_AREA_ADD",
+                        "type": "A",
+                        "url": "",
+                        "children": null
+                    },
+                    {
+                        "actionid": 202,
+                        "parentActionId": 10,
+                        "name": "Create Partner",
+                        "alias": "ACTION_CREATE_PARTNER",
+                        "type": "A",
+                        "url": "createpartner",
+                        "children": null
+                    },
+                    {
+                        "actionid": 203,
+                        "parentActionId": 10,
+                        "name": "Manage Business Hierarchy",
+                        "alias": "ACTION_MANAGE_BUSINESS_HIERARCHY",
+                        "type": "A",
+                        "url": "managebusinesshierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 203,
+                        "parentActionId": 10,
+                        "name": "Update Business Hierarchy",
+                        "alias": "ACTION_UPDATE_BUSINESS_HIERARCHY",
+                        "type": "A",
+                        "url": "managebusinesshierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 204,
+                        "parentActionId": 10,
+                        "name": "View Invoice",
+                        "alias": "ACTION_PARTNER_VIEW_INVOICE",
+                        "type": "A",
+                        "url": "viewpartnerinvoice",
+                        "children": null
+                    },
+                    {
+                        "actionid": 205,
+                        "parentActionId": 10,
+                        "name": "View Account Statement",
+                        "alias": "ACTION_VIEW_ACCOUNT_STATEMENT",
+                        "type": "A",
+                        "url": "viewaccountstatement",
+                        "children": null
+                    },
+                    {
+                        "actionid": 206,
+                        "parentActionId": 10,
+                        "name": "View Account History",
+                        "alias": "ACTION_PARTNER_ACCOUNT_HISTORY",
+                        "type": "A",
+                        "url": "viewaccounthistory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 207,
+                        "parentActionId": 10,
+                        "name": "View Commission",
+                        "alias": "ACTION_PARTNER_VIEW_COMMISSION",
+                        "type": "A",
+                        "url": "viewcommission",
+                        "children": null
+                    },
+                    {
+                        "actionid": 209,
+                        "parentActionId": 302,
+                        "name": "Create Staff",
+                        "alias": "ACTION_PARTNER_CREATE_STAFF",
+                        "type": "A",
+                        "url": "createstaff",
+                        "children": null
+                    },
+                    {
+                        "actionid": 209,
+                        "parentActionId": 302,
+                        "name": "Update Staff",
+                        "alias": "ACTION_PARTNER_STAFF_UPDATE",
+                        "type": "A",
+                        "url": "updatestaff",
+                        "children": null
+                    },
+                    {
+                        "actionid": 209,
+                        "parentActionId": 302,
+                        "name": "View Staff",
+                        "alias": "ACTION_PARTNER_STAFF_VIEW",
+                        "type": "A",
+                        "url": "viewstaff",
+                        "children": null
+                    },
+                    {
+                        "actionid": 210,
+                        "parentActionId": 10,
+                        "name": "Kitty Management",
+                        "alias": "ACTION_PARTNER_KITTY_MANAGEMENT",
+                        "type": "A",
+                        "url": "managekitty",
+                        "children": null
+                    },
+                    {
+                        "actionid": 211,
+                        "parentActionId": 10,
+                        "name": "View Inventory Order",
+                        "alias": "ACTION_SEARCH_INVENTORY_ORDER_VIEW",
+                        "type": "A",
+                        "url": "viewinvorder",
+                        "children": null
+                    },
+                    {
+                        "actionid": 212,
+                        "parentActionId": 10,
+                        "name": "Place Inventory Order ",
+                        "alias": "ACTION_PLACE_INVENTORY_ORDER",
+                        "type": "A",
+                        "url": "placeinvorder",
+                        "children": null
+                    },
+                    {
+                        "actionid": 212,
+                        "parentActionId": 10,
+                        "name": "Manage Service Area",
+                        "alias": "ACTION_MANAGE_PARTNER_STAFF_SERVICE_AREA",
+                        "type": "A",
+                        "url": "managepartnerstaffgeo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 213,
+                        "parentActionId": 10,
+                        "name": "Reset Staff Password & Resend",
+                        "alias": "ACTION_RESET_STAFF_PASSWORD_RESEND",
+                        "type": "A",
+                        "url": "resetstaffpass",
+                        "children": null
+                    },
+                    {
+                        "actionid": 212,
+                        "parentActionId": 10,
+                        "name": "Place Inventory Order ",
+                        "alias": "ACTION_PLACE_INVENTORY_ORDER",
+                        "type": "A",
+                        "url": "placeinvorder",
+                        "children": null
+                    },
+                    {
+                        "actionid": 212,
+                        "parentActionId": 10,
+                        "name": "Manage Service Area",
+                        "alias": "ACTION_MANAGE_PARTNER_STAFF_SERVICE_AREA",
+                        "type": "A",
+                        "url": "managepartnerstaffgeo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 213,
+                        "parentActionId": 10,
+                        "name": "Reset Staff Password & Resend",
+                        "alias": "ACTION_RESET_STAFF_PASSWORD_RESEND",
+                        "type": "A",
+                        "url": "resetstaffpass",
+                        "children": null
+                    },
+                    {
+                        "actionid": 212,
+                        "parentActionId": 10,
+                        "name": "Place Inventory Order ",
+                        "alias": "ACTION_PLACE_INVENTORY_ORDER",
+                        "type": "A",
+                        "url": "placeinvorder",
+                        "children": null
+                    },
+                    {
+                        "actionid": 212,
+                        "parentActionId": 10,
+                        "name": "Manage Service Area",
+                        "alias": "ACTION_MANAGE_PARTNER_STAFF_SERVICE_AREA",
+                        "type": "A",
+                        "url": "managepartnerstaffgeo",
+                        "children": null
+                    },
+                    {
+                        "actionid": 213,
+                        "parentActionId": 10,
+                        "name": "Reset Staff Password & Resend",
+                        "alias": "ACTION_RESET_STAFF_PASSWORD_RESEND",
+                        "type": "A",
+                        "url": "resetstaffpass",
+                        "children": null
+                    },
+                    {
+                        "actionid": 589,
+                        "parentActionId": 11,
+                        "name": "Organization View",
+                        "alias": "ACTION_VIEW_ORGANIZATION",
+                        "type": "A",
+                        "url": "viewOrganization",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 11,
+                "parentActionId": 10,
+                "name": "Search Staff",
+                "alias": "MANAGE_PARTNER_STAFF",
+                "type": "M",
+                "url": "managepartnerstaff",
+                "children": [
+                    {
+                        "actionid": 1003,
+                        "parentActionId": 10,
+                        "name": "Manage Incentive",
+                        "alias": "ACTION_MANAGE_PARTNER_STAFF_INCENTIVE",
+                        "type": "A",
+                        "url": "managestaffincentives",
+                        "children": null
+                    },
+                    {
+                        "actionid": 1003,
+                        "parentActionId": 10,
+                        "name": "Add Staff Incentive",
+                        "alias": "ACTION_MANAGE_STAFF_INCENTIVE_ADD",
+                        "type": "A",
+                        "url": "",
+                        "children": null
+                    },
+                    {
+                        "actionid": 1003,
+                        "parentActionId": 10,
+                        "name": "Unlink Staff Incentive",
+                        "alias": "ACTION_MANAGE_STAFF_INCENTIVE_UNLINK",
+                        "type": "A",
+                        "url": "",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 259,
+                "parentActionId": 10,
+                "name": "Package Mapping",
+                "alias": "PACKAGE_MAPPING",
+                "type": "M",
+                "url": "packagemapping",
+                "children": null
+            },
+            {
+                "actionid": 260,
+                "parentActionId": 10,
+                "name": "Associate Commission",
+                "alias": "ASSOCIATE_COMMISSION",
+                "type": "M",
+                "url": "associatecommission",
+                "children": null
+            },
+            {
+                "actionid": 261,
+                "parentActionId": 10,
+                "name": "Account Information",
+                "alias": "ACCOUNT_INFORMATION",
+                "type": "M",
+                "url": "accountinformation",
+                "children": null
+            },
+            {
+                "actionid": 260,
+                "parentActionId": 329,
+                "name": "Manage Stakeholder Type",
+                "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE",
+                "type": "M",
+                "url": "managestakeholdertype",
+                "children": [
+                    {
+                        "actionid": 260,
+                        "parentActionId": 329,
+                        "name": "Create Stakeholder Type",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_CREATE",
+                        "type": "A",
+                        "url": "createstakeholdertype",
+                        "children": null
+                    },
+                    {
+                        "actionid": 261,
+                        "parentActionId": 329,
+                        "name": "Update Stakeholder Type",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_EDIT",
+                        "type": "A",
+                        "url": "updatestakeholdertype",
+                        "children": null
+                    },
+                    {
+                        "actionid": 261,
+                        "parentActionId": 329,
+                        "name": "VIEW Stakeholder Type",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_VIEW",
+                        "type": "A",
+                        "url": "viewstakeholdertype",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 262,
+                "parentActionId": 329,
+                "name": "Geography Hierarchy",
+                "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY",
+                "type": "A",
+                "url": "managegeohierarchy",
+                "children": [
+                    {
+                        "actionid": 262,
+                        "parentActionId": 329,
+                        "name": "Create Geography Hierarchy",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY_CREATE",
+                        "type": "A",
+                        "url": "creategeohierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 262,
+                        "parentActionId": 329,
+                        "name": "Update Geography Hierarchy",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY_EDIT",
+                        "type": "A",
+                        "url": "updategeohierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 262,
+                        "parentActionId": 329,
+                        "name": "View Geography Hierarchy",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY_VIEW",
+                        "type": "A",
+                        "url": "viewgeohierarchy",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 263,
+                "parentActionId": 329,
+                "name": "Geography",
+                "alias": "ACTION_MANAGE_GEOGRAPHY",
+                "type": "A",
+                "url": "managegeography",
+                "children": [
+                    {
+                        "actionid": 264,
+                        "parentActionId": 329,
+                        "name": "Create Geography",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_CREATE",
+                        "type": "A",
+                        "url": "creategeography",
+                        "children": null
+                    },
+                    {
+                        "actionid": 265,
+                        "parentActionId": 329,
+                        "name": "View Geography",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_VIEW",
+                        "type": "A",
+                        "url": "viewgeography",
+                        "children": null
+                    },
+                    {
+                        "actionid": 266,
+                        "parentActionId": 329,
+                        "name": "Update Geography",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_EDIT",
+                        "type": "A",
+                        "url": "updategeography",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 264,
+                "parentActionId": 329,
+                "name": "Manage Discount",
+                "alias": "ACTION_MANAGE_DISCOUNT",
+                "type": "A",
+                "url": "managediscount",
+                "children": [
+                    {
+                        "actionid": 264,
+                        "parentActionId": 329,
+                        "name": "Create Discount",
+                        "alias": "ACTION_MANAGE_DISCOUNT_CREATE",
+                        "type": "A",
+                        "url": "creatediscount",
+                        "children": null
+                    },
+                    {
+                        "actionid": 265,
+                        "parentActionId": 329,
+                        "name": "View Disocunt",
+                        "alias": "ACTION_MANAGE_DISCOUNT_VIEW",
+                        "type": "A",
+                        "url": "viewdiscount",
+                        "children": null
+                    },
+                    {
+                        "actionid": 266,
+                        "parentActionId": 329,
+                        "name": "Update Discount",
+                        "alias": "ACTION_MANAGE_DISCOUNT_UPDATE",
+                        "type": "A",
+                        "url": "updatediscount",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 682,
+                "parentActionId": 0,
+                "name": "Report",
+                "alias": "REPORT",
+                "type": "M",
+                "url": "report",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 10,
+                "children": [
+                    {
+                        "actionid": 683,
+                        "parentActionId": 682,
+                        "name": "Customer Sales",
+                        "alias": "CUSTOMER_SALES_REPORT",
+                        "type": "A",
+                        "url": null,
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 10,
+                        "children": null
+                    },
+                    {
+                        "actionid": 684,
+                        "parentActionId": 682,
+                        "name": "MONTHLY REVENUE Report",
+                        "alias": "MONTHLY_REVENUE_REPORT",
+                        "type": "A",
+                        "url": null,
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 10,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 267,
+                "parentActionId": 329,
+                "name": "Geography Group",
+                "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP",
+                "type": "A",
+                "url": "manageservicearea",
+                "children": [
+                    {
+                        "actionid": 268,
+                        "parentActionId": 329,
+                        "name": "Create Geography Group",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP_CREATE",
+                        "type": "A",
+                        "url": "createservicearea",
+                        "children": null
+                    },
+                    {
+                        "actionid": 269,
+                        "parentActionId": 329,
+                        "name": "View Geography Group",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP_VIEW",
+                        "type": "A",
+                        "url": "viewservicearea",
+                        "children": null
+                    },
+                    {
+                        "actionid": 270,
+                        "parentActionId": 329,
+                        "name": "Update Geography Group",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP_UPDATE",
+                        "type": "A",
+                        "url": "updateservicearea",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 430,
+                "parentActionId": 329,
+                "name": "Passive Inventory Hierarchy",
+                "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY",
+                "type": "A",
+                "url": "managepassiveinventoryhierarchy",
+                "children": [
+                    {
+                        "actionid": 271,
+                        "parentActionId": 329,
+                        "name": "Create Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY_CREATE",
+                        "type": "A",
+                        "url": "createpassiveinventoryhierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 272,
+                        "parentActionId": 329,
+                        "name": "Update Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY_UPDATE",
+                        "type": "A",
+                        "url": "updatepassiveinventoryhierarchy",
+                        "children": null
+                    },
+                    {
+                        "actionid": 273,
+                        "parentActionId": 329,
+                        "name": "View Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY_VIEW",
+                        "type": "A",
+                        "url": "viewpassiveinventoryhierarchy",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 262,
+                "parentActionId": 329,
+                "name": "Manage Passive Inventory",
+                "alias": "ACTION_MANAGE_PASSIVE_INVENTORY",
+                "type": "M",
+                "url": "managepassiveinventory",
+                "children": [
+                    {
+                        "actionid": 274,
+                        "parentActionId": 329,
+                        "name": "Create Passive Inventory",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_CREATE",
+                        "type": "A",
+                        "url": "createpassiveinventory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 275,
+                        "parentActionId": 329,
+                        "name": "Update Passive Inventory",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_UPDATE",
+                        "type": "A",
+                        "url": "updatepassiveinventory",
+                        "children": null
+                    },
+                    {
+                        "actionid": 276,
+                        "parentActionId": 329,
+                        "name": "View Passive Inventory",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_VIEW",
+                        "type": "A",
+                        "url": "viewpassiveinventory",
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 263,
+                "parentActionId": 329,
+                "name": "System Parameters",
+                "alias": "ACTION_MANAGE_SYSTEM_PARAMETERS",
+                "type": "M",
+                "url": "managesystemparameters",
+                "children": null
+            },
+            {
+                "actionid": 263,
+                "parentActionId": 329,
+                "name": "Edit Profile",
+                "alias": "EDIT_PROFILE",
+                "type": "A",
+                "url": "editprofile",
+                "children": null
+            },
+            {
+                "actionid": 263,
+                "parentActionId": 329,
+                "name": "View Profile",
+                "alias": "VIEW_PROFILE",
+                "type": "A",
+                "url": "viewprofile",
+                "children": null
+            },
+            {
+                "actionid": 263,
+                "parentActionId": 329,
+                "name": "Activate Profile",
+                "alias": "ACTIVATE_PROFILE",
+                "type": "A",
+                "url": "",
+                "children": null
+            },
+            {
+                "actionid": 4,
+                "parentActionId": 1,
+                "name": "Customer Acquisition",
+                "alias": "CUSTOMER_ACQUISITION",
+                "type": "M",
+                "url": "searchcaf",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 3,
+                "children": [
+                    {
+                        "actionid": 111,
+                        "parentActionId": 4,
+                        "name": "View CAF",
+                        "alias": "ACTION_CAF_VIEW",
+                        "type": "A",
+                        "url": "viewcaf",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    },
+                    {
+                        "actionid": 109,
+                        "parentActionId": 4,
+                        "name": "Create CAF",
+                        "alias": "ACTION_CAF_CREATE",
+                        "type": "A",
+                        "url": "createcaf",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 110,
+                        "parentActionId": 4,
+                        "name": "Update CAF",
+                        "alias": "ACTION_CAF_UPDATE",
+                        "type": "A",
+                        "url": "updatecaf",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 5,
+                "parentActionId": 1,
+                "name": "Installation Order",
+                "alias": "INSTALLATION_ORDER_MANAGEMENT",
+                "type": "M",
+                "url": "searchinstallationorder",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 4,
+                "children": [
+                    {
+                        "actionid": 313,
+                        "parentActionId": 5,
+                        "name": "Installation Order View",
+                        "alias": "ACTION_INSTALLATION_ORDER_VIEW",
+                        "type": "A",
+                        "url": "viewinstallationorder",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 315,
+                        "parentActionId": 5,
+                        "name": "Installation Order Update",
+                        "alias": "ACTION_INSTALLATION_ORDER_UPDATE",
+                        "type": "A",
+                        "url": "updateinstallationorder",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 316,
+                        "parentActionId": 5,
+                        "name": "Installation Order Creation",
+                        "alias": "ACTION_INSTALLATION_ORDER_CREATE",
+                        "type": "A",
+                        "url": "createinstallationorder",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 3,
+                "parentActionId": 1,
+                "name": "Lead",
+                "alias": "LEAD",
+                "type": "M",
+                "url": "searchlead",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 2,
+                "children": [
+                    {
+                        "actionid": 240,
+                        "parentActionId": 3,
+                        "name": "Create Lead",
+                        "alias": "ACTION_LEAD_CREATE",
+                        "type": "A",
+                        "url": "createlead",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 242,
+                        "parentActionId": 3,
+                        "name": "View Lead",
+                        "alias": "ACTION_LEAD_VIEW",
+                        "type": "A",
+                        "url": "viewlead",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 241,
+                        "parentActionId": 3,
+                        "name": "Update Lead",
+                        "alias": "ACTION_LEAD_UPDATE",
+                        "type": "A",
+                        "url": "updatelead",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 17,
+                "parentActionId": 329,
+                "name": "Processing Flow",
+                "alias": "PROCESSING_FLOW",
+                "type": "M",
+                "url": "searchassignmentflow",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 4,
+                "children": [
+                    {
+                        "actionid": 80,
+                        "parentActionId": 17,
+                        "name": "Create Assignment Flow",
+                        "alias": "ACTION_ASSIGNMENT_CREATE",
+                        "type": "A",
+                        "url": "createassignmentflow",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 81,
+                        "parentActionId": 17,
+                        "name": "Update Assignment Flow",
+                        "alias": "ACTION_ASSIGNMENT_UPDATE",
+                        "type": "A",
+                        "url": "updateassignmentflow",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 82,
+                        "parentActionId": 17,
+                        "name": "View Assignment Flow",
+                        "alias": "ACTION_ASSIGNMENT_VIEW",
+                        "type": "A",
+                        "url": "viewassignmentflow",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 475,
+                "parentActionId": 329,
+                "name": "Track Work Order",
+                "alias": "TRACK_WORK_ORDER",
+                "type": "A",
+                "url": "trackworkorder",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": null
+            },
+            {
+                "actionid": 482,
+                "parentActionId": 329,
+                "name": "Passive Inventory",
+                "alias": "ACTION_MANAGE_PASSIVE_INVENTORY",
+                "type": "M",
+                "url": "managepassiveinventory",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 504,
+                        "parentActionId": 482,
+                        "name": "Create Passive Inventory",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_CREATE",
+                        "type": "A",
+                        "url": "createpassiveinventoryy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 505,
+                        "parentActionId": 482,
+                        "name": "View Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_VIEW",
+                        "type": "A",
+                        "url": "viewpassiveinventory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 506,
+                        "parentActionId": 482,
+                        "name": "Update Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_UPDATE",
+                        "type": "A",
+                        "url": "updatepassiveinventory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 483,
+                "parentActionId": 329,
+                "name": "Geography",
+                "alias": "ACTION_MANAGE_GEOGRAPHY",
+                "type": "M",
+                "url": "managegeography",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 493,
+                        "parentActionId": 483,
+                        "name": "View Geography",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_VIEW",
+                        "type": "A",
+                        "url": "viewgeography",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 494,
+                        "parentActionId": 483,
+                        "name": "Create Geography",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_CREATE",
+                        "type": "A",
+                        "url": "creategeography",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 495,
+                        "parentActionId": 483,
+                        "name": "Update Geography",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_UPDATE",
+                        "type": "A",
+                        "url": "updategeography",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 489,
+                "parentActionId": 329,
+                "name": "Geography Hierarchy",
+                "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY",
+                "type": "M",
+                "url": "managegeohierarchy",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 490,
+                        "parentActionId": 489,
+                        "name": "View Geography Hierarchy",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY_VIEW",
+                        "type": "A",
+                        "url": "viewgeohierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 491,
+                        "parentActionId": 489,
+                        "name": "Create Geography Hierarchy",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY_CREATE",
+                        "type": "A",
+                        "url": "creategeohierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 492,
+                        "parentActionId": 489,
+                        "name": "Update Geography Hierarchy",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_HIERARCHY_UPDATE",
+                        "type": "A",
+                        "url": "updategeohierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 496,
+                "parentActionId": 329,
+                "name": "Search Geo Group",
+                "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP",
+                "type": "M",
+                "url": "manageservicearea",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 497,
+                        "parentActionId": 496,
+                        "name": "Create Geo Group",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP_CREATE",
+                        "type": "A",
+                        "url": "createservicearea",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 498,
+                        "parentActionId": 496,
+                        "name": "View Geo Group",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP_VIEW",
+                        "type": "A",
+                        "url": "viewservicearea",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 499,
+                        "parentActionId": 496,
+                        "name": "Update Geo Group",
+                        "alias": "ACTION_MANAGE_GEOGRAPHY_GROUP_UPDATE",
+                        "type": "A",
+                        "url": "updateservicearea",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 308,
+                        "parentActionId": 181,
+                        "name": "Manage Document",
+                        "alias": "ACTION_PARTNER_DOCUMENT_MANAGEMENT",
+                        "type": "A",
+                        "url": "documentmanagement",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 308,
+                        "parentActionId": 181,
+                        "name": "Change Status",
+                        "alias": "ACTION_PARTNER_CHANGE_STATUS",
+                        "type": "A",
+                        "url": "changestatus",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 500,
+                "parentActionId": 329,
+                "name": "Search Passive Inventory Hierarchy",
+                "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY",
+                "type": "M",
+                "url": "managepassiveinventoryhierarchy",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 501,
+                        "parentActionId": 500,
+                        "name": "Create Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY_CREATE",
+                        "type": "A",
+                        "url": "createpassiveinventoryhierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 502,
+                        "parentActionId": 500,
+                        "name": "View Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY_VIEW",
+                        "type": "A",
+                        "url": "viewpassiveinventoryhierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 503,
+                        "parentActionId": 500,
+                        "name": "Update Passive Inventory Hierarchy",
+                        "alias": "ACTION_MANAGE_PASSIVE_INVENTORY_HIERARCHY_UPDATE",
+                        "type": "A",
+                        "url": "updatepassiveinventoryhierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 330,
+                "parentActionId": 329,
+                "name": "Workflow Configuration",
+                "alias": "WORKFLOW_CONFIGURATION",
+                "type": "M",
+                "url": "searchwfgroup",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 332,
+                        "parentActionId": 330,
+                        "name": "Workflow Group",
+                        "alias": "ACTION_WORKFLOW_GROUP_CONFIGURATION",
+                        "type": "A",
+                        "url": "workflowgroup",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 333,
+                        "parentActionId": 330,
+                        "name": "Workflow Hierarchy",
+                        "alias": "ACTION_WORKFLOW_HIERARCHY",
+                        "type": "A",
+                        "url": "workflowhierarchy",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 408,
+                        "parentActionId": 330,
+                        "name": "Workflow Group Create",
+                        "alias": "ACTION_WORKFLOW_CONFIGURATION_CREATE",
+                        "type": "A",
+                        "url": "createwfgroup",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 409,
+                        "parentActionId": 330,
+                        "name": "Workflow Group View",
+                        "alias": "ACTION_WORKFLOW_CONFIGURATION_VIEW",
+                        "type": "A",
+                        "url": "viewwfgroup",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 410,
+                        "parentActionId": 330,
+                        "name": "Workflow Group Update",
+                        "alias": "ACTION_WORKFLOW_CONFIGURATION_UPDATE",
+                        "type": "A",
+                        "url": "updatewfgroup",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 373,
+                "parentActionId": 329,
+                "name": "Bulk Processing",
+                "alias": "BULK_PROCESSING",
+                "type": "M",
+                "url": "bulkprocessing",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 3,
+                "children": [
+                    {
+                        "actionid": 374,
+                        "parentActionId": 373,
+                        "name": "Create Bulk Upload",
+                        "alias": "ACTION_BULKUPLOAD_CREATE",
+                        "type": "A",
+                        "url": "createbulkupload",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 375,
+                        "parentActionId": 373,
+                        "name": "View Bulk Upload",
+                        "alias": "ACTION_BULKUPLOAD_VIEW",
+                        "type": "A",
+                        "url": "viewbulkupload",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 422,
+                "parentActionId": 329,
+                "name": "Reload Cache",
+                "alias": "RELOAD_CACHE",
+                "type": "M",
+                "url": "reloadcache",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 5,
+                "children": null
+            },
+            {
+                "actionid": 422,
+                "parentActionId": 329,
+                "name": "Reload Cache",
+                "alias": "RELOAD_CACHE",
+                "type": "M",
+                "url": "viewcachedata",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 2,
+                "children": null
+            },
+            {
+                "actionid": 485,
+                "parentActionId": 329,
+                "name": "StakeHolderType ",
+                "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE",
+                "type": "M",
+                "url": "managestakeholdertype",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 484,
+                        "parentActionId": 485,
+                        "name": "Delete Stakeholder Type",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_DELETE",
+                        "type": "A",
+                        "url": null,
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 486,
+                        "parentActionId": 485,
+                        "name": "Create Stake Holder Type ",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_CREATE",
+                        "type": "A",
+                        "url": "createstakeholdertype",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 487,
+                        "parentActionId": 485,
+                        "name": "View Stake Holder Type ",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_VIEW",
+                        "type": "A",
+                        "url": "viewstakeholdertype",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 488,
+                        "parentActionId": 485,
+                        "name": "Update Stake Holder Type ",
+                        "alias": "ACTION_MANAGE_STAKEHOLDER_TYPE_EDIT",
+                        "type": "A",
+                        "url": "updatestakeholdertype",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 9,
+                "parentActionId": 8,
+                "name": "Search Customer",
+                "alias": "CUSTOMER",
+                "type": "M",
+                "url": "listcustomer",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 1,
+                "children": [
+                    {
+                        "actionid": 90,
+                        "parentActionId": 9,
+                        "name": "Account Statement",
+                        "alias": "ACTION_ACCOUNT_STATEMENT",
+                        "type": "A",
+                        "url": "accountstatement",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 26,
+                        "children": null
+                    },
+                    {
+                        "actionid": 21,
+                        "parentActionId": 9,
+                        "name": "Customer View",
+                        "alias": "ACTION_CUSTOMER_VIEW",
+                        "type": "A",
+                        "url": "customerview",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 22,
+                        "parentActionId": 9,
+                        "name": "View Personal Data",
+                        "alias": "ACTION_PERSONAL_DATA_VIEW_EDIT",
+                        "type": "A",
+                        "url": "viewpersonalinfo",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 23,
+                        "parentActionId": 9,
+                        "name": "Installation Address",
+                        "alias": "ACTION_CHANGE_INSTALLATION_ADDRESS",
+                        "type": "A",
+                        "url": "installationaddress",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    },
+                    {
+                        "actionid": 24,
+                        "parentActionId": 9,
+                        "name": "Account History",
+                        "alias": "ACTION_ACCOUNT_HISTORY",
+                        "type": "A",
+                        "url": "accounthistory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 4,
+                        "children": null
+                    },
+                    {
+                        "actionid": 25,
+                        "parentActionId": 9,
+                        "name": "Ticket History",
+                        "alias": "ACTION_CUSTOMER_TICKET_HISTORY",
+                        "type": "A",
+                        "url": "tickethistory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 5,
+                        "children": null
+                    },
+                    {
+                        "actionid": 26,
+                        "parentActionId": 9,
+                        "name": "Enable Disable Web Self Care Login",
+                        "alias": "ACTION_ENABLE_DISABLE_WEBSELFCARE_LOGIN",
+                        "type": "A",
+                        "url": "enabledisablewebselfcare",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 6,
+                        "children": null
+                    },
+                    {
+                        "actionid": 27,
+                        "parentActionId": 9,
+                        "name": "Reset Customer Password And Resend",
+                        "alias": "ACTION_RESET_CUSTOMER_PASSWORD_RESEND",
+                        "type": "A",
+                        "url": "resetcustomerpass",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 7,
+                        "children": null
+                    },
+                    {
+                        "actionid": 27,
+                        "parentActionId": 9,
+                        "name": "Resend Customer Password",
+                        "alias": "ACTION_RESEND_CUSTOMER_PASSWORD",
+                        "type": "A",
+                        "url": "resendcustomerpass",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 7,
+                        "children": null
+                    },
+                    {
+                        "actionid": 30,
+                        "parentActionId": 9,
+                        "name": "Change Service Status",
+                        "alias": "ACTION_CHANGE_SERVICE_STATUS",
+                        "type": "A",
+                        "url": "changesistatus",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 32,
+                        "parentActionId": 9,
+                        "name": "Renew Base Plan",
+                        "alias": "ACTION_RENEW_BASE_PLAN",
+                        "type": "A",
+                        "url": "renewbaseplan",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    },
+                    {
+                        "actionid": 33,
+                        "parentActionId": 9,
+                        "name": "Recharge by Plan/Price",
+                        "alias": "ACTION_RECHARGE_BY_PLAN_PRICE",
+                        "type": "A",
+                        "url": "recharge",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 4,
+                        "children": null
+                    },
+                    {
+                        "actionid": 34,
+                        "parentActionId": 9,
+                        "name": "Subscribe Add-on",
+                        "alias": "ACTION_SUBSCRIBE_ADD-ON",
+                        "type": "A",
+                        "url": "subscribeaddon",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 5,
+                        "children": null
+                    },
+                    {
+                        "actionid": 35,
+                        "parentActionId": 9,
+                        "name": "UnSubscribe Add-on",
+                        "alias": "ACTION_UNSUBSCRIBE_ADD-ON",
+                        "type": "A",
+                        "url": "unsubscribeaddon",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 6,
+                        "children": null
+                    },
+                    {
+                        "actionid": 36,
+                        "parentActionId": 9,
+                        "name": "View Inventory",
+                        "alias": "ACTION_VIEW_ADD_INVENTORY",
+                        "type": "A",
+                        "url": "viewinventory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 7,
+                        "children": null
+                    },
+                    {
+                        "actionid": 37,
+                        "parentActionId": 9,
+                        "name": "View Service Balance",
+                        "alias": "ACTION_VIEW_SERVICE_BALANCE",
+                        "type": "A",
+                        "url": "viewbalance",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 8,
+                        "children": null
+                    },
+                    {
+                        "actionid": 38,
+                        "parentActionId": 9,
+                        "name": "Usage Information",
+                        "alias": "ACTION_USAGE_INFORMATION",
+                        "type": "A",
+                        "url": "usageinfo",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 9,
+                        "children": null
+                    },
+                    {
+                        "actionid": 40,
+                        "parentActionId": 9,
+                        "name": "Change Billing Cycle",
+                        "alias": "ACTION_CHANGE_BILL_CYCLE",
+                        "type": "A",
+                        "url": "changebillingcycle",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 11,
+                        "children": null
+                    },
+                    {
+                        "actionid": 41,
+                        "parentActionId": 9,
+                        "name": "Change Billing Address",
+                        "alias": "ACTION_CHANGE_BILLING_ADDRESS",
+                        "type": "A",
+                        "url": "billingaddress",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 12,
+                        "children": null
+                    },
+                    {
+                        "actionid": 42,
+                        "parentActionId": 9,
+                        "name": "Make Payment",
+                        "alias": "ACTION_MAKE_PAYMENT",
+                        "type": "A",
+                        "url": "makepayment",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 13,
+                        "children": null
+                    },
+                    {
+                        "actionid": 43,
+                        "parentActionId": 9,
+                        "name": "Bill On Hold",
+                        "alias": "ACTION_BILL_ONHOLD",
+                        "type": "A",
+                        "url": "billonhold",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 14,
+                        "children": null
+                    },
+                    {
+                        "actionid": 44,
+                        "parentActionId": 9,
+                        "name": "Payment History",
+                        "alias": "ACTION_PAYMENT_HISTORY",
+                        "type": "A",
+                        "url": "paymenthistory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 15,
+                        "children": null
+                    },
+                    {
+                        "actionid": 45,
+                        "parentActionId": 9,
+                        "name": "Search Bill/View Bill",
+                        "alias": "ACTION_SERCHBILL_VIEWBILL",
+                        "type": "A",
+                        "url": "searchviewbill",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 16,
+                        "children": null
+                    },
+                    {
+                        "actionid": 67,
+                        "parentActionId": 9,
+                        "name": "Customer View",
+                        "alias": "ACTION_CUSTOMER_SEARCH_VIEW",
+                        "type": "A",
+                        "url": "viewcustomer",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 17,
+                        "children": null
+                    },
+                    {
+                        "actionid": 69,
+                        "parentActionId": 9,
+                        "name": "Add Inventory",
+                        "alias": "ACTION_CUSTOMER_INVENTORY_ADD",
+                        "type": "A",
+                        "url": "addinventory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 19,
+                        "children": null
+                    },
+                    {
+                        "actionid": 70,
+                        "parentActionId": 9,
+                        "name": "Edit Inventory",
+                        "alias": "ACTION_CUSTOMER_INVENTORY_EDIT",
+                        "type": "A",
+                        "url": "editinventory",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 20,
+                        "children": null
+                    },
+                    {
+                        "actionid": 72,
+                        "parentActionId": 9,
+                        "name": "Edit Personal Info",
+                        "alias": "ACTION_CUSTOMER_PERSONALINFO_EDIT",
+                        "type": "A",
+                        "url": "editpersonalinfo",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 22,
+                        "children": null
+                    },
+                    {
+                        "actionid": 87,
+                        "parentActionId": 9,
+                        "name": "Change Service Plan",
+                        "alias": "ACTION_CHANGE_SERVICE_PLAN",
+                        "type": "A",
+                        "url": "changebaseplan",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 24,
+                        "children": null
+                    },
+                    {
+                        "actionid": 561,
+                        "parentActionId": 9,
+                        "name": "MAC Management",
+                        "alias": "ACTION_MAC_MANAGEMENT",
+                        "type": "A",
+                        "url": "macmanagement",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 525,
+                        "parentActionId": 9,
+                        "name": "Promotional Offer",
+                        "alias": "ACTION_CUSTOMER_OFFERS",
+                        "type": "A",
+                        "url": "offers",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 528,
+                        "parentActionId": 9,
+                        "name": "Create Ticket",
+                        "alias": "ACTION_CUSTOMER_CREATE_TICKET",
+                        "type": "A",
+                        "url": "createticket",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 529,
+                        "parentActionId": 9,
+                        "name": "Create Credit",
+                        "alias": "ACTION_CUSTOMER_CREATE_CREDIT_NOTE",
+                        "type": "A",
+                        "url": "createcreditnote",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 530,
+                        "parentActionId": 9,
+                        "name": "Create Debit",
+                        "alias": "ACTION_CUSTOMER_CREATE_DEBIT_NOTE",
+                        "type": "A",
+                        "url": "createdebitnote",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    
+                    {
+                        "actionid": 532,
+                        "parentActionId": 9,
+                        "name": "Manage Discount",
+                        "alias": "ACTION_CUSTOMER_MANAGE_DISCOUNT",
+                        "type": "A",
+                        "url": "managediscount",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                  
+                    }
+                ]
+            },
+            {
+                "actionid": 3,
+                "parentActionId": 1,
+                "name": "Lead",
+                "alias": "LEAD",
+                "type": "M",
+                "url": "searchlead",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 2,
+                "children": [
+                    {
+                        "actionid": 240,
+                        "parentActionId": 3,
+                        "name": "Create Lead",
+                        "alias": "ACTION_LEAD_CREATE",
+                        "type": "A",
+                        "url": "createlead",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 241,
+                        "parentActionId": 3,
+                        "name": "Update Lead",
+                        "alias": "ACTION_LEAD_UPDATE",
+                        "type": "A",
+                        "url": "updatelead",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 242,
+                        "parentActionId": 3,
+                        "name": "View Lead",
+                        "alias": "ACTION_LEAD_VIEW",
+                        "type": "A",
+                        "url": "viewlead",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 4,
+                "parentActionId": 1,
+                "name": "Customer Acquisition",
+                "alias": "CUSTOMER_ACQUISITION",
+                "type": "M",
+                "url": "searchcaf",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 3,
+                "children": [
+                    {
+                        "actionid": 111,
+                        "parentActionId": 4,
+                        "name": "View CAF",
+                        "alias": "ACTION_CAF_VIEW",
+                        "type": "A",
+                        "url": "viewcaf",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 3,
+                        "children": null
+                    },
+                    {
+                        "actionid": 109,
+                        "parentActionId": 4,
+                        "name": "Create CAF",
+                        "alias": "ACTION_CAF_CREATE",
+                        "type": "A",
+                        "url": "createcaf",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 110,
+                        "parentActionId": 4,
+                        "name": "Update CAF",
+                        "alias": "ACTION_CAF_UPDATE",
+                        "type": "A",
+                        "url": "updatecaf",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 5,
+                "parentActionId": 1,
+                "name": "Installation Order",
+                "alias": "INSTALLATION_ORDER_MANAGEMENT",
+                "type": "M",
+                "url": "searchinstallationorder",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 4,
+                "children": [
+                    {
+                        "actionid": 313,
+                        "parentActionId": 5,
+                        "name": "Installation Order View",
+                        "alias": "ACTION_INSTALLATION_ORDER_VIEW",
+                        "type": "A",
+                        "url": "viewinstallationorder",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    },
+                    {
+                        "actionid": 315,
+                        "parentActionId": 5,
+                        "name": "Installation Order Update",
+                        "alias": "ACTION_INSTALLATION_ORDER_UPDATE",
+                        "type": "A",
+                        "url": "updateinstallationorder",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 2,
+                        "children": null
+                    },
+                    {
+                        "actionid": 316,
+                        "parentActionId": 5,
+                        "name": "Installation Order Creation",
+                        "alias": "ACTION_INSTALLATION_ORDER_CREATE",
+                        "type": "A",
+                        "url": "createinstallationorder",
+                        "sid": null,
+                        "description": null,
+                        "visibilityFlag": null,
+                        "displayOrder": 1,
+                        "children": null
+                    }
+                ]
+            },
+            {
+                "actionid": 462,
+                "parentActionId": 1,
+                "name": "Configuration",
+                "alias": "OPPORTUNITY_CONFIGURATION",
+                "type": "M",
+                "url": "configuration",
+                "sid": null,
+                "description": null,
+                "visibilityFlag": null,
+                "displayOrder": 5,
+                "children": null
+            }
+        ]
+    }
+}

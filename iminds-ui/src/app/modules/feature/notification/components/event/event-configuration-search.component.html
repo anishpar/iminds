@@ -1,0 +1,71 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+    <h2 class="h3 mb-0">{{ lang.notification.eventTemplateAssociation }}</h2>
+  </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+    
+        <form (ngSubmit)="onSubmit((this.searchModel.eventAlias.trim() != '') || !searchEventAssociationForm.form.valid)" #searchEventAssociationForm="ngForm">
+          <div class="row">
+
+            <div class="form-group col-md-3">
+              <label class="required-label">{{lang.notification.eventAlias}}</label>
+              <stl-input-typeahead [optionList]="events" name="eventAlias" returnField="alias" labelField="name"
+                valueField="alias" sortOptions="true" [label]="lang.selectOption" [(ngModel)]="searchModel.eventAlias" (ngModelChange)="onChangeEvent()">
+              </stl-input-typeahead>
+            </div>
+    
+            <div class="form-group col-md-3">
+              <label class="label">{{lang.notification.channelAlias}}</label>
+              <stl-input-typeahead [optionList]="channels" name="channelAlias" returnField="alias" labelField="name"
+              valueField="alias" sortOptions="true" [label]="lang.selectOption" [(ngModel)]="searchModel.channelAlias">
+            </stl-input-typeahead>
+            </div>
+           
+          </div>
+          <button [disabled]="!(this.searchModel.eventAlias.trim() !== '') ||!searchEventAssociationForm.form.valid" class="btn btn-primary"><span
+              class="fa fa-search"></span> {{lang.search}}</button>&nbsp; 
+
+          <a class="btn btn-primary" [routerLink]="['/notification/create_event_configuration']"> <i class="fa fa-link"></i> {{lang.notification.associateEvent}}</a>
+          &nbsp;<button class="btn btn-primary" type="button" (click)="cancel()"><i class="fa fa-undo"></i>{{lang.reset}}</button> 
+
+
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
+            <h6 class="h6 mb-0">{{ lang.notification.eventConfigurationList }}</h6>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12" *ngIf="searched && totalItems == 0">
+              <div class="page-header col-sm-12 alert alert-info text-center">{{lang.searchComponent.noResults}}</div>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered" *ngIf="eventAssociationList && eventAssociationList.length > 0">
+              <thead>
+                <tr>
+                  <th>{{lang.sr}}</th>
+                  <th>{{lang.notification.eventAlias}}</th>
+                  <th>{{lang.notification.channelAlias}}</th>
+                  <th>{{lang.templateCount}}
+                  <th>{{lang.edit}}</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let event of eventAssociationList.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index">
+                  <td>{{i+1+((pagination.currentPage-1)*pagination.itemsPerPage)}}</td>
+                  <td><a title="{{lang.view}}" [routerLink]="['/notification/view_event_configuration',event.channelAlias]" (click)="saveData(event.channelAlias,channelMap[event.channelAlias],eventMap[event.eventAlias])" >{{ eventMap[event.eventAlias] ?eventMap[event.eventAlias] :config.emptyString}}</a></td>
+                  <td>{{channelMap[event.channelAlias] ? channelMap[event.channelAlias] :config.emptyString}}</td>
+                  <td>{{event.templateRelation ?  event.templateRelation.length : config.emptyString }}</td>
+                  <td><a title="{{lang.edit}}" [routerLink]="['/notification/update_event_configuration',event.channelAlias]" (click)="saveData(event.channelAlias,channelMap[event.channelAlias],eventMap[event.eventAlias])"><span class="fa fa-edit fa-2-action "></span></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

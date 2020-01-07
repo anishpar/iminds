@@ -1,0 +1,17 @@
+{
+	"id": "SMSnew1111",
+	"name": "SMSnew1111",
+	"description": "SMS Plugin",
+	"className": "com.stl.notification.message.channelplugin.SMSNotificationPlugin",
+	"mimeType": "",
+	"channelAttribute": [
+		{
+			"attributeName": "Send SMS URL",
+			"attributeValue": "test"
+		},
+		{
+			"attributeName": "User Id",
+			"attributeValue": "test"
+		}
+	]
+}

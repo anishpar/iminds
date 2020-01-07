@@ -1,0 +1,198 @@
+                        
+                    
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+    <h2 class="h3 mb-0">{{ lang.sampleFormTitle }}</h2>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.customer.custNumber}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.customer.userName}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                       MT023321
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.customer.lco}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
+                    </div>
+                    <div class="clearfix"></div>
+        
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">Phone number</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                       9856231458
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">email</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                       email@gmal.com
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">Altername Contact No</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        123589634
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">Counry</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">State</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                       MT023321
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">City</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
+                    </div>
+                    <div class="clearfix"></div>                                        
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">Zipcode</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">Landmark</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                       MT023321
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.customer.lco}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
+                    </div>
+                    <div class="clearfix"></div>                    
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.customer.name}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                       John Doe
+                    </div>
+                </div>
+
+                <form #editPersForm="ngForm" (ngSubmit)="onSubmit(editPersForm.form.valid)">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+                            <h5 class="page-header  text-gray-800">{{lang.contactDetails}}</h5>
+                        </div>
+
+                        <!-- <div class="form-group col-md-12">
+                            <label class="required-label">Expression</label>
+                        <stl-expression-builder  [paramList]="defaultParamNameList" [(ngModel)]="newexpression" name="bankName" required></stl-expression-builder>
+                        </div>
+
+                        <button type="button" (click)="newexpression=''">Rest</button> -->
+
+                        <!-- <button type="submit" class="btn btn-primary"
+                                [disabled]="!editPersForm.form.valid">{{lang.submit}}</button> -->
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.email}}</label>
+                            <input class="form-control" type="text" name="email" stlValidate="REQ||email"
+                                [stlLabel]="lang.email" [(ngModel)]="model.email" #email="ngModel">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.email}}</label>
+                            <stl-input-typeahead [optionList]="instituteList" [(ngModel)]="institute" name="institute" labelField="text"></stl-input-typeahead>
+                        </div>
+
+
+<!-- <div class="form-group col-md-3">
+    <label class="required-label">{{lang.email}}</label>
+    <stl-multi-select [items]="instituteList" [(ngModel)]="institute5" name="institute" [allowCustomInputs]="true"></stl-multi-select>
+</div>
+    <pre>{{institute5 | json}}</pre> -->
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.email}}</label>
+                            <input class="form-control" type="text" name="email1">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="required-label">Country</label>
+                            <select name="categoryName" class="form-control" multiple>
+                                <option value="">{{lang.selectOption}}</option>
+                                <option value="123">a1</option>
+                                <option value="124">a2</option>
+                                <option value="125">a3</option>
+                            </select>
+                        </div>l
+
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.email}}</label>
+                            <input class="form-control" type="text" name="email3">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.email}}</label>
+                            <input class="form-control" type="text" name="email4">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.email}}</label>
+                            <input class="form-control" type="text" name="email5">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.mobile}}</label>
+                            <input class="form-control" type="text" name="email6">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.mobile}}</label>
+                            <input type="text" class="form-control" name="mobile">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>{{lang.mobile}}</label>
+                            <input type="text" class="form-control" name="mobile" >
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label class="required-label">{{lang.date}}</label>
+
+                            <stl-input-datepicker [(ngModel)]="paymentDateShow" name="paymentDate" required
+                                [onlyPast]="true" (ngModelChange)="selectionDone3($event)"></stl-input-datepicker>
+                        </div>
+                        <div class="clearfix">&nbsp;</div>
+                        {{paymentDateShow}}
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary"
+                                [disabled]="!editPersForm.form.valid">{{lang.submit}}</button>
+                            <button class="btn btn-default" onclick="window.history.back()"
+                                type="button">{{lang.cancel}}</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

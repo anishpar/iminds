@@ -1,0 +1,16 @@
+<form #dateRangeForm="ngForm">
+
+    <div class="row">
+        <div class="form-group  {{labelCss}}" *ngIf="selectLabel">
+            <label class="vtopoffset4" [ngClass]="{'required-label':isRequired}">{{ selectLabel }}</label>
+        </div>
+        <div class="form-group {{startCss}}">
+            <label [ngClass]="{'required-label':isRequired && !selectLabel}">{{lang.fromDate}}</label>
+            <stl-input-datepicker [(ngModel)]="dateRange.fromDate" name="fromDate" [required]="isRequired" [minDate]='bsStartConfig.minDate'  [maxDate]='bsStartConfig.maxDate' (ngModelChange)="onFromDateChanged()" [disabledComponent]="disabledComponent"></stl-input-datepicker>
+        </div>
+        <div class="form-group {{endCss}}">
+            <label [ngClass]="{'required-label':isRequired && !selectLabel}">{{lang.toDate}}</label>
+            <stl-input-datepicker [(ngModel)]="dateRange.toDate" name="toDate" [required]="isRequired" [minDate]='bsEndConfig.minDate' [maxDate]='bsEndConfig.maxDate' [disabledComponent]="disabledComponent || !dateRange.fromDate" (ngModelChange)="valueChange()"></stl-input-datepicker>
+        </div>
+    </div>
+</form>

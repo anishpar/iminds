@@ -1,0 +1,32 @@
+{
+  "responseMessage": "Operation is performed successfully.",
+  "responseCode": 0,
+  "responseObject": {
+    "id": 303,
+    "href": "http://10.121.19.164:8080/dNotification/template303",
+    "channelAlias": "EMAIL",
+    "eventAlias": "ACTIVATE_INVENTORY",
+    "name": "Sagar",
+    "description": null,
+    "dateRange": {
+      "fromDate": "2019-12-01",
+      "toDate": "2019-12-10"
+    },
+    "status": "SHOW",
+    "templateContent": [
+      {
+        "templateContentId": 283,
+        "language": "en",
+        "subject": "Test",
+        "content": "<p>Hello</p>\n"
+      },
+      {
+        "templateContentId": 284,
+        "language": "th",
+        "subject": "Thai",
+        "content": "<p><br />\nLan</p>\n"
+      }
+    ]
+  },
+  "error": false
+}

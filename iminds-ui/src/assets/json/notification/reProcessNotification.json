@@ -1,0 +1,23 @@
+{
+    "responseMessage": "Operation is performed successfully.",
+    "responseCode": 0,
+    "responseObject": {
+        "id": "191210025656992639426",
+        "href": "http://localhost:8080/dNotification/communicationMessage/reprocess",
+        "callbackFlag": false,
+        "status": "FAIL",
+        "communicationDetails": [
+            {
+                "receiver": [
+                    {
+                        "communicationAddress": "abc.xyz@ec.com",
+                        "status": "FAIL",
+                        "statusMessage": "550 5.1.1 <abc.xyz@ec.com>... User unknown\n"
+                    }
+                ],
+                "@type": "EMAIL"
+            }
+        ]
+    },
+    "error": false
+}

@@ -1,0 +1,32 @@
+{
+    "responseMessage": "Operation is performed successfully.",
+    "responseCode": 0,
+    "responseObject": [
+        {
+            "id": "191209070923440592096",
+            "href": "http://10.151.33.98:30005/dNotification/communicationMessage/191209070923440592096",
+            "scheduledTime": "2019-12-09 13:39:23",
+            "priority": "MEDIUM",
+            "eventAlias": "ASSOCIATE_RESELLER_TO_VOUCHER",
+            "referenceEntityId": "1469",
+            "language": "en",
+            "callbackFlag": false,
+            "status": "ACCEPTED",
+            "communicationDetails": [
+                {
+                    "content": "<p>Dear Reseller,</p><p>You have been assigned 1000 vouchers with range of 000000028736-000000029735.</p>",
+                    "receiver": [
+                        {
+                            "communicationAddress": "riddhi.shah@ec.com",
+                            "sendTimeComplete": "2019-12-09",
+                            "status": "SUCCESS"
+                        }
+                    ],
+                    "@type": "EMAIL"
+                }
+            ],
+            "@type": "EVENT_NOTIFICATION"
+        }
+    ],
+    "error": false
+}

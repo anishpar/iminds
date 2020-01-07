@@ -1,0 +1,22 @@
+
+plugins {
+	id 'java'
+	id 'com.moowork.node' version "1.2.0"
+}
+
+node {
+    version = "12.13.0"
+    npmVersion = "6.12.0"
+    download = true
+}
+configurations.all {
+    // Check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+}
+
+jar.dependsOn 'npm_run_build-prod'
+
+jar {
+  from 'dist/ui' into 'static'
+}

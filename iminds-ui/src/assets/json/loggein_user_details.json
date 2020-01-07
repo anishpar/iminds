@@ -1,0 +1,10 @@
+{
+    "responseCode": 111515032,
+    "responseMessage": "User Logged Details Feteched Successfully",
+    "responseObject": {
+        "userName": "Admin",
+        "staffName": "Mr Admin",
+        "type": "0"
+    },
+    "error": false
+}

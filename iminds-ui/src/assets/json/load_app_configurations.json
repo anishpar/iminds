@@ -1,0 +1,21 @@
+{
+  "responseMessage": "Request Processed Successfully",
+  "responseCode": 0,
+  "responseObject": {
+    
+    "realm": "Sterlite-Products",
+    "authServerURL": "http://10.151.33.71:8180/auth/",
+    
+    "secret": "b92e1cf1-5cb7-4d53-a003-3da2866c0a46",
+    "confidentialPort": 0,
+    "clientId": "dNotification",
+    "isSSOEnabled": "false",
+    "redirectURL": "http://localhost:4200/",
+    "adminClient": null,
+    "tokenDuration": 0,
+    "systemExpireTimeInMilSec": 0,
+    "tokenType": null,
+    "clientName": null
+  },
+  "error": false
+}

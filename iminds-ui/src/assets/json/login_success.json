@@ -1,0 +1,9 @@
+{
+    "responseCode": "600",
+    "responseMessage": "Invalid Credentials",
+    "responseObject": {
+
+        "token" : "DEV_TOKEN"
+
+    }
+}

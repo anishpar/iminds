@@ -1,0 +1,78 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+  <h2 class="h3 mb-0">{{lang.notification.templateView}}</h2>
+</div>
+
+<div class="row" class="col-md-12">
+  <div class="col-md-12">
+      <div class="panel panel-default">
+
+          <div class="panel-body">
+
+              <div class="row">
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.name}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{templateModel.name?templateModel.name:config.emptyString}}
+                  </div>
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.channelAlias}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{templateModel.channelAlias?templateModel.channelAlias:config.emptyString}}
+                  </div>
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.notification.eventAlias}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{templateModel.eventAlias?templateModel.eventAlias:config.emptyString}}
+                  </div>
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.status}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{templateModel.status?templateModel.status:config.emptyString}}
+                  </div>
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.fromDate}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{templateModel.dateRange &&templateModel.dateRange.fromDate?templateModel.dateRange.fromDate:config.emptyString}}
+                  </div>
+                  <div class="{{config.viewLabelClass}}">
+                      <label class="label-header">{{lang.toDate}}</label>
+                  </div>
+                  <div class="{{config.viewValueClass}}">
+                      {{ templateModel.dateRange && templateModel.dateRange.toDate?templateModel.dateRange.toDate:config.emptyString}}
+                  </div>                  
+
+                  <div class=" row col-md-12" *ngFor="let content of templateModel.templateContent; let i = index">
+                    <div class="clearfix">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                      <div class="col-md-12">
+                          <label class="label-header">{{lang.notification.language}}</label>&nbsp;&nbsp;{{content.language}}
+                      </div>
+
+                      <div class="{{config.viewLabelClass}}" *ngIf="templateModel.channelAlias !== 'SMS'">
+                          <label class="label-header">{{lang.notification.subject}}</label>
+                      </div>
+                      <div class="col-md-10 view-value" *ngIf="templateModel.channelAlias !== 'SMS'"> {{content.subject?content.subject:config.emptyString}}</div>
+
+                      <div class="{{config.viewLabelClass}}">
+                          <label class="label-header">{{lang.notification.content}}</label>
+                      </div>
+                      <div class="col-md-10 view-value" [innerHTML]="content.content?content.content:config.emptyString">
+
+                      </div>
+
+                  </div>
+                  <div class="clearfix">&nbsp;</div>
+                  <div class="col-sm-10">
+                      <button class="btn btn-primary" routerLink="/notification/search_template" type="button"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
+                  </div>
+                  <div class="clearfix">&nbsp;</div>
+
+              </div>
+          </div>
+      </div>
+  </div>

@@ -1,0 +1,106 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
+  <h2 class="h3 mb-0">{{ lang.notification.notificationHistory}}</h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+          <form #searchHistory="ngForm" (ngSubmit)="onSubmit(searchHistory.form.valid)">
+              <div class="row">
+                  <div class="form-group col-md-3">
+                      <label class="label">{{lang.notification.eventAlias}}</label>                        
+                      <stl-input-typeahead [optionList]="events" name="eventAlias" returnField="alias"
+                                 labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                 [(ngModel)]="historyModel.eventAlias">
+                      </stl-input-typeahead>
+                    </div>
+                  <div class="form-group col-md-3">
+                    <label class="label">{{lang.notification.channelAlias}}</label>                      
+                    <stl-input-typeahead [optionList]="channels" name="channelAlias" returnField="alias"
+                                 labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                 [(ngModel)]="historyModel.channelAlias" >
+                    </stl-input-typeahead>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label class="label">{{lang.notification.dispatchStatus}}</label>                      
+                    <stl-input-typeahead [optionList]="dispatchStatus" name="dispatchStatus" returnField="alias"
+                                 labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                 [(ngModel)]="historyModel.dispatchStatus" >
+                    </stl-input-typeahead>
+                  </div>
+                  <div class="form-group col-md-3">
+                      <label class="label">{{lang.notification.transectionId}}</label>
+                      <input class="form-control" type="text" name="transectionId" stlValidate="NREQ||alphaNumUnderscore"
+                        [stlLabel]="lang.notification.transectionId" [(ngModel)]="historyModel.transectionId">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-3">
+                      <label class="label">{{lang.notification.requestIdentifier}}</label>
+                      <input class="form-control" type="text" name="requestIdentifier" stlValidate="NREQ||alphaNumUnderscore"
+                        [stlLabel]="lang.notification.requestIdentifier" [(ngModel)]="historyModel.requestIdentifier">
+                  </div>                  
+                  <div class="form-group col-md-6">
+                      <stl-input-daterange name="dateRange" [(ngModel)]="historyModel.dateRange" [isRequired]="true" startCss="col-md-6" endCss="col-md-6"></stl-input-daterange>
+                  </div>                    
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-12">
+                      <label class="text-info">{{lang.notification.seachHistoryNote}}</label>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-12">
+                      <button type="submit" class="btn btn-primary" [disabled]="!searchHistory.form.valid ||(!historyModel.transectionId && !historyModel.requestIdentifier) || (!historyModel.dateRange.fromDate && !historyModel.dateRange.toDate)">
+                        <span class="fa fa-search"></span> {{lang.search}}</button>
+                      &nbsp;                        
+                      <button type="button" class="btn btn-primary" (click)="resetSearch()"><i class="fa fa-undo"></i>&nbsp;{{lang.reset}}</button>
+                  </div>
+              </div>   
+            </form>                           
+            <div class="row">
+              <div class="col-md-12" *ngIf="searched && totalItems == 0">    
+                  <div class="page-header col-sm-12 alert alert-info text-center">
+                    {{lang.searchComponent.noResults}}
+                  </div>
+              </div>              
+              <div class="col-sm-12 pull-right text-right vbottomoffset1" *ngIf="historyList && historyList.length > 0">                                        
+                <stl-pagination *ngIf="totalItems" [totalItems]="totalItems" [(ngModel)]="pagination.currentPage" [maxSize]="10" [boundaryLinks]="true"></stl-pagination>
+              </div>
+            </div> 
+            <div class="table-responsive">
+                <table class="table table-bordered" *ngIf="historyList && historyList.length > 0">
+                    <tr>
+                        <th><input type="checkbox" [(ngModel)]="checkAll" id="cbHistory" name="cbHistory" (ngModelChange)="checkUncheckData()"/>{{lang.sr}}</th>
+                        <th>{{lang.notification.transectionId}}</th>
+                        <th>{{lang.notification.recipient}}</th>
+                        <th>{{lang.notification.eventAlias}}</th>
+                        <th>{{lang.notification.channelAlias}}</th>
+                        <th>{{lang.notification.requestIdentifier}}</th>
+                        <th>{{lang.notification.lastProcessDate}}</th>
+                        <th>{{lang.notification.dispatchStatus}}</th>                          
+                    </tr>
+
+                    <tr *ngFor="let history of historyList.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
+                        <td><input type="checkbox" id="cbHistory{{i}}" name="cbHistory{{i}}" value="{{history.transectionId}}" [(ngModel)]="history.checked" (ngModelChange)="changeIndividual()">&nbsp;{{i+1+((pagination.currentPage-1)*pagination.itemsPerPage)}}</td>
+                        <td>{{history.transectionId ? history.transectionId : config.emptyString}}</td>
+                        <td><a title="{{history.recipient}}" [routerLink]="['/notification/view_history']" (click)="setNavParam('transectionId',history)">{{history.recipient ? history.recipient : config.emptyString}}</a></td>                                                     <td>{{history.eventAlias ? history.eventAlias : config.emptyString}}</td>
+                        <td>{{history.channelAlias ? history.channelAlias : config.emptyString}}</td>
+                        <td>{{history.requestIdentifier ? history.requestIdentifier : config.emptyString}}</td>
+                        <td>{{history.lastProcessDate ? (history.lastProcessDate|date:config.dateTimeFormat) : config.emptyString}}</td>
+                        <td>{{history.dispatchStatus ? history.dispatchStatus : config.emptyString}}</td>                                                    
+                    </tr>
+                </table>
+
+                <div class="row">
+                  <div class="form-group col-md-12" *ngIf="searched && totalItems != 0">
+                      <button type="button" class="btn btn-primary" (click)="resend()">{{lang.notification.resend}}</button>
+                  </div>
+              </div>
+
+            </div>                                                                                  
+      </div>
+    </div>
+  </div>
+</div>

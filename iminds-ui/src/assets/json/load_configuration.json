@@ -1,0 +1,81 @@
+{
+  "responseMessage": "Operation is performed successfully.",
+  "responseCode": 0,
+  "responseObject": {
+    "languages": [
+      {
+        "name": "English",
+        "alias": "en",
+        "status": "SHOW",
+        "childs": null
+      },
+      {
+        "name": "Thai",
+        "alias": "th",
+        "status": "SHOW",
+        "childs": null
+      }
+    ],
+    "RECEIPIENT_TYPE": [
+      {
+        "name": "CUSTOMER",
+        "alias": "CUSTOMER",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "STAFF",
+        "alias": "STAFF",
+        "status": null,
+        "childs": null
+      }
+    ],
+    "channels": [
+      {
+        "name": "SMS",
+        "alias": "SMS",
+        "status": "SHOW",
+        "childs": null
+      },
+      {
+        "name": "Email",
+        "alias": "EMAIL",
+        "status": "SHOW",
+        "childs": null
+      }
+    ],
+    "events": [
+      {
+        "name": "Update Discount Management",
+        "alias": "UPDATE_ATTRIBUTE_DISOCUNT",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Recharge Customer Fail",
+        "alias": "RECHARGE_CUSTOMER_FAIL",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Dunning Email",
+        "alias": "DUNNING_EMAIL",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Update Access Validity",
+        "alias": "UPDATE_ACCESS_VALIDITY",
+        "status": null,
+        "childs": null
+      },
+      {
+        "name": "Change Status",
+        "alias": "CHANGESTATUS_ACCOUNT",
+        "status": null,
+        "childs": null
+      }
+    ]
+  },
+  "error": false
+}

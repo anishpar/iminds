@@ -1,0 +1,42 @@
+<!-- mode : {{ mode }} -->
+<div tabindex="0" *ngIf="multiple === true" (keyup)="mainClick($event)" (focus)="focusToInput('')"
+  [offClick]="clickedOutside"
+  class="ui-select-container ui-select-multiple dropdown form-control open expression-builder">
+  <div [ngClass]="{'ui-disabled': disabled}"></div>
+  <span class="ui-select-match">
+    <span *ngFor="let a of active; let i = index">
+      <span class="ui-select-match-item btn btn-default btn-secondary btn-xs" [ngClass]="{'active': isEditMode && editPosition == i }" tabindex="-1" type="button"
+        [ngClass]="{'btn-default': true}" (click)="updatePosition(i)">
+        <span [innerHtml]="sanitize(a.text)"></span>
+      </span>
+    </span>
+  </span>
+  <input type="text" (keydown)="inputEvent($event)" (keyup)="inputEvent($event, true)" (click)="matchClick($event)"
+    [disabled]="disabled" autocomplete="false" autocorrect="off" autocapitalize="off" spellcheck="false"
+    class="form-control ui-select-search" placeholder="{{active.length <= 0 ? placeholder : ''}}">
+
+  <span class="help" *ngIf="mode ==3">{{ lang.expressionParamNote }}</span>
+
+  <ul *ngIf="optionsOpened && options && options.length > 0 " class="ui-select-choices dropdown-menu" role="menu">
+    <li *ngFor="let o of options" role="menuitem">
+      <div class="ui-select-choices-row" [class.active]="isActive(o)" (mouseenter)="selectActive(o)"
+        (click)="selectMatch(o, $event)">
+        <a href="javascript:void(0)" class="dropdown-item">
+          <div [innerHtml]="sanitize(o.text | highlight:inputValue)"></div>
+        </a>
+      </div>
+    </li>
+  </ul>
+
+  <ul *ngIf="outOfOption && optionsOpened && options.length == 0 && mode != 3" class="ui-select-choices dropdown-menu"
+    role="menu">
+    <li role="menuitem">
+      <div class="ui-select-choices-row">
+        <a href="javascript:void(0)" class="dropdown-item text-danger">
+          {{ lang.errExpressionNoOption }}
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+<span class="text-danger" *ngIf='expAttrCount > 5'>{{lang.notification.expressionAtrributeError}}</span>
