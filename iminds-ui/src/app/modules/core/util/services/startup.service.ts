@@ -19,16 +19,16 @@ export class StartupService {
         this._startupData = null;
 		console.log('fetching config.json');
         return this.http
-            .get('/iminds/STL/stlconfig/config.json')
-            // .get('/stlconfig/config.json')
+            //.get('/iminds/STL/stlconfig/config.json')
+             .get('/stlconfig/config.json')
             .toPromise()
             .then((data: any) => {
                 this._startupData = data;
 				console.log('got config.json::' + this.startupData['api_host']);
                 let apiURL = '';
                 //apiURL = this.startupData['api_host'] + 'loadKeyCloakConfiguration';
-				apiURL = '/iminds/loadKeyCloakConfiguration';
-                // apiURL = '/assets/json/load_app_configurations.json';
+				//apiURL = '/iminds/loadKeyCloakConfiguration';
+                 apiURL = '/assets/json/load_app_configurations.json';
 
                 return this.http.get(apiURL).toPromise()
                 .then(configuration => {

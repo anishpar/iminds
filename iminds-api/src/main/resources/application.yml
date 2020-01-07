@@ -75,10 +75,10 @@ jwt:
       
 sso:
   available: true
-  url: http://localhost:8080/auth/
+  url: http://10.121.19.140:8080/auth/
   clientId: iminds
   realm: IMinds
-  secret: a1f8dc8c-1777-4208-ae71-0f349e94e9c0
+  secret: 74b7eec7-e4b1-4323-8b6b-c10e389e7441
   redirectUrl: http://localhost:8081/
  
 security:
