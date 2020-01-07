@@ -3,14 +3,14 @@
   "responseCode": 0,
   "responseObject": {
     
-    "realm": "Sterlite-Products",
-    "authServerURL": "http://10.151.33.71:8180/auth/",
+    "realm": "IMinds",
+    "authServerURL": "http://10.121.19.140:8080/auth/",
     
-    "secret": "b92e1cf1-5cb7-4d53-a003-3da2866c0a46",
+    "secret": "74b7eec7-e4b1-4323-8b6b-c10e389e7441",
     "confidentialPort": 0,
-    "clientId": "dNotification",
-    "isSSOEnabled": "false",
-    "redirectURL": "http://localhost:4200/",
+    "clientId": "iminds",
+    "isSSOEnabled": "true",
+    "redirectURL": "http://localhost:9080/",
     "adminClient": null,
     "tokenDuration": 0,
     "systemExpireTimeInMilSec": 0,
