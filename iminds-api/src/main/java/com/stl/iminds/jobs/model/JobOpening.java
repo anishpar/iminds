@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.stl.notification.template.model.TemplateDetailData;
 
 @Entity
 @Table(name = "TBLMJOBOPENING")
