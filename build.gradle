@@ -1,0 +1,4 @@
+allprojects {
+    group = "com.stl"
+    version = "1.0"
+}
