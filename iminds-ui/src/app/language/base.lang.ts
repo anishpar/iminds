@@ -23,7 +23,7 @@ export const language = {
     'sr': 'Sr.No',
     'select': 'Select',
     'home': 'Home',
-    'greeting': 'Welcome To dNotification!',
+    'greeting': 'Welcome To iMinds!',
     'NA': 'Not Applicable',
     'selectCity': 'Select City',
     'selectZone': 'Select Zone',

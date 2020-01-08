@@ -24,29 +24,28 @@
     <a class="nav-link" href="javascript:void(0)" [ngClass]="{'collapsed':collepsedNotification}" aria-expanded="true"
       aria-controls="collapseUtilities" (click)="toggleSubMenu()">
       <i class="fas fa-fw fa-wrench"></i>
-      <span>Notification Configurations</span>
+      <span>Hiring</span>
     <i class="fa  pull-right" style="margin-top: 3px" [ngClass]="{'fa-angle-right':collepsedNotification, 'fa-angle-down':!collepsedNotification}" *ngIf="!sideBarClosed"></i>
     </a>
     <div id="collapseUtilities" class="collapse"  [ngClass]="{'show':!collepsedNotification}" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2222 collapse-inner rounded1">
-        <a class="collapse-item" (click)="navigate('/notification/search_template')">Templates</a>
+        <a class="collapse-item" (click)="navigate('/notification/search_template')">Job Openings</a>
         <hr class="sidebar-divider d-none d-md-block">
-        <a class="collapse-item" (click)="navigate('/notification/search_event_configuration')">Event Template Association</a>
-        <hr class="sidebar-divider d-none d-md-block">
-        <a class="collapse-item"  (click)="navigate('notification/create_channel')">Channel</a>
+        <a class="collapse-item" (click)="navigate('/notification/search_event_configuration')">Candidates</a>
+        <!--<hr class="sidebar-divider d-none d-md-block">
+        <a class="collapse-item"  (click)="navigate('notification/create_channel')">Channel</a>-->
 
       </div>
     </div>
   </li>
 
   <!-- Divider -->
-  <hr class="sidebar-divider">
-  <!-- Nav Item - Charts -->
+ <!-- <hr class="sidebar-divider">
   <li class="nav-item">
     <a class="nav-link" [routerLink]="['notification/search_history']">
       <i class="fas fa-fw fa-history"></i>
       <span>Notification History</span></a>
-  </li>
+  </li>-->
   <hr class="sidebar-divider">
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
