@@ -128,7 +128,7 @@ export const language = {
         'channelAlias': 'Channel',
         'associateEvent': 'Associate New',
         'eventAlias': 'Event',
-        'eventTemplateAssociation' : 'Event Template Association',
+        'eventTemplateAssociation' : 'Candidates',
         'templateConfiguration' : 'Template Configuration',
         'configurationType' : 'Configuration Type',
         'conditionExpr' : 'Build Expression',
