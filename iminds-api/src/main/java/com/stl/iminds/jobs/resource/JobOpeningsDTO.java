@@ -2,6 +2,7 @@ package com.stl.iminds.jobs.resource;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class JobOpeningsDTO implements Serializable {
 
@@ -21,6 +22,9 @@ public class JobOpeningsDTO implements Serializable {
 	private String compensation;
 	private Date creationDate;
 	private Date lastModifiedDate;
+	private List<JobSkillsDTO> jobSkills;
+	private List<JobQuestionsRelDTO> jobQuestionsRels;
+	private List<JobInterviewRelDTO> jobInterviewRels;
 	
 	/**
 	 * @return the jobOpeningid
@@ -202,10 +206,47 @@ public class JobOpeningsDTO implements Serializable {
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
+	
+	/**
+	 * @return the jobSkills
+	 */
+	public List<JobSkillsDTO> getJobSkills() {
+		return jobSkills;
+	}
+	/**
+	 * @param jobSkills the jobSkills to set
+	 */
+	public void setJobSkills(List<JobSkillsDTO> jobSkills) {
+		this.jobSkills = jobSkills;
+	}
+	/**
+	 * @return the jobQuestionsRels
+	 */
+	public List<JobQuestionsRelDTO> getJobQuestionsRels() {
+		return jobQuestionsRels;
+	}
+	/**
+	 * @param jobQuestionsRels the jobQuestionsRels to set
+	 */
+	public void setJobQuestionsRels(List<JobQuestionsRelDTO> jobQuestionsRels) {
+		this.jobQuestionsRels = jobQuestionsRels;
+	}
+	/**
+	 * @return the jobInterviewRels
+	 */
+	public List<JobInterviewRelDTO> getJobInterviewRels() {
+		return jobInterviewRels;
+	}
+	/**
+	 * @param jobInterviewRels the jobInterviewRels to set
+	 */
+	public void setJobInterviewRels(List<JobInterviewRelDTO> jobInterviewRels) {
+		this.jobInterviewRels = jobInterviewRels;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("JobOpenings [jobOpeningid=");
+		builder.append("JobOpeningsDTO [jobOpeningid=");
 		builder.append(jobOpeningid);
 		builder.append(", title=");
 		builder.append(title);
@@ -235,6 +276,12 @@ public class JobOpeningsDTO implements Serializable {
 		builder.append(creationDate);
 		builder.append(", lastModifiedDate=");
 		builder.append(lastModifiedDate);
+		builder.append(", jobSkills=");
+		builder.append(jobSkills);
+		builder.append(", jobQuestionsRels=");
+		builder.append(jobQuestionsRels);
+		builder.append(", jobInterviewRels=");
+		builder.append(jobInterviewRels);
 		builder.append("]");
 		return builder.toString();
 	}
