@@ -54,12 +54,14 @@ export class TemplateSearchComponent extends MasterComponent{
       this.totalItems = 0;
       this.pagination = Object.assign({}, PaginationConfig);
       this.templateList = [];
-      this.searched = true;
+     
       this.job.candidateCount = 2;
       this.job.hiringLead = 'Anish Parekh';
       this.job.status = 'Open';
       this.job.jobOpening ='Software Engineer';
       this.jobs.push(this.job);
+      this.searched = true;
+      this.totalItems = this.jobs.length;
      
       
       /*this.service.searchTemplate(this.templateModel)
