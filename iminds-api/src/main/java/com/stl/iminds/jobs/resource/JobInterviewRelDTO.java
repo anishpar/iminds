@@ -9,7 +9,7 @@ public class JobInterviewRelDTO implements Serializable {
 	private Long jobinterviewrelid;
 	private String interviewTypeName;
 	private Long interviewTypeId;
-	private Long order;
+	private Long interviewOrder;
 	private Long jobOpeningid;
 
 	/**
@@ -57,15 +57,15 @@ public class JobInterviewRelDTO implements Serializable {
 	/**
 	 * @return the order
 	 */
-	public Long getOrder() {
-		return order;
+	public Long getInterviewOrder() {
+		return interviewOrder;
 	}
 
 	/**
 	 * @param order the order to set
 	 */
-	public void setOrder(Long order) {
-		this.order = order;
+	public void setInterviewOrder(Long interviewOrder) {
+		this.interviewOrder = interviewOrder;
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class JobInterviewRelDTO implements Serializable {
 		builder.append(interviewTypeName);
 		builder.append(", interviewTypeId=");
 		builder.append(interviewTypeId);
-		builder.append(", order=");
-		builder.append(order);
+		builder.append(", interviewOrder=");
+		builder.append(interviewOrder);
 		builder.append(", jobOpeningid=");
 		builder.append(jobOpeningid);
 		builder.append("]");

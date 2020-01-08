@@ -24,7 +24,7 @@ public class JobInterviewRel implements Serializable {
 	
 	private Long interviewtypeid;
 	
-	private Long order;
+	private Long intervieworder;
 	
 	@ManyToOne
     @JoinColumn(name="jobOpeningid", nullable=false)
@@ -61,15 +61,15 @@ public class JobInterviewRel implements Serializable {
 	/**
 	 * @return the order
 	 */
-	public Long getOrder() {
-		return order;
+	public Long getInterviewOrder() {
+		return intervieworder;
 	}
 
 	/**
 	 * @param order the order to set
 	 */
-	public void setOrder(Long order) {
-		this.order = order;
+	public void setInterviewOrder(Long intervieworder) {
+		this.intervieworder = intervieworder;
 	}
 
 	/**
@@ -93,10 +93,8 @@ public class JobInterviewRel implements Serializable {
 		builder.append(jobinterviewrelid);
 		builder.append(", interviewtypeid=");
 		builder.append(interviewtypeid);
-		builder.append(", order=");
-		builder.append(order);
-		builder.append(", jobOpening=");
-		builder.append(jobOpening);
+		builder.append(", intervieworder=");
+		builder.append(intervieworder);
 		builder.append("]");
 		return builder.toString();
 	}

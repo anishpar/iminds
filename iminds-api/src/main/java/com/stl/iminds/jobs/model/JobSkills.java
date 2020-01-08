@@ -131,8 +131,6 @@ public class JobSkills implements Serializable {
 		builder.append(description);
 		builder.append(", minimumExp=");
 		builder.append(minimumExp);
-		builder.append(", jobOpening=");
-		builder.append(jobOpening);
 		builder.append("]");
 		return builder.toString();
 	}

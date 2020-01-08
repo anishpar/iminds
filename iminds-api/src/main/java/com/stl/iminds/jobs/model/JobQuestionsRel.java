@@ -95,8 +95,6 @@ public class JobQuestionsRel implements Serializable {
 		builder.append(questionId);
 		builder.append(", isMandatory=");
 		builder.append(isMandatory);
-		builder.append(", jobOpening=");
-		builder.append(jobOpening);
 		builder.append("]");
 		return builder.toString();
 	}

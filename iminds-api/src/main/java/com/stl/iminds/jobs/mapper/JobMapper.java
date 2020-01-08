@@ -1,6 +1,7 @@
 package com.stl.iminds.jobs.mapper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.stl.iminds.jobs.model.JobInterviewRel;
@@ -13,8 +14,7 @@ import com.stl.iminds.jobs.resource.JobQuestionsRelDTO;
 import com.stl.iminds.jobs.resource.JobSkillsDTO;
 
 public class JobMapper {
-	
-	
+
 	public static JobOpening convertJobOpeningDTOToJobOpening(JobOpeningsDTO jobOpeningsDTO) {
 		JobOpening jobOpening = new JobOpening();
 		jobOpening.setJobOpeningid(jobOpeningsDTO.getJobOpeningid());
@@ -30,8 +30,10 @@ public class JobMapper {
 		jobOpening.setState(jobOpeningsDTO.getState());		
 		jobOpening.setCountry(jobOpeningsDTO.getCountry());		
 		jobOpening.setCompensation(jobOpeningsDTO.getCompensation());
-		jobOpening.setCreationDate(jobOpeningsDTO.getCreationDate());
-		jobOpening.setLastModifiedDate(jobOpeningsDTO.getLastModifiedDate());		
+		
+		Date sysDate = new Date();
+		jobOpening.setCreationDate(sysDate);
+		jobOpening.setLastModifiedDate(sysDate);		
 		
 		List<JobSkillsDTO> lstJobSkillsDto = jobOpeningsDTO.getJobSkills();
     	List<JobSkills> lstJobSkills = new ArrayList<>();
@@ -73,7 +75,7 @@ public class JobMapper {
     			JobInterviewRel jobInterviewRel = new JobInterviewRel();
     			jobInterviewRel.setJobinterviewrelid(jobInterviewRelDTO.getJobinterviewrelid());
     			jobInterviewRel.setInterviewtypeid(jobInterviewRelDTO.getInterviewTypeId());
-    			jobInterviewRel.setOrder(jobInterviewRelDTO.getOrder());  
+    			jobInterviewRel.setInterviewOrder(jobInterviewRelDTO.getInterviewOrder());  
     			jobInterviewRel.setJobOpening(jobOpening);
     			lstJobInterviewRel.add(jobInterviewRel);
     		}
@@ -141,7 +143,7 @@ public class JobMapper {
     			JobInterviewRelDTO jobInterviewRelDto = new JobInterviewRelDTO();
     			jobInterviewRelDto.setJobinterviewrelid(jobInterviewRel.getJobinterviewrelid());
     			jobInterviewRelDto.setInterviewTypeId(jobInterviewRel.getInterviewtypeid());
-    			jobInterviewRelDto.setOrder(jobInterviewRel.getOrder());  
+    			jobInterviewRelDto.setInterviewOrder(jobInterviewRel.getInterviewOrder());  
     			lstJobInterviewRelDto.add(jobInterviewRelDto);
     		}
     		jobOpeningsDTO.setJobInterviewRels(lstJobInterviewRelDto);

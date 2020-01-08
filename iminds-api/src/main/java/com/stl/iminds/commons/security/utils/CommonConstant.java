@@ -95,6 +95,15 @@ public class CommonConstant {
 	public static final String UNABLE_TO_SEND_MESSAGE = "Unable to send message";
 	
 	
+	public static final String POSTING_TITLE = "Posting Title";
+	public static final String JOB_STATUS = "job Status";
+	public static final String HIRING_LEAD = "Hiring Lead";
+	public static final String EMPLOYMENT_TYPE = "Employment Type";
+	public static final String JOB_DESCRIPTION = "Job Description";
+	public static final String LOCATION = "Location";
+	public static final String CITY = "City";
+	public static final String STATE = "State";
+	
 	public static final long INVALID_REQUEST_ERROR_CODE = -500l;
 	private CommonConstant() {	}
 }
