@@ -8,37 +8,29 @@
             <div class="panel-body">
                 <form #searchTemplate="ngForm" (ngSubmit)="onSubmit (searchTemplate.form.valid)">
                     <div class="row ">
-                        <div class="form-group col-md-3">
-                            <label>{{lang.name}}</label>
-                            <input class="form-control" type="text" id="name" name="name" stlValidate="NREQ||alphaNumUnderscore" 
-                            [stlLabel]="lang.name" [(ngModel)]="templateModel.name">
-                        </div>
                         
                         <div class="form-group col-md-3">
-                            <label class="label">{{lang.notification.eventAlias}}</label>                        
+                            <label class="label">Location</label>   
                             
-                            <stl-input-typeahead [optionList]="events" id="eventAlias" name="eventAlias" returnField="alias"
+                            <!--<stl-input-typeahead [optionList]="events" [label]="lang.selectOption"> 
+                            </stl-input-typeahead>
+                            
+                            {{events | json}} -->   
+                            <stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
                                        [(ngModel)]="templateModel.eventAlias">
                             </stl-input-typeahead>
+                            
                         </div>
 
                         <div class="form-group col-md-3">
-                        <label class="label">{{lang.notification.channelAlias}}</label>                      
+                        <label class="label">Title</label>                      
                         <stl-input-typeahead [optionList]="channels" id="channelAlias" name="channelAlias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
                                        [(ngModel)]="templateModel.channelAlias" >
                         </stl-input-typeahead>
                         </div>
                         
-                        <div class="form-group col-md-3">
-                            <label class="bold-text">{{lang.status}}</label>
-                            <div>
-                                <input type="radio" [(ngModel)] = "templateModel.status" value="{{lang.show}}" id="radioShow" name="status">&nbsp;{{lang.show}}&nbsp;&nbsp;
-                                <input type="radio" [(ngModel)] = "templateModel.status" value="{{lang.hide}}" id="radioHide" name="status">&nbsp;{{lang.hide}}&nbsp;&nbsp;
-                                <input type="radio" [(ngModel)] = "templateModel.status" value="{{lang.all}}" id="radioAll" name="status">&nbsp;{{lang.all}}
-                            </div>
-                        </div>
                     </div>
   
                     <div class="row">
@@ -73,38 +65,38 @@
                 </div> 
                       
                 <div class="table-responsive" *ngIf="searched">      
-                    <table class="table table-bordered" *ngIf="templateList && templateList.length > 0">        
+                    <table class="table table-bordered" *ngIf="jobs && jobs.length > 0">        
                         <tr>         
-                            <th>{{lang.sr}}</th>        
-                            <th>{{lang.name}}</th>
-                            <th>{{lang.notification.eventAlias}}</th>
-                            <th>{{lang.notification.channelAlias}}</th>
-                            <th>{{lang.status}}</th> 
-                            <th>{{lang.edit}}</th>                        
+                            <th>Candidates</th>        
+                            <th>Job Opening</th>
+                            <th>Hiring Lead</th>
+                            <th>Created On</th>
+                            <th>Status</th> 
                         </tr>
               
-                        <tr *ngFor="let template of templateList.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
+                        <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
                             <td>
-                                {{i+1+((pagination.currentPage-1)*pagination.itemsPerPage)}}        
+                                {{job.candidateCount}}        
                             </td>
                             
                             <td>    
-                                <a title="{{template.name}}" routerLink="/notification/view_template" (click)="setNavParam('templateName',template.name)">{{template.name ? template.name : config.emptyString}}</a>                             
+                                <a title="{{job.jobOpening}}" routerLink="/notification/view_template" 
+                                (click)="setNavParam('templateName',template.name)">
+                                {{job.jobOpening}}</a>                             
                             </td>
                                 
                             <td>
-                                {{template.eventAlias ? template.eventAlias : config.emptyString}}
+                                {{job.hiringLead}}
                             </td>
                                 
                             <td>
-                                {{template.channelAlias ? template.channelAlias : config.emptyString}}
+                                {{job.createdOn}}
                             </td>
                                 
                             <td>
-                                {{template.status ? template.status : config.emptyString}}
+                                {{job.status}}
                             </td>   
                             
-                            <td><a title="{{lang.edit}}" [routerLink]="" ><span class="fa fa-edit fa-2-action "></span></a></td>
                         </tr>
                     </table>
                 </div>

@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MasterComponent } from 'src/app/modules/core/common/components/master.component';
 import { NotificationService } from '../../services/notification.service';
 import { TemplateModel } from '../../models/template.model';
+import { Location } from '../../models/location.model';
+import { Job } from '../../models/job.model';
 import { takeUntil } from 'rxjs/operators';
 import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagination.config';
 
@@ -15,7 +17,10 @@ export class TemplateSearchComponent extends MasterComponent{
 
   configurationData = ['events', 'channels'];
     templateModel = new TemplateModel();
+    location = new Location();
     channels = [];
+    jobs = [];
+    job = new Job();
     events = [];
     pagination;
     totalItems;
@@ -29,15 +34,11 @@ export class TemplateSearchComponent extends MasterComponent{
     }
     
     ngOnInit() {
-      this.templateModel.status = this.lang.all;
-      this.service.loadConfiguration(this.configurationData)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(res => {
-        this.channels = res['channels'];
-        this.templateModel.channelAlias = '';
-        this.events = res['events'];
-        this.templateModel.eventAlias = '';
-      });
+      this.location.name = 'India';
+      this.location.alias = 'India';
+      this.location.eventalias = 'India';
+      this.events.push(this.location);
+      console.log('evetns :'+this.events);
     }
 
     onChangePage(pageOfItems: Array<any>) {
@@ -53,8 +54,15 @@ export class TemplateSearchComponent extends MasterComponent{
       this.totalItems = 0;
       this.pagination = Object.assign({}, PaginationConfig);
       this.templateList = [];
+      this.searched = true;
+      this.job.candidateCount = 2;
+      this.job.hiringLead = 'Anish Parekh';
+      this.job.status = 'Open';
+      this.job.jobOpening ='Software Engineer';
+      this.jobs.push(this.job);
+     
       
-      this.service.searchTemplate(this.templateModel)
+      /*this.service.searchTemplate(this.templateModel)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(res => {
           this.searched = true;
@@ -63,7 +71,7 @@ export class TemplateSearchComponent extends MasterComponent{
             this.totalItems = res.length;
             this.templateList = res;    
           }
-        });
+        });*/
     }   
 
     resetSearch() {
