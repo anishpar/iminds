@@ -25,7 +25,7 @@ public static void main(String[] args) {
 		LogManager.setDefaultLogger(new DefaultLogger("iMinds",IMindsApplication.class.getName()));
 		LogManager.setLogger("PERFORMANCE", new DefaultLogger("iMinds", "PERFORMANCE"));
 		//CacheProviderFactory.configure("com.stl.core.base.cache.LocalCacheProvider");
-		CacheProviderFactory.configure("com.stl.core.commons.cache.LocalCacheProvider");
+		CacheProviderFactory.configure("com.stl.core.base.cache.LocalCacheProvider");
 		
 		SpringApplication.run(IMindsApplication.class, args);
 		//new TestCore().testLogger();

@@ -9,8 +9,8 @@ dbconfig:
          name: MASTERDS
          url: jdbc:oracle:thin:@192.168.11.240:1522:oradev1
          driverClassName: oracle.jdbc.driver.OracleDriver
-         username: CRESTELNOTIFICATION
-         password: wgAMJ4Flj+FxDFwWGYimDTvDP9FO9kr7sSsd7UmznRc=
+         username: IMINDS
+         password: 4BDK+rti+TgDxjkYa3b1pw==
          min_pool_size: 5
          max_pool_size: 10
          max_idle_time: 600000
@@ -34,8 +34,8 @@ dbconfig:
          name: NOTIFICATIONDS
          url: jdbc:oracle:thin:@192.168.11.240:1522:oradev1
          driverClassName: oracle.jdbc.driver.OracleDriver
-         username: CRESTELNOTIFICATION
-         password: wgAMJ4Flj+FxDFwWGYimDTvDP9FO9kr7sSsd7UmznRc=
+         username: IMINDS
+         password: 4BDK+rti+TgDxjkYa3b1pw==
          min_pool_size: 5
          max_pool_size: 10
          max_idle_time: 600000
