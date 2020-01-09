@@ -37,7 +37,6 @@ public class CandidateController {
 	public Response<List<CandidatesDTO>> searchCandidate() {
 		String strMethodName = "searchCandidate";
 		try {
-			
 			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 			List<CandidatesDTO> lstCandidatesDTO= candidateService.searchCandidate();
 			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, lstCandidatesDTO);

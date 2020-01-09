@@ -10,5 +10,4 @@ public interface CandidateService {
 	
 	public CandidatesDTO viewCandidates(Long candidateId);
 	
-	
 }

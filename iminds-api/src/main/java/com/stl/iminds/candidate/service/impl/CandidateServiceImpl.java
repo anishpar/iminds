@@ -68,7 +68,6 @@ public class CandidateServiceImpl implements CandidateService{
 			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
 			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
 		}
-
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job opening get successfully with data : "+ lstCandidatesDTO);
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
