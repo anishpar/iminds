@@ -1,119 +1,112 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
-  <h2 class="h3 mb-0">{{ lang.notification.createChannel }}</h2>
+  <h2 class="h3 mb-0">Search Existing Candidate</h2>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <form #createChannel="ngForm" (ngSubmit)="onSubmit(createChannel.form.valid)">
-          <div class="row">
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.name}}</label>
-              <input class="form-control" type="text" name="name" id="name" stlValidate="REQ||alphaNumUnderscore"
-                [stlLabel]="lang.name" [(ngModel)]="channelModel.name" [maxlength]="config.maxLength.name"
-                (ngModelChange)="updateNameFromAlias()">
-            </div>
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.alias}}</label>
-              <input class="form-control" type="text" name="id" name="id" stlValidate="REQ||alphaNumUnderscore"
-                [stlLabel]="lang.alias" [(ngModel)]="channelModel.id" [maxlength]="config.maxLength.name"
-                (ngModelChange)="updateAliasFromAlias()">
-            </div>
-            <div class="form-group col-md-3">
-              <label class="label">{{lang.notification.mimeType}}</label>
-              <input class="form-control" type="text" name="mimeType" id="mimeType" stlValidate="NREQ||mimeType"
-                [stlLabel]="lang.notification.mimeType" [(ngModel)]="channelModel.mimeType"
-                [maxlength]="config.maxLength.name">
-            </div>
-            <div class="form-group col-md-3">
-              <label class="label">{{lang.status}}</label>
-              <div>
-                <ui-switch [(ngModel)]="status" size="small" name="status" id="status"></ui-switch>
+      <div class="panel panel-default">
+          <div class="panel-body">
+              <form #searchTemplate="ngForm" (ngSubmit)="onSubmit (searchTemplate.form.valid)">
+                  <div class="row ">
+                      
+                      <div class="form-group col-md-3">   
+                          
+                          <!--<stl-input-typeahead [optionList]="events" [label]="lang.selectOption"> 
+                          </stl-input-typeahead>
+                          
+                          {{events | json}}   
+
+                          <div class="form-group">
+                              <label for="inputStatus">Location</label>
+                              <select class="form-control custom-select" [(ngModel)]="loc">
+                                <option selected="" disabled="">Select one</option>
+                                <option>India</option>
+                                <option>USA</option>
+                                <option>UK</option>
+                              </select>
+                            </div> -->
+                          <label class="label">Location</label>  
+                          <stl-input-typeahead [optionList]="locations" id="alias" name="alias" returnField="alias"
+                                     labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                     [(ngModel)]="jobRequest.location">
+                          </stl-input-typeahead>
+                          
+                      </div>
+
+                      <div class="form-group col-md-3">
+                      <label class="label">Title</label>                      
+                      <stl-input-typeahead [optionList]="titles" id="alias" name="alias" returnField="alias"
+                                     labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                     [(ngModel)]="jobRequest.title" >
+                      </stl-input-typeahead>
+                      </div>
+                      
+                  </div>
+
+                  <div class="row">
+                      <div class="form-group col-md-12">
+                          <button id="submitBtn" type="submit" class="btn btn-primary" >
+                              <i class="fa fa-search"></i> {{lang.search}}
+                          </button>
+                          
+                          &nbsp;
+                          
+                          <button type="button" id="resetBtn" class="btn btn-primary" (click)="resetSearch()">
+                              <i class="fa fa-undo"></i>&nbsp;{{lang.reset}}
+                          </button>
+                      </div>
+                  </div> 
+              </form>
+
+              <div class="row">
+                  <div class="col-md-12" *ngIf="searched && totalItems == 0">    
+                      <div class="page-header col-sm-12 alert alert-info text-center">    
+                          {{lang.searchComponent.noResults}}
+                      </div>
+                  </div>              
+                  
+                  <div class="col-sm-12 pull-right text-right vbottomoffset1" *ngIf="templateList && templateList.length > 0">                                        
+                      <stl-pagination *ngIf="totalItems" [totalItems]="totalItems" (changePage)="onChangePage($event)" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage" [maxSize]="10" (numPages)="numPages = $event" [boundaryLinks]="true"></stl-pagination>                    
+                  </div>
+              </div> 
+                    
+              <div class="table-responsive" *ngIf="searched">      
+                  <table class="table table-bordered" *ngIf="jobs && jobs.length > 0">        
+                      <tr>         
+                          <th>Candidates</th>        
+                          <th>Job Opening</th>
+                          <th>Hiring Lead</th>
+                          <th>Created On</th>
+                          <th>Status</th> 
+                      </tr>
+            
+                      <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
+                          <td>
+                              {{job.candidateCount}}        
+                          </td>
+                          
+                          <td>    
+                              <a title="{{job.jobOpening}}" routerLink="/notification/view_template" 
+                              (click)="setNavParam('templateName',template.name)">
+                              {{job.title}}</a>                             
+                          </td>
+                              
+                          <td>
+                              {{job.hiringLead}}
+                          </td>
+                              
+                          <td>
+                              {{job.creationDate}}
+                          </td>
+                              
+                          <td>
+                              {{job.status}}
+                          </td>   
+                          
+                      </tr>
+                  </table>
               </div>
-            </div>
           </div>
-
-          <div class="row">
-
-            <div class="form-group col-md-3">
-              <label class="label">{{lang.description}}</label>
-              <textarea class="form-control" type="textarea" name="description" id="description"
-                stlValidate="NREQ" [(ngModel)]="channelModel.description"
-                [maxlength]="config.maxLength.maxName"></textarea>
-            </div>
-
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.notification.className}}</label>
-              <textarea class="form-control" type="text" name="className" id="className" stlValidate="REQ"
-                [stlLabel]="lang.notification.className" [(ngModel)]="channelModel.className"
-                [maxlength]="config.maxLength.maxName">
-              </textarea>
-
-            </div>
-
-            <div class="form-group col-md-6">
-              <div class="clearfix">&nbsp; &nbsp; &nbsp;</div>
-              <button type="button" class="btn btn-primary" (click)="getSupportedAttribute()"
-                [disabled]="!channelModel.className" id="getSupportedAttribute">
-                {{lang.validate}}
-              </button>
-            </div>
-          </div>
-          <div class="row">
-
-            <div class="col-md-12" *ngIf="searched && totalItems == 0">
-              <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
-                <h6 class="h6 mb-0">{{ lang.notification.channelcharacteristics }}</h6>
-              </div>
-              <div class="page-header col-sm-12 alert alert-info text-center">{{lang.notification.channelcharacteristicsNoResults}}</div>
-            </div>
-          </div>
-
-
-          <div class="col-md-12" *ngIf="searched && totalItems > 0">
-            <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
-              <h6 class="h6 mb-0">{{ lang.notification.channelcharacteristics }}</h6>
-            </div>
-            <div class="row">
-
-              <div class="form-group col-md-3" *ngFor="let channelAttribute of channelAttributeList; let i = index">
-
-                  <ng-container *ngIf="channelAttribute && channelAttribute.bIsMandatory; else nonMandate">
-
-                    <label class="required-label">
-                      {{channelAttribute && channelAttribute.displayName ? channelAttribute.displayName: lang.emptyString}}
-                    </label>
-                    <input class="form-control" type="text" name="value{{i}}" id="value{{i}}"
-                      stlValidate="REQ" [stlLabel]="channelAttribute.displayName"
-                      [(ngModel)]="channelAttribute.value" [maxlength]="config.maxLength.maxName">
-
-                  </ng-container>
-                  <ng-template #nonMandate>
-
-                    <label class="label">
-                      {{channelAttribute && channelAttribute.displayName ? channelAttribute.displayName: lang.emptyString}}
-                    </label>
-                    <input class="form-control" type="text" name="value{{i}}" id="value{{i}}"
-                      stlValidate="NREQ" [stlLabel]="channelAttribute.displayName"
-                      [(ngModel)]="channelAttribute.value" [maxlength]="config.maxLength.maxName">
-                  </ng-template>
-
-              
-              </div>
-
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-sm-6">
-              <button type="submit" class="btn btn-primary" id="submit"
-                [disabled]="!(createChannel.form.valid  && searched)">{{lang.create}}</button>
-              <button class="btn btn-primary" onclick="window.history.back()" type="button" id="back"><i
-                  class="fa fa-arrow-left"></i> {{lang.back}}</button>
-            </div>
-          </div>
-        </form>
       </div>
-    </div>
   </div>
 </div>

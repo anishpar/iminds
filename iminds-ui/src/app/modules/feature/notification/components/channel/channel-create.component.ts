@@ -1,10 +1,13 @@
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MasterComponent } from 'src/app/modules/core/common/components/master.component';
-import { Router } from '@angular/router';
 import { NotificationService } from '../../services/notification.service';
-import { Channel } from '../../models/channel.model';
+import { TemplateModel } from '../../models/template.model';
+import { Location } from '../../models/location.model';
+import { Job } from '../../models/job.model';
+import { Title } from '../../models/title.model';
+import { JobRequest } from '../../models/job.request.model';
 import { takeUntil } from 'rxjs/operators';
+import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagination.config';
 
 
 @Component({
@@ -14,71 +17,93 @@ import { takeUntil } from 'rxjs/operators';
 
 export class ChannelCreateComponent extends MasterComponent implements OnInit, OnDestroy {
 
-    channelModel: Channel
-    channelAttributeList = [];
-    channelAttr = { 'attributeName': '', 'attributeValue': '' };
-    searched = false;
-    totalItems = 0;
-    status = true;
-    constructor(public service: NotificationService, private router: Router) {
+    configurationData = ['events', 'channels'];
+      templateModel = new TemplateModel();
+      location = new Location();
+      channels = [];
+  
+      jobs = [];
+      job = new Job();
+  
+      title = new Title();
+      titles = [];
+  
+      jobRequest = new JobRequest();
+      locations = [];
+      pagination;
+      totalItems;
+      searched = false;
+      templateList = [];
+      pageOfItems: Array<any>;
+      loc = '';
+      
+      constructor(public service: NotificationService) {
         super();
-    }
-   
-    ngOnInit() {
-        this.channelModel = new Channel();
-    }
-
-    updateNameFromAlias() {
-        if (this.channelModel != null && this.channelModel.name != null && this.channelModel.name != '') {
-            this.channelModel.id = this.channelModel.name.toUpperCase();
-        }
-    }
-
-    updateAliasFromAlias() {
-        if (this.channelModel != null && this.channelModel.id != null && this.channelModel.id != ''
-            && this.channelModel.id !== this.channelModel.name) {
-            this.channelModel.id = this.channelModel.id.toUpperCase();
-        }
-    }
-    getSupportedAttribute() {
-        if (this.channelModel.className != null && this.channelModel.className != '') {
-            this.service.getSupportedAttribute('/'+this.channelModel.className)
-                .pipe(takeUntil(this.onDestroy$))
-                .subscribe(res => {
-                    this.searched = true;
-                    this.channelAttributeList = res;
-                    this.totalItems = this.channelAttributeList.length;
-                });
-        }
-
-    }
-
-    onSubmit(isValid: boolean) {
-        // check form validation
-        if (!isValid) {
-            return;
-        }
-        this.channelModel.status = this.status ? 'SHOW' : 'HIDE';
-        let channleAttr=[];
-        if(this.totalItems>0){
-            for(let i=0;i<this.totalItems;i++){
-                channleAttr.push({ 'attributeName':  this.channelAttributeList[i].displayName, 'attributeValue': this.channelAttributeList[i].value }); 
-            }
-        }
-        this.channelModel.channelAttribute=channleAttr;
-
-        this.service.createChannel(this.channelModel)
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(res => {
-                if (!res['err_msg']) {
-                    //error
-                }
-            });
-    }
-
-
-    ngOnDestroy() {
+        this.pagination = Object.assign({}, PaginationConfig);
+      }
+      
+      ngOnInit() {
+        this.location.name = 'India';
+        this.location.alias = 'India';
+        this.locations.push(this.location);
+        this.location = new Location();
+        this.location.name = 'USA';
+        this.location.alias = 'USA';
+        this.locations.push(this.location);
+        this.location = new Location();
+        this.location.name = 'UK';
+        this.location.alias = 'UK';
+        this.locations.push(this.location);
+        console.log('evetns :'+this.locations);
+  
+        this.title.name = 'Sr. Software Engineer';
+        this.title.alias = 'Sr. Software Engineer';
+        this.titles.push(this.title);
+        this.title = new Title();
+        this.title.name = 'Software Engineer';
+        this.title.alias = 'Software Engineer';
+        this.titles.push(this.title);
+        this.title = new Title();
+        this.title.name = 'Trainee';
+        this.title.alias = 'Trainee';
+        this.titles.push(this.title);
+        console.log('evetns :'+this.titles);
+    
+      }
+  
+      onChangePage(pageOfItems: Array<any>) {
+        // update current page of items
+        this.pageOfItems = pageOfItems;
+      }
+  
+      ngOnDestroy() {
         this.manageDestroy();
+      }
+  
+     
+  
+      onSubmit(isValid: boolean) {
+        this.totalItems = 0;
+        this.pagination = Object.assign({}, PaginationConfig);
+        this.templateList = [];
+        this.jobs = [];   
+        
+        this.service.searchJob(this.jobRequest)
+          .pipe(takeUntil(this.onDestroy$))
+          .subscribe(res => {
+            this.searched = true;
+    
+            if (this.jobs) {
+              this.totalItems = res.length;
+              this.jobs = res;    
+            }
+          });
+      }   
+  
+      resetSearch() {
+        this.jobRequest.location = '';
+        this.jobRequest.title = '';
+        this.searched = false;
+        this.jobs = [];
+      }
     }
-
-}
