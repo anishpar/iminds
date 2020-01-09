@@ -1,5 +1,7 @@
 package com.stl.iminds.candidate.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,6 @@ import com.stl.core.commons.utils.CommonConstantCode;
 import com.stl.iminds.candidate.resource.CandidatesDTO;
 import com.stl.iminds.candidate.service.CandidateService;
 import com.stl.iminds.commons.security.utils.CommonConstant;
-import com.stl.iminds.jobs.resource.JobOpeningsDTO;
 
 @RestController
 @CrossOrigin
@@ -33,13 +34,13 @@ public class CandidateController {
 	 * @return Response with JobOpeningsDTO	 
 	 */    
 	@GetMapping("/")
-	public Response<CandidatesDTO> searchCandidate() {
+	public Response<List<CandidatesDTO>> searchCandidate() {
 		String strMethodName = "searchCandidate";
 		try {
 			
 			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
-			CandidatesDTO candidatesDTO= candidateService.searchCandidate();
-			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, candidatesDTO);
+			List<CandidatesDTO> lstCandidatesDTO= candidateService.searchCandidate();
+			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, lstCandidatesDTO);
 		}catch(STLException e) {
 			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
 			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);

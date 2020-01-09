@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +37,19 @@ public class CandidateServiceImpl implements CandidateService{
 	@Autowired 
 	DBManager dbManager;
 	
-	public CandidatesDTO searchCandidate() {
+	public List<CandidatesDTO> searchCandidate() {
 		String strMethodName = "viewJobOpenings";
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 		
 		String strQuery = "SELECT C.CANDIDATEID,C.CANDIDATENAME,C.EMAIL,C.MOBILE,C.STATUS,C.RATING,C.CREATIONDATE,C.LASTMODIFIEDDATE,CJ.JOBOPENINGID,JO.TITLE FROM TBLMCANDIDATES C,TBLMCANDIDATEJOBREL CJ, TBLMJOBOPENING JO WHERE C.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID";
 		
-		CandidatesDTO candidatesDTO =new CandidatesDTO();
+		List<CandidatesDTO> lstCandidatesDTO = new ArrayList<>();
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
 				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery);
 				ResultSet rs = pStmt.executeQuery())
 		{
 				while(rs.next()) {
+					CandidatesDTO candidatesDTO =new CandidatesDTO();
 					candidatesDTO.setCandidateid(rs.getLong("CANDIDATEID"));
 					candidatesDTO.setName(rs.getString("CANDIDATENAME"));
 					candidatesDTO.setEmail(rs.getString("EMAIL"));
@@ -56,7 +59,7 @@ public class CandidateServiceImpl implements CandidateService{
 					candidatesDTO.setCreationDate(rs.getDate("CREATIONDATE"));
 					candidatesDTO.setLastModifiedDate(rs.getDate("LASTMODIFIEDDATE"));
 					candidatesDTO.setJobOpening(rs.getString("TITLE"));
-					
+					lstCandidatesDTO.add(candidatesDTO);
 				}
 		}catch(SQLException sql) {
 			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
@@ -66,10 +69,10 @@ public class CandidateServiceImpl implements CandidateService{
 			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
 		}
 
-		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job opening get successfully with data : "+ candidatesDTO);
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job opening get successfully with data : "+ lstCandidatesDTO);
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
-		return candidatesDTO;
+		return lstCandidatesDTO;
 	}
 	
 	public CandidatesDTO viewCandidates(Long candidateId) {
