@@ -16,9 +16,10 @@
                             </stl-input-typeahead>
                             
                             {{events | json}} -->   
+
                             <stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
-                                       [(ngModel)]="templateModel.eventAlias">
+                                       [(ngModel)]="jobRequest.location">
                             </stl-input-typeahead>
                             
                         </div>
@@ -27,7 +28,7 @@
                         <label class="label">Title</label>                      
                         <stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
-                                       [(ngModel)]="templateModel.channelAlias" >
+                                       [(ngModel)]="jobRequest.title" >
                         </stl-input-typeahead>
                         </div>
                         

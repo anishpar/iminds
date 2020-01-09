@@ -31,6 +31,16 @@ export class NotificationService {
     return this._service.post('GET_FILTERED_TEMPLATE', null);
   }
 
+  searchJob(jobRequest) {
+    let queryParam = '';
+    if(jobRequest.location != null && jobRequest.location != "")
+        queryParam = queryParam + '&location='+jobRequest.location;
+    if(jobRequest.title != null && jobRequest.title != "")
+        queryParam = queryParam + '&title='+jobRequest.title;
+    console.log("Template Model QueryParam  : == " + queryParam);
+  return this._service.fetch('GET_FILTERED_TEMPLATE', null);
+  }
+
   loadConfiguration(configurationData) {
     return this._service.fetchPost('LOAD_CONFIGURATION', configurationData);
   }

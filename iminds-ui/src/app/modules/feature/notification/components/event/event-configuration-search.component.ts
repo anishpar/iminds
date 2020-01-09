@@ -8,6 +8,7 @@ import { DataStoreService } from 'src/app/modules/core/util/services/data-store.
 
 @Component({
   selector: 'stl-event-configuration-search',
+  templateUrl: './event-configuration-search.component.html'
 })
 
 export class EventConfigurationSearchComponent extends MasterComponent
