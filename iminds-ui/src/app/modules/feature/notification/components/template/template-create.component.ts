@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ViewContainerRef} from '@angular/core';
 import {MasterComponent} from 'src/app/modules/core/common/components/master.component';
 import {takeUntil} from 'rxjs/operators';
 import {TemplateModel} from '../../models/template.model';
@@ -16,6 +16,9 @@ import { Router } from '@angular/router';
 })
 export class TemplateCreateComponent extends MasterComponent
   implements OnInit, OnDestroy {
+
+
+ // @ViewChild('dynamicContainer' , { read: ViewContainerRef }) container: ViewContainerRef;
   configurationData = ['languages', 'channels', 'events', 'images'];
   templateModel = new TemplateModel();
   templateContent = new Array();
@@ -26,6 +29,7 @@ export class TemplateCreateComponent extends MasterComponent
   invalidContent = [];
   maxContent = [];
   messageTag = [];
+  rowId: number;
   status = true;
   eventTagsAPIResponse = [];
   eventTag ;
@@ -35,6 +39,7 @@ export class TemplateCreateComponent extends MasterComponent
   public defaultParamNameList = [];
   eventTagModel = [];
   editor = [];
+  skills: any;
 
   constructor(public service: NotificationService, private router: Router) {
     super();
@@ -101,6 +106,35 @@ export class TemplateCreateComponent extends MasterComponent
   public onTagSelectSMS(i: number, alias: string) {
     this.templateContent[i].content = this.templateContent[i].content + this.eventTagModel[alias];
   }
+
+  /* public addNewSkills() {
+    let rows = document.getElementById("dataTable");
+    let rowIdIndex = rows.innerHTML.indexOf("row");
+    if (rowIdIndex == -1) {
+      this.rowId = 1;
+    }
+
+    this.skills = ['CSharp', '.Net Framework', 'Asp.Net', 
+    'Asp.Net Core', 'Angular 1.x', 'Angular 2.x', 'Web API', 'Azure', 'Javascript', 'SQL'];
+    
+    let comp = this.comFacResolver.resolveComponentFactory(SkillsRatingComponent);
+    let dynamicComp = this.container.createComponent(comp);
+    dynamicComp.instance.reference = dynamicComp;
+
+    dynamicComp.instance.skills = this.skills;
+    dynamicComp.instance.index = this.rowId;
+
+    dynamicComp.instance.selectedSkill = '';
+    dynamicComp.instance.yearsOfExperiences = '0';
+    dynamicComp.instance.selectedRating = this.ratings[0];
+
+    this.rowId += 1;
+
+    let com = this.container;
+    if (com !== undefined) {
+      this.embeddedViews = com['_embeddedViews'].length;
+    }
+  } */
 
   public onImageSelect(alias: string) {
     this.editor[alias].focus();

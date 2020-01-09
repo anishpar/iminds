@@ -1,125 +1,239 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
-  <h2 class="h3 mb-0">{{ lang.notification.templateCreate }}</h2>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <form #createTemplate="ngForm" (ngSubmit)="onSubmit(createTemplate.form.valid)">
-          <div class="row">
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.name}}</label>
-              <input class="form-control" type="text" name="name" stlValidate="REQ||alphaNumUnderscore"
-                     [stlLabel]="lang.name" [(ngModel)]="templateModel.name" [maxlength]="config.maxLength.name">
-            </div>
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.notification.channelAlias}}</label>
-              <stl-input-typeahead [optionList]="channels" name="channelAlias" returnField="alias"
-                                   labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
-                                   [(ngModel)]="templateModel.channelAlias" (ngModelChange)="onChannelChange()" >
-              </stl-input-typeahead>
-            </div>
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.notification.eventAlias}}</label>
-              <stl-input-typeahead [optionList]="events" name="eventAlias" returnField="alias"
-                                   labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
-                                   [(ngModel)]="templateModel.eventAlias" (ngModelChange)="onEventChange()">
-              </stl-input-typeahead>
-            </div>
-            <div class="form-group col-md-3">
-              <label class="label">{{lang.status}}</label>
-              <div>
-                <ui-switch [(ngModel)]="status" size="small" name="status"></ui-switch>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12" *ngIf="templateModel.dateRange">
-              <stl-input-daterange [(ngModel)]="templateModel.dateRange" name="dateRange"></stl-input-daterange>
-            </div>
-          </div>
-          <accordion *ngIf="languages">
-            <accordion-group [(isOpen)]="templateContent[i].selected" [isDisabled]="i === 0"
-                             *ngFor="let language of languages; index as i">
-              <div accordion-heading>
-                <input type="checkbox" [hidden]="i === 0" name="language" [(ngModel)]="templateContent[i].selected"/>
-                {{lang.notification.templateContent + language.name + ' ' + lang.notification.language}}
-              </div>
-              <div *ngIf="templateContent[i].selected">
-                <div class="row" *ngIf="templateModel.channelAlias !== 'SMS'">
-                  <div class="form-group col-md-6">
-                    <label class="required-label">{{lang.notification.subject}}</label>
-                    <div>
-                      <textarea class="form-control" id="subject[{{language.alias}}]" name="subject[{{language.alias}}]" stlValidate="REQ"
-                        [stlLabel]="lang.notification.subject" [(ngModel)]="templateContent[i].subject"
-                        [maxlength]="config.maxLength.maxName"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label class="label">{{lang.notification.messageTag}}</label>
-                    <div>
-                      <stl-input-typeahead [optionList]="defaultParamNameList" id="messageTag[{{language.alias}}]" name="messageTag[{{language.alias}}]" returnField="id" labelField="text" valueField="id" sortOptions="true" [label]="lang.selectOption" [(ngModel)]="eventTagModel[language.alias]" (ngModelChange)="onTagSelect(language.alias)">
-                      </stl-input-typeahead>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label class="label">{{lang.notification.imageTag}}</label>
-                    <div>
-                      <stl-input-typeahead [optionList]="images" id="imageTag[{{language.alias}}]" name="imageTag[{{language.alias}}]" returnField="alias" labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption" [(ngModel)]="imageRefId[language.alias]" (ngModelChange)="onImageSelect(language.alias)">
-                      </stl-input-typeahead>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-12">
-                    <label class="required-label">{{lang.notification.content}}</label>
-                    <div>
-                      <ckeditor editorUrl="./assets/vendor/ckeditor/ckeditor.js" (dataChange)="onDataChanged(i, language.alias)"
-                                [(data)]="templateContent[i].content" (ready)="onReady($event, language.alias)"
-                                (blur)="onBlurCkEditor(i, language.alias)" id="content[{{language.alias}}]">
-                      </ckeditor>
-                      <span *ngIf="invalidContent[language.alias]" class="text-danger error-span">
-                        {{lang.errors.REQ.replace('LABEL', lang.notification.content) }}</span>
-                      <span *ngIf="maxContent[language.alias]" class="text-danger error-span">
-                        {{ lang.errors.maxLength
-                              .replace('LABEL', lang.notification.content)
-                              .replace('NO_OF_CHARACTERS', config.maxLength.maxText) }}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="templateModel.channelAlias === 'SMS'">
-                  <div class="form-group col-md-3">
-                    <label class="label">{{lang.notification.messageTag}}</label>
-                    <div>
-                      <stl-input-typeahead [optionList]="defaultParamNameList" name="messageTagSMS" returnField="id"
-                                           labelField="text" valueField="id" sortOptions="true" [label]="lang.selectOption"
-                                           [(ngModel)]="eventTagModel[language.alias]" (ngModelChange)="onTagSelectSMS(i, language.alias)">
-                      </stl-input-typeahead>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-12">
-                    <label class="required-label">{{lang.notification.content}}</label>
-                    <div>
-                        <textarea rows="5" style="width:100%;" [(ngModel)]="templateContent[i].content"
-                                  name="content[{{language.alias}}]" [maxlength]="config.maxLength.maxText">
-                        </textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </accordion-group>
-          </accordion>
-          <div class="clearfix">&nbsp;</div>
-          <div class="row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary"
-                      [disabled]="!createTemplate.form.valid">{{lang.create}}</button>
-              <button class="btn btn-primary" routerLink="/notification/search_template"  type="button"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
-            </div>
-          </div>
-          <div class="clearfix">&nbsp;</div>
-        </form>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Add Job Opening</h1>
       </div>
+      <!-- <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Project Edit</li>
+        </ol>
+      </div> -->
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-secondary">
+        <div class="card-header">
+          <h3 class="card-title">General</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="inputName">Posting Title</label>
+            <input type="text" id="inputName" class="form-control" value="">
+          </div>
+          <div class="form-group">
+            <label for="inputStatus">Job Status</label>
+            <select class="form-control custom-select">
+              <option selected="">Draft</option>
+              <option>Open</option>
+              <option>OnHold</option>
+              <option>Filled</option>
+              <option>Canceled</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputlead">Hiring Lead</label>
+            <select class="form-control custom-select">
+              <option selected="">Select One</option>
+              <option>Maulik Shah</option>
+              <option>sanjay Madhu</option>
+              <option>Pankti Joshipura</option>
+              <option>Ajay Iyer</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inputDept">Department</label>
+            <select class="form-control custom-select">
+              <option selected="">Select One</option>
+              <option>TU</option>
+              <option>SU</option>
+              <option>DU</option>
+              <option>HR</option>
+              <option>Admin</option>
+              <option>Finance</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmpType">Employee Type</label>
+            <select class="form-control custom-select">
+              <option selected="">Select One</option>
+              <option>Full Time</option>
+              <option>Part Time</option>
+              <option>Intern</option>
+              <option>Contractor</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="MinExp">Minimum Experience</label>
+            <input type="number" id="inputExp" class="form-control" value="">
+          </div>
+          
+          <div class="form-group">
+            <label for="inputDescription">Job Description</label>
+            <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputLocation">Location</label>
+            <select class="form-control custom-select">
+              <option selected="">Ahmedabad,India</option>
+              <option>Pune,India</option>
+              <option>Delhi,India</option>
+              <option>London,US</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputCompo">Compensation</label>
+            <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <div class="col-md-6">
+      <div class="card card-secondary">
+        <div class="card-header">
+          <h3 class="card-title">Skills</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div id="dynamicContainer" class="form-group">
+            <table id="dataTable" width="100%">
+              <thead>
+                <tr>
+                  <th>Skill Type</th>
+                  <th>Skill</th>
+                  <th>Minimum Experience</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>
+                          <select [(ngModel)]="selectedSkill" class="form-control custom-select">
+                              <option selected="">MinimumSkill</option>
+                              <option>PreferredSkill</option>
+                            </select>
+                      </td>
+                      <td> <input type="text" id="skillset" class="form-control" value=""> </td>
+                     <td><input type="number" id="inputExpSkill" class="form-control" value=""></td>
+                      <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="form-group">
+              <button type="button" class="btn btn-success float-right" (click)="addNewSkills()">Add</button>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+      <div class="card card-info">
+        <div class="card-header">
+          <h3 class="card-title">Questions</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Questions</th>
+                <th>Is Mandatory</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>Resume</td>
+                <td><ui-switch [(ngModel)]="resume" size="small" name="resume"></ui-switch></td>
+              </tr>
+              <tr>
+                <td>Desired Salary</td>
+                <td><ui-switch [(ngModel)]="desiredSalary" size="small" name="desiredSalary"></ui-switch></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-success float-right" >Add Custom Questions</button>
+        </div>
+        <!-- /.card-body -->
+      </div>
+
+      <div class="card card-secondary">
+          <div class="card-header">
+            <h3 class="card-title">Interview Type</h3>
+  
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <table id="dataTable" width="100%">
+                <thead>
+                  <tr>
+                    <th>Interview Type</th>
+                    <th>Order</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select class="form-control custom-select">
+                                <option selected="">Screening</option>
+                                <option>Audio</option>
+                                <option>Vedio</option>
+                                <option>Apptitude</option>
+                              </select>
+                        </td>
+                        <td><input type="number" id="inputExpSkill" class="form-control" value=""></td>
+                        <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success float-right" >Add</button>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+
+      <!-- /.card -->
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-12">
+      <a href="#" class="btn btn-secondary">Cancel</a>
+      <input type="submit" value="Save Changes" class="btn btn-success float-right">
+    </div>
+  </div>
+</section>
+<!-- /.content -->
