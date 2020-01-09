@@ -9,18 +9,27 @@
                 <form #searchTemplate="ngForm" (ngSubmit)="onSubmit (searchTemplate.form.valid)">
                     <div class="row ">
                         
-                        <div class="form-group col-md-3">
-                            <label class="label">Location</label>   
+                        <div class="form-group col-md-3">   
                             
                             <!--<stl-input-typeahead [optionList]="events" [label]="lang.selectOption"> 
                             </stl-input-typeahead>
                             
-                            {{events | json}} -->   
+                            {{events | json}}    -->
 
-                            <stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
+                            <div class="form-group">
+                                <label for="inputStatus">Location</label>
+                                <select class="form-control custom-select" [(ngModel)]="loc">
+                                  <option selected="" disabled="">Select one</option>
+                                  <option>India</option>
+                                  <option>USA</option>
+                                  <option>UK</option>
+                                </select>
+                              </div>
+
+                            <!--<stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
                                        [(ngModel)]="jobRequest.location">
-                            </stl-input-typeahead>
+                            </stl-input-typeahead>-->
                             
                         </div>
 

@@ -29,6 +29,7 @@ export class TemplateSearchComponent extends MasterComponent{
     searched = false;
     templateList = [];
     pageOfItems: Array<any>;
+    loc = '';
     
     constructor(public service: NotificationService) {
       super();
@@ -52,22 +53,25 @@ export class TemplateSearchComponent extends MasterComponent{
       this.manageDestroy();
     }
 
+   
+
     onSubmit(isValid: boolean) {
       this.totalItems = 0;
       this.pagination = Object.assign({}, PaginationConfig);
       this.templateList = [];
       this.jobs = [];
      
-      this.job.candidateCount = 2;
+      /*this.job.candidateCount = 2;
       this.job.hiringLead = 'Anish Parekh';
       this.job.status = 'Open';
       this.job.jobOpening ='Software Engineer';
       this.jobs.push(this.job);
       this.searched = true;
-      this.totalItems = this.jobs.length;
+      this.totalItems = this.jobs.length;*/
+      
      
       
-      /*this.service.searchJob(this.jobRequest)
+      this.service.searchJob(this.jobRequest)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(res => {
           this.searched = true;
@@ -76,7 +80,7 @@ export class TemplateSearchComponent extends MasterComponent{
             this.totalItems = res.length;
             this.jobs = res;    
           }
-        });*/
+        });
     }   
 
     resetSearch() {

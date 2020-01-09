@@ -38,7 +38,7 @@ export class NotificationService {
     if(jobRequest.title != null && jobRequest.title != "")
         queryParam = queryParam + '&title='+jobRequest.title;
     console.log("Template Model QueryParam  : == " + queryParam);
-  return this._service.fetch('GET_FILTERED_TEMPLATE', null);
+  return this._service.fetch('GET_FILTERED_TEMPLATE', queryParam);
   }
 
   loadConfiguration(configurationData) {
