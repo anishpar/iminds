@@ -129,7 +129,7 @@
               <tbody>
                   <tr>
                       <td>
-                          <select [(ngModel)]="selectedSkill" class="form-control custom-select">
+                          <select class="form-control custom-select">
                               <option selected="">MinimumSkill</option>
                               <option>PreferredSkill</option>
                             </select>
@@ -142,7 +142,7 @@
             </table>
           </div>
           <div class="form-group">
-              <button type="button" class="btn btn-success float-right" (click)="addNewSkills()">Add</button>
+              <button type="button" class="btn btn-success float-right" >Add</button>
           </div>
         </div>
         <!-- /.card-body -->
@@ -169,11 +169,11 @@
 
               <tr>
                 <td>Resume</td>
-                <td><ui-switch [(ngModel)]="resume" size="small" name="resume"></ui-switch></td>
+                <td><ui-switch size="small" name="resume"></ui-switch></td>
               </tr>
               <tr>
                 <td>Desired Salary</td>
-                <td><ui-switch [(ngModel)]="desiredSalary" size="small" name="desiredSalary"></ui-switch></td>
+                <td><ui-switch size="small" name="desiredSalary"></ui-switch></td>
               </tr>
             </tbody>
           </table>
