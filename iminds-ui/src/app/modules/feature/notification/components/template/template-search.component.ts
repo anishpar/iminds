@@ -4,6 +4,7 @@ import { NotificationService } from '../../services/notification.service';
 import { TemplateModel } from '../../models/template.model';
 import { Location } from '../../models/location.model';
 import { Job } from '../../models/job.model';
+import { JobRequest } from '../../models/job.request.model';
 import { takeUntil } from 'rxjs/operators';
 import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagination.config';
 
@@ -21,6 +22,7 @@ export class TemplateSearchComponent extends MasterComponent{
     channels = [];
     jobs = [];
     job = new Job();
+    jobRequest = new JobRequest();
     events = [];
     pagination;
     totalItems;
@@ -54,6 +56,7 @@ export class TemplateSearchComponent extends MasterComponent{
       this.totalItems = 0;
       this.pagination = Object.assign({}, PaginationConfig);
       this.templateList = [];
+      this.jobs = [];
      
       this.job.candidateCount = 2;
       this.job.hiringLead = 'Anish Parekh';
@@ -64,14 +67,14 @@ export class TemplateSearchComponent extends MasterComponent{
       this.totalItems = this.jobs.length;
      
       
-      /*this.service.searchTemplate(this.templateModel)
+      /*this.service.searchJob(this.jobRequest)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(res => {
           this.searched = true;
   
-          if (this.templateList) {
+          if (this.jobs) {
             this.totalItems = res.length;
-            this.templateList = res;    
+            this.jobs = res;    
           }
         });*/
     }   
