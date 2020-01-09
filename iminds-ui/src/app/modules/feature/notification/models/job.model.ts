@@ -2,9 +2,9 @@
 
 export class Job {
     public candidateCount: number;
-    public jobOpening: String;
+    public title: String;
     public hiringLead: String;
-    public createdOn: String;
+    public creationDate: String;
     public status: String;
 
 }
