@@ -38,7 +38,7 @@ public class CandidateServiceImpl implements CandidateService{
 	DBManager dbManager;
 	
 	public List<CandidatesDTO> searchCandidate() {
-		String strMethodName = "viewJobOpenings";
+		String strMethodName = "searchCandidate";
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 		
 		String strQuery = "SELECT C.CANDIDATEID,C.CANDIDATENAME,C.EMAIL,C.MOBILE,C.STATUS,C.RATING,C.CREATIONDATE,C.LASTMODIFIEDDATE,CJ.JOBOPENINGID,JO.TITLE FROM TBLMCANDIDATES C,TBLMCANDIDATEJOBREL CJ, TBLMJOBOPENING JO WHERE C.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID";

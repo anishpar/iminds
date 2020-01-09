@@ -1,5 +1,7 @@
 package com.stl.iminds.jobs.service;
 
+import java.util.List;
+
 import com.stl.iminds.jobs.resource.JobOpeningsDTO;
 
 public interface JobService {
@@ -9,5 +11,7 @@ public interface JobService {
 	public JobOpeningsDTO updateJobOpenings(Long jobOpeningId, JobOpeningsDTO jobOpeningsDTO);
 	
 	public JobOpeningsDTO viewJobOpenings(Long jobOpeningId);
+	
+	public List<JobOpeningsDTO> searchJobOpenings(String location, String title);
 
 }

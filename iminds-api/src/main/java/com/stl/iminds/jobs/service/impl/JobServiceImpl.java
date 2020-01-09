@@ -1,5 +1,11 @@
 package com.stl.iminds.jobs.service.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +13,14 @@ import org.springframework.stereotype.Service;
 
 import com.stl.core.base.logger.ILogger;
 import com.stl.core.base.logger.LogManager;
+import com.stl.core.commons.db.DBManager;
 import com.stl.core.commons.exception.STLExceptionHelper;
+import com.stl.iminds.cache.constant.CacheConstant;
+import com.stl.iminds.candidate.resource.CandidatesDTO;
 import com.stl.iminds.commons.exception.BusinessExceptionType;
 import com.stl.iminds.commons.exception.NotificationEntityType;
 import com.stl.iminds.commons.exception.NotificationException;
+import com.stl.iminds.commons.exception.TechnicalExceptionType;
 import com.stl.iminds.commons.security.utils.CommonConstant;
 import com.stl.iminds.commons.utils.CommonUtility;
 import com.stl.iminds.jobs.mapper.JobMapper;
@@ -27,6 +37,9 @@ public class JobServiceImpl implements JobService{
 	
 	@Autowired
 	JobRepository jobRepository;
+	
+	@Autowired
+	DBManager dbManager;
 	
 	@Override
 	public JobOpeningsDTO createJobOpenings(JobOpeningsDTO jobOpeningsDTO) {
@@ -159,5 +172,42 @@ public class JobServiceImpl implements JobService{
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
 		return jobOpeningsDTO;
+	}
+	
+	@Override
+	public List<JobOpeningsDTO> searchJobOpenings(String location, String title) {
+		String strMethodName = "searchJobOpenings";
+		List<JobOpeningsDTO> listSearchJobOpenings = new ArrayList();
+		
+	
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
+		
+		String strQuery = "SELECT JO.HIRINGLEAD,JO.CREATIONDATE,JO.TITLE FROM TBLMJOBOPENING JO ";
+		
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery);
+				ResultSet rs = pStmt.executeQuery())
+		{
+				while(rs.next()) {
+					JobOpeningsDTO jobOpeningsDTO =new JobOpeningsDTO();
+					jobOpeningsDTO.setHiringLead(rs.getString("HIRINGLEAD"));
+					jobOpeningsDTO.setTitle(rs.getString("TITLE"));
+					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
+					listSearchJobOpenings.add(jobOpeningsDTO);
+				}
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+		
+
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job searched successfully with data : "+ listSearchJobOpenings);
+		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
+		
+		return listSearchJobOpenings;
 	}
 }

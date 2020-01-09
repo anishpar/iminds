@@ -1,5 +1,7 @@
 package com.stl.iminds.jobs.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stl.core.base.logger.ILogger;
@@ -81,6 +84,24 @@ public class JobController {
 			
 			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 			JobOpeningsDTO jobOpeningsResp= jobService.viewJobOpenings(id);
+			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, jobOpeningsResp);
+		}catch(STLException e) {
+			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
+			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
+		}
+	}
+    
+    /**
+	 * End-point for Searching new job opening
+	 * @return Response with JobOpeningsDTO	 
+	 */    
+    @GetMapping("/")
+	public Response<List<JobOpeningsDTO>> searchJobOpenings(@RequestParam("location") String location,@RequestParam("title") String title) {
+		String strMethodName = "searchJobOpenings";
+		try {
+			
+			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
+			List<JobOpeningsDTO> jobOpeningsResp= jobService.searchJobOpenings(location,title);
 			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, jobOpeningsResp);
 		}catch(STLException e) {
 			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
