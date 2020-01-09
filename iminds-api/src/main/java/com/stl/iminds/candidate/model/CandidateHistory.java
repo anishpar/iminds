@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,8 +23,6 @@ public class CandidateHistory implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATEHISTORY")
 	private Long candidatehistoryid;
 	
-	private Long candidateId;
-	
 	private Date creationDate;
 	
 	private String event;
@@ -32,6 +32,10 @@ public class CandidateHistory implements Serializable {
 	private String newValue; 
 	
 	private String description;
+	
+	@ManyToOne
+    @JoinColumn(name="candidateId", nullable=false)
+	private Candidates candidate;
 	
 	/**
 	 * @return the candidatehistoryid
@@ -44,18 +48,6 @@ public class CandidateHistory implements Serializable {
 	 */
 	public void setCandidatehistoryid(Long candidatehistoryid) {
 		this.candidatehistoryid = candidatehistoryid;
-	}
-	/**
-	 * @return the candidateId
-	 */
-	public Long getCandidateId() {
-		return candidateId;
-	}
-	/**
-	 * @param candidateId the candidateId to set
-	 */
-	public void setCandidateId(Long candidateId) {
-		this.candidateId = candidateId;
 	}
 	/**
 	 * @return the creationDate
@@ -118,13 +110,24 @@ public class CandidateHistory implements Serializable {
 		this.description = description;
 	}
 	
+	
+	/**
+	 * @return the candidate
+	 */
+	public Candidates getCandidate() {
+		return candidate;
+	}
+	/**
+	 * @param candidate the candidate to set
+	 */
+	public void setCandidate(Candidates candidate) {
+		this.candidate = candidate;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("CandidateHistory [candidatehistoryid=");
 		builder.append(candidatehistoryid);
-		builder.append(", candidateId=");
-		builder.append(candidateId);
 		builder.append(", creationDate=");
 		builder.append(creationDate);
 		builder.append(", event=");

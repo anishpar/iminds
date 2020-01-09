@@ -22,7 +22,7 @@ import com.stl.iminds.jobs.service.JobService;
 @Service
 public class JobServiceImpl implements JobService{
 	
-	private static final String CLASSNAME = "CommunicationMessageServiceImpl";
+	private static final String CLASSNAME = "JobServiceImpl";
 	private static final ILogger LOGGER = LogManager.getLogger();
 	
 	@Autowired

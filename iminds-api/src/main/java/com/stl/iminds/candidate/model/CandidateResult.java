@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,8 +22,6 @@ public class CandidateResult implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATERESULT")
 	private Long candidateresultid;
 	
-	private Long candidateId;
-	
 	private Long jobOpeningId;
 	
 	private Long interviewtypeId;
@@ -31,6 +31,11 @@ public class CandidateResult implements Serializable {
 	private String recording;
 	
 	private String formatType;
+	
+	@ManyToOne
+    @JoinColumn(name="candidateId", nullable=false)
+	private Candidates candidate;
+	
 	/**
 	 * @return the candidateresultid
 	 */
@@ -42,18 +47,6 @@ public class CandidateResult implements Serializable {
 	 */
 	public void setCandidateresultid(Long candidateresultid) {
 		this.candidateresultid = candidateresultid;
-	}
-	/**
-	 * @return the candidateId
-	 */
-	public Long getCandidateId() {
-		return candidateId;
-	}
-	/**
-	 * @param candidateId the candidateId to set
-	 */
-	public void setCandidateId(Long candidateId) {
-		this.candidateId = candidateId;
 	}
 	/**
 	 * @return the jobOpeningId
@@ -115,13 +108,24 @@ public class CandidateResult implements Serializable {
 	public void setFormatType(String formatType) {
 		this.formatType = formatType;
 	}
+	
+	/**
+	 * @return the candidate
+	 */
+	public Candidates getCandidate() {
+		return candidate;
+	}
+	/**
+	 * @param candidate the candidate to set
+	 */
+	public void setCandidate(Candidates candidate) {
+		this.candidate = candidate;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("CandidateResult [candidateresultid=");
 		builder.append(candidateresultid);
-		builder.append(", candidateId=");
-		builder.append(candidateId);
 		builder.append(", jobOpeningId=");
 		builder.append(jobOpeningId);
 		builder.append(", interviewtypeId=");

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,9 +22,11 @@ public class CandidateJobRel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATEJOBREL")
 	private Long candidatejobrelid;
 	
-	private Long candidateId;
-	
 	private Long jobOpeningId;
+	
+	@ManyToOne
+    @JoinColumn(name="candidateId", nullable=false)
+	private Candidates candidate;
 	
 	/**
 	 * @return the candidatejobrelid
@@ -37,16 +41,16 @@ public class CandidateJobRel implements Serializable {
 		this.candidatejobrelid = candidatejobrelid;
 	}
 	/**
-	 * @return the candidateId
+	 * @return the candidate
 	 */
-	public Long getCandidateId() {
-		return candidateId;
+	public Candidates getCandidate() {
+		return candidate;
 	}
 	/**
-	 * @param candidateId the candidateId to set
+	 * @param candidate the candidate to set
 	 */
-	public void setCandidateId(Long candidateId) {
-		this.candidateId = candidateId;
+	public void setCandidate(Candidates candidate) {
+		this.candidate = candidate;
 	}
 	/**
 	 * @return the jobOpeningId
@@ -65,8 +69,6 @@ public class CandidateJobRel implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("CandidateJobRel [candidatejobrelid=");
 		builder.append(candidatejobrelid);
-		builder.append(", candidateId=");
-		builder.append(candidateId);
 		builder.append(", jobOpeningId=");
 		builder.append(jobOpeningId);
 		builder.append("]");

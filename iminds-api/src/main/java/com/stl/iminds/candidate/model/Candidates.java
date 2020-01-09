@@ -2,11 +2,15 @@ package com.stl.iminds.candidate.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -21,13 +25,14 @@ public class Candidates implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATES")
 	private Long candidateid;
 	
-	private String name;
+	private String candidatename;
 	
 	private String email;
 	
 	private String mobile;
 	
-	private String resume;
+	@Lob
+	private String candidateresume;
 	
 	private String status;
 	
@@ -36,6 +41,21 @@ public class Candidates implements Serializable {
 	private Date creationDate;
 	
 	private Date lastModifiedDate;
+	
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<CandidateSkills> candidateSkills;
+	
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<CandidateQuestions> candidateQuestions;
+	
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<CandidateJobRel> candidateJobRel;
+	
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<CandidateResult> candidateResults;
+	
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<CandidateHistory> candidateHistory;
 	
 	/**
 	 * @return the candidateid
@@ -52,14 +72,14 @@ public class Candidates implements Serializable {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getCandidateName() {
+		return candidatename;
 	}
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setCandidateName(String candidatename) {
+		this.candidatename = candidatename;
 	}
 	/**
 	 * @return the email
@@ -88,14 +108,14 @@ public class Candidates implements Serializable {
 	/**
 	 * @return the resume
 	 */
-	public String getResume() {
-		return resume;
+	public String getCandidateResume() {
+		return candidateresume;
 	}
 	/**
 	 * @param resume the resume to set
 	 */
-	public void setResume(String resume) {
-		this.resume = resume;
+	public void setCandidateResume(String candidateresume) {
+		this.candidateresume = candidateresume;
 	}
 	/**
 	 * @return the status
@@ -145,20 +165,80 @@ public class Candidates implements Serializable {
 	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
+	/**
+	 * @return the candidateSkills
+	 */
+	public List<CandidateSkills> getCandidateSkills() {
+		return candidateSkills;
+	}
+	/**
+	 * @param candidateSkills the candidateSkills to set
+	 */
+	public void setCandidateSkills(List<CandidateSkills> candidateSkills) {
+		this.candidateSkills = candidateSkills;
+	}
+	/**
+	 * @return the candidateQuestions
+	 */
+	public List<CandidateQuestions> getCandidateQuestions() {
+		return candidateQuestions;
+	}
+	/**
+	 * @param candidateQuestions the candidateQuestions to set
+	 */
+	public void setCandidateQuestions(List<CandidateQuestions> candidateQuestions) {
+		this.candidateQuestions = candidateQuestions;
+	}
+	/**
+	 * @return the candidateJobRel
+	 */
+	public List<CandidateJobRel> getCandidateJobRel() {
+		return candidateJobRel;
+	}
+	/**
+	 * @param candidateJobRel the candidateJobRel to set
+	 */
+	public void setCandidateJobRel(List<CandidateJobRel> candidateJobRel) {
+		this.candidateJobRel = candidateJobRel;
+	}
+	/**
+	 * @return the candidateResults
+	 */
+	public List<CandidateResult> getCandidateResults() {
+		return candidateResults;
+	}
+	/**
+	 * @param candidateResults the candidateResults to set
+	 */
+	public void setCandidateResults(List<CandidateResult> candidateResults) {
+		this.candidateResults = candidateResults;
+	}
+	/**
+	 * @return the candidateHistory
+	 */
+	public List<CandidateHistory> getCandidateHistory() {
+		return candidateHistory;
+	}
+	/**
+	 * @param candidateHistory the candidateHistory to set
+	 */
+	public void setCandidateHistory(List<CandidateHistory> candidateHistory) {
+		this.candidateHistory = candidateHistory;
+	}
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Candidates [candidateid=");
 		builder.append(candidateid);
-		builder.append(", name=");
-		builder.append(name);
+		builder.append(", candidatename=");
+		builder.append(candidatename);
 		builder.append(", email=");
 		builder.append(email);
 		builder.append(", mobile=");
 		builder.append(mobile);
-		builder.append(", resume=");
-		builder.append(resume);
+		builder.append(", candidateresume=");
+		builder.append(candidateresume);
 		builder.append(", status=");
 		builder.append(status);
 		builder.append(", rating=");
@@ -167,6 +247,16 @@ public class Candidates implements Serializable {
 		builder.append(creationDate);
 		builder.append(", lastModifiedDate=");
 		builder.append(lastModifiedDate);
+		builder.append(", candidateSkills=");
+		builder.append(candidateSkills);
+		builder.append(", candidateQuestions=");
+		builder.append(candidateQuestions);
+		builder.append(", candidateJobRel=");
+		builder.append(candidateJobRel);
+		builder.append(", candidateResults=");
+		builder.append(candidateResults);
+		builder.append(", candidateHistory=");
+		builder.append(candidateHistory);
 		builder.append("]");
 		return builder.toString();
 	}

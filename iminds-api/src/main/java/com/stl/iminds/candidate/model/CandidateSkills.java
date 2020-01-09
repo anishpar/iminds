@@ -6,8 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.stl.iminds.jobs.model.JobOpening;
 
 @Entity
 @Table(name = "TBLMCANDIDATESKILLS")
@@ -20,13 +24,15 @@ public class CandidateSkills implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CANDIDATESKILLS")
 	private Long candidateskillid;
 	
-	private Long candidateId;
-	
 	private Long jobSkillId;
 	
 	private String description;
 	
 	private Long experience;
+
+	@ManyToOne
+    @JoinColumn(name="candidateId", nullable=false)
+	private Candidates candidate;
 
 	/**
 	 * @return the candidateskillid
@@ -40,20 +46,6 @@ public class CandidateSkills implements Serializable {
 	 */
 	public void setCandidateskillid(Long candidateskillid) {
 		this.candidateskillid = candidateskillid;
-	}
-
-	/**
-	 * @return the candidateId
-	 */
-	public Long getCandidateId() {
-		return candidateId;
-	}
-
-	/**
-	 * @param candidateId the candidateId to set
-	 */
-	public void setCandidateId(Long candidateId) {
-		this.candidateId = candidateId;
 	}
 
 	/**
@@ -97,14 +89,26 @@ public class CandidateSkills implements Serializable {
 	public void setExperience(Long experience) {
 		this.experience = experience;
 	}
+	
+	/**
+	 * @return the candidate
+	 */
+	public Candidates getCandidate() {
+		return candidate;
+	}
+
+	/**
+	 * @param candidate the candidate to set
+	 */
+	public void setCandidate(Candidates candidate) {
+		this.candidate = candidate;
+	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("CandidateSkills [candidateskillid=");
 		builder.append(candidateskillid);
-		builder.append(", candidateId=");
-		builder.append(candidateId);
 		builder.append(", jobSkillId=");
 		builder.append(jobSkillId);
 		builder.append(", description=");
