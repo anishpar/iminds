@@ -1,198 +1,170 @@
-                        
-                    
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
-    <h2 class="h3 mb-0">{{ lang.sampleFormTitle }}</h2>
-</div>
-
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-
-
-            <div class="panel-body">
-
-                <div class="row">
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.customer.custNumber}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.customer.userName}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                       MT023321
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.customer.lco}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
-                    </div>
-                    <div class="clearfix"></div>
-        
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">Phone number</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                       9856231458
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">email</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                       email@gmal.com
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">Altername Contact No</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        123589634
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">Counry</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">State</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                       MT023321
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">City</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
-                    </div>
-                    <div class="clearfix"></div>                                        
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">Zipcode</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">Landmark</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                       MT023321
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.customer.lco}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{ customerAccNoDisplay ? customerAccNoDisplay : config.emptyString }}
-                    </div>
-                    <div class="clearfix"></div>                    
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.customer.name}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                       John Doe
-                    </div>
-                </div>
-
-                <form #editPersForm="ngForm" (ngSubmit)="onSubmit(editPersForm.form.valid)">
-                    <div class="row">
-
-                        <div class="col-sm-12">
-                            <h5 class="page-header  text-gray-800">{{lang.contactDetails}}</h5>
-                        </div>
-
-                        <!-- <div class="form-group col-md-12">
-                            <label class="required-label">Expression</label>
-                        <stl-expression-builder  [paramList]="defaultParamNameList" [(ngModel)]="newexpression" name="bankName" required></stl-expression-builder>
-                        </div>
-
-                        <button type="button" (click)="newexpression=''">Rest</button> -->
-
-                        <!-- <button type="submit" class="btn btn-primary"
-                                [disabled]="!editPersForm.form.valid">{{lang.submit}}</button> -->
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.email}}</label>
-                            <input class="form-control" type="text" name="email" stlValidate="REQ||email"
-                                [stlLabel]="lang.email" [(ngModel)]="model.email" #email="ngModel">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.email}}</label>
-                            <stl-input-typeahead [optionList]="instituteList" [(ngModel)]="institute" name="institute" labelField="text"></stl-input-typeahead>
-                        </div>
-
-
-<!-- <div class="form-group col-md-3">
-    <label class="required-label">{{lang.email}}</label>
-    <stl-multi-select [items]="instituteList" [(ngModel)]="institute5" name="institute" [allowCustomInputs]="true"></stl-multi-select>
-</div>
-    <pre>{{institute5 | json}}</pre> -->
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.email}}</label>
-                            <input class="form-control" type="text" name="email1">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="required-label">Country</label>
-                            <select name="categoryName" class="form-control" multiple>
-                                <option value="">{{lang.selectOption}}</option>
-                                <option value="123">a1</option>
-                                <option value="124">a2</option>
-                                <option value="125">a3</option>
-                            </select>
-                        </div>l
-
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.email}}</label>
-                            <input class="form-control" type="text" name="email3">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.email}}</label>
-                            <input class="form-control" type="text" name="email4">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.email}}</label>
-                            <input class="form-control" type="text" name="email5">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.mobile}}</label>
-                            <input class="form-control" type="text" name="email6">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.mobile}}</label>
-                            <input type="text" class="form-control" name="mobile">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>{{lang.mobile}}</label>
-                            <input type="text" class="form-control" name="mobile" >
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <label class="required-label">{{lang.date}}</label>
-
-                            <stl-input-datepicker [(ngModel)]="paymentDateShow" name="paymentDate" required
-                                [onlyPast]="true" (ngModelChange)="selectionDone3($event)"></stl-input-datepicker>
-                        </div>
-                        <div class="clearfix">&nbsp;</div>
-                        {{paymentDateShow}}
-
-
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary"
-                                [disabled]="!editPersForm.form.valid">{{lang.submit}}</button>
-                            <button class="btn btn-default" onclick="window.history.back()"
-                                type="button">{{lang.cancel}}</button>
-                        </div>
-                    </div>
-                </form>
-
+<!-- Content Header (Page header) -->
+<section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>{{ lang.sampleFormTitle }}</h1>
             </div>
+            <!-- <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Project Edit</li>
+              </ol>
+            </div> -->
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">General</h3>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputName">Project Name</label>
+                  <input type="text" id="inputName" class="form-control" value="AdminLTE">
+                </div>
+                <div class="form-group">
+                  <label for="inputDescription">Project Description</label>
+                  <textarea id="inputDescription" class="form-control" rows="4">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</textarea>
+                </div>
+                <div class="form-group">
+                  <label for="inputStatus">Status</label>
+                  <select class="form-control custom-select">
+                    <option selected="" disabled="">Select one</option>
+                    <option>On Hold</option>
+                    <option>Canceled</option>
+                    <option selected="">Success</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputClientCompany">Client Company</label>
+                  <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">
+                </div>
+                <div class="form-group">
+                  <label for="inputProjectLeader">Project Leader</label>
+                  <input type="text" id="inputProjectLeader" class="form-control" value="Tony Chicken">
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <div class="col-md-6">
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Budget</h3>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="inputEstimatedBudget">Estimated budget</label>
+                  <input type="number" id="inputEstimatedBudget" class="form-control" value="2300" step="1">
+                </div>
+                <div class="form-group">
+                  <label for="inputSpentBudget">Total amount spent</label>
+                  <input type="number" id="inputSpentBudget" class="form-control" value="2000" step="1">
+                </div>
+                <div class="form-group">
+                  <label for="inputEstimatedDuration">Estimated project duration</label>
+                  <input type="number" id="inputEstimatedDuration" class="form-control" value="20" step="0.1">
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Files</h3>
+  
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>File Name</th>
+                      <th>File Size</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+  
+                    <tr>
+                      <td>Functional-requirements.docx</td>
+                      <td>49.8005 kb</td>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </div>
+                      </td>
+                    </tr><tr>
+                      <td>UAT.pdf</td>
+                      <td>28.4883 kb</td>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </div>
+                      </td>
+                    </tr><tr>
+                      <td>Email-from-flatbal.mln</td>
+                      <td>57.9003 kb</td>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </div>
+                      </td>
+                    </tr><tr>
+                      <td>Logo.png</td>
+                      <td>50.5190 kb</td>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </div>
+                      </td>
+                    </tr><tr>
+                      <td>Contract-10_12_2014.docx</td>
+                      <td>44.9715 kb</td>
+                      <td class="text-right py-0 align-middle">
+                        <div class="btn-group btn-group-sm">
+                          <a href="#" class="btn btn-info"><i class="fas fa-eye"></i></a>
+                          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </div>
+                      </td>
+  
+                  </tr></tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
-    </div>
-</div>
+        <div class="row">
+          <div class="col-12">
+            <a href="#" class="btn btn-secondary">Cancel</a>
+            <input type="submit" value="Save Changes" class="btn btn-success float-right">
+          </div>
+        </div>
+      </section>
+      <!-- /.content -->

@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/OpenSans/Regular/OpenSans-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/OpenSans/Regular/OpenSans-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/OpenSans/Regular/OpenSans-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/OpenSans/Regular/OpenSans-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/OpenSans/Regular/OpenSans-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/OpenSans/Regular/OpenSans-Regular.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url('../fonts/OpenSans/Semibold/OpenSans-Semibold.eot');
+    /* IE9 Compat Modes */
+    src: url('../fonts/OpenSans/Semibold/OpenSans-Semibold.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/OpenSans/Semibold/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/OpenSans/Semibold/OpenSans-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/OpenSans/Semibold/OpenSans-Semibold.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/OpenSans/Semibold/OpenSans-Semibold.svg#svgFontName') format('svg');
+    /* Legacy iOS */
+}
+
+body {
+    background-color: #f8f8f8;
+    overflow-x: hidden;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 13px;
+    color: #000;
+}
+
+
+
+.wrapper { width: 90%; margin: 0 auto;}
+.content-wrapper { padding: 10px 20px;}
+
+a {
+    color: #032e35;
+    text-decoration: none;
+    background-color: transparent;
+}
+.navbar-light .navbar-nav .nav-link{
+    color: #fff;
+}
