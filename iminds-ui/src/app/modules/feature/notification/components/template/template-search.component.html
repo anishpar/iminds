@@ -14,7 +14,7 @@
                             <!--<stl-input-typeahead [optionList]="events" [label]="lang.selectOption"> 
                             </stl-input-typeahead>
                             
-                            {{events | json}}    -->
+                            {{events | json}}   
 
                             <div class="form-group">
                                 <label for="inputStatus">Location</label>
@@ -24,18 +24,18 @@
                                   <option>USA</option>
                                   <option>UK</option>
                                 </select>
-                              </div>
-
-                            <!--<stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
+                              </div> -->
+                            <label class="label">Location</label>  
+                            <stl-input-typeahead [optionList]="locations" id="alias" name="alias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
                                        [(ngModel)]="jobRequest.location">
-                            </stl-input-typeahead>-->
+                            </stl-input-typeahead>
                             
                         </div>
 
                         <div class="form-group col-md-3">
                         <label class="label">Title</label>                      
-                        <stl-input-typeahead [optionList]="events" id="alias" name="alias" returnField="alias"
+                        <stl-input-typeahead [optionList]="titles" id="alias" name="alias" returnField="alias"
                                        labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
                                        [(ngModel)]="jobRequest.title" >
                         </stl-input-typeahead>

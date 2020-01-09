@@ -34,7 +34,7 @@ export const APIConfigurations = {
         'GET_ACCESS': 'customer/menu/loadUserMenuById/',
         'LOG_ERROR': 'uiLog/print/',
         'LOAD_CONFIGURATION': 'loadConfiguration',
-        'GET_FILTERED_TEMPLATE' : 'job/',
+        'GET_FILTERED_TEMPLATE' : 'job/search',
         'EVENT_TEMPLATE_CONFIGURATION' : 'templateRelation',
         'GET_EVENT_TAGS' : 'eventTag',
         'GET_REMAINING_EVENTS':'templateRelation/nonAssociatedEvent/',

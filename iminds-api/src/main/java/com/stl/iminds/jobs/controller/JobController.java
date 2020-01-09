@@ -97,7 +97,7 @@ public class JobController {
 	 * End-point for Searching new job opening
 	 * @return Response with JobOpeningsDTO	 
 	 */    
-    @GetMapping("/")
+    @GetMapping("/search")
 	public Response<List<JobOpeningsDTO>> searchJobOpenings(
 			@RequestParam(value = "location", required = false) String location,
 			@RequestParam(value = "title", required = false) String title) {

@@ -4,6 +4,7 @@ import { NotificationService } from '../../services/notification.service';
 import { TemplateModel } from '../../models/template.model';
 import { Location } from '../../models/location.model';
 import { Job } from '../../models/job.model';
+import { Title } from '../../models/title.model';
 import { JobRequest } from '../../models/job.request.model';
 import { takeUntil } from 'rxjs/operators';
 import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagination.config';
@@ -20,10 +21,15 @@ export class TemplateSearchComponent extends MasterComponent{
     templateModel = new TemplateModel();
     location = new Location();
     channels = [];
+
     jobs = [];
     job = new Job();
+
+    title = new Title();
+    titles = [];
+
     jobRequest = new JobRequest();
-    events = [];
+    locations = [];
     pagination;
     totalItems;
     searched = false;
@@ -39,9 +45,30 @@ export class TemplateSearchComponent extends MasterComponent{
     ngOnInit() {
       this.location.name = 'India';
       this.location.alias = 'India';
-      this.location.eventalias = 'India';
-      this.events.push(this.location);
-      console.log('evetns :'+this.events);
+      this.locations.push(this.location);
+      this.location = new Location();
+      this.location.name = 'USA';
+      this.location.alias = 'USA';
+      this.locations.push(this.location);
+      this.location = new Location();
+      this.location.name = 'UK';
+      this.location.alias = 'UK';
+      this.locations.push(this.location);
+      console.log('evetns :'+this.locations);
+
+      this.title.name = 'Sr. Software Engineer';
+      this.title.alias = 'Sr. Software Engineer';
+      this.titles.push(this.title);
+      this.title = new Title();
+      this.title.name = 'Software Engineer';
+      this.title.alias = 'Software Engineer';
+      this.titles.push(this.title);
+      this.title = new Title();
+      this.title.name = 'Trainee';
+      this.title.alias = 'Trainee';
+      this.titles.push(this.title);
+      console.log('evetns :'+this.titles);
+  
     }
 
     onChangePage(pageOfItems: Array<any>) {
@@ -59,17 +86,7 @@ export class TemplateSearchComponent extends MasterComponent{
       this.totalItems = 0;
       this.pagination = Object.assign({}, PaginationConfig);
       this.templateList = [];
-      this.jobs = [];
-     
-      /*this.job.candidateCount = 2;
-      this.job.hiringLead = 'Anish Parekh';
-      this.job.status = 'Open';
-      this.job.jobOpening ='Software Engineer';
-      this.jobs.push(this.job);
-      this.searched = true;
-      this.totalItems = this.jobs.length;*/
-      
-     
+      this.jobs = [];   
       
       this.service.searchJob(this.jobRequest)
         .pipe(takeUntil(this.onDestroy$))
@@ -84,11 +101,9 @@ export class TemplateSearchComponent extends MasterComponent{
     }   
 
     resetSearch() {
-      this.templateModel.name = '';
-      this.templateModel.eventAlias = '';
-      this.templateModel.channelAlias = '';
-      this.templateModel.status = this.lang.all;
+      this.jobRequest.location = '';
+      this.jobRequest.title = '';
       this.searched = false;
-      this.templateList = [];
+      this.jobs = [];
     }
   }
