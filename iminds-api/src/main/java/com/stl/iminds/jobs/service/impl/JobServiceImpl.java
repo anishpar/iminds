@@ -178,16 +178,39 @@ public class JobServiceImpl implements JobService{
 	public List<JobOpeningsDTO> searchJobOpenings(String location, String title) {
 		String strMethodName = "searchJobOpenings";
 		List<JobOpeningsDTO> listSearchJobOpenings = new ArrayList();
-		
+		boolean isLocation = false;
+		boolean isTitle = false;
+		List<String> bindVariables = new ArrayList();
 	
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
-		String strQuery = "SELECT JO.HIRINGLEAD,JO.CREATIONDATE,JO.TITLE FROM TBLMJOBOPENING JO ";
+		StringBuilder strQuery = new StringBuilder("SELECT JO.HIRINGLEAD,JO.CREATIONDATE,JO.TITLE,CD.TBLMCANDIDATES FROM TBLMJOBOPENING JO, TBLMCANDIDATES CD, TBLMCANDIDATEJOBREL CJ WHERE CD.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID ");
+		
+		if(location != null && !"".equals(location)) {
+			isLocation = true;
+			strQuery.append(" WHERE LOCATION = ?");
+		}
+		
+		if(title != null && !"".equals(title)) {
+			isTitle = true;
+			if(isLocation) {
+				strQuery.append(" AND TITLE = ?");
+			}else {
+				strQuery.append(" WHERE TITLE = ?");
+			}
+			
+		}
 		
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
-				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery);
-				ResultSet rs = pStmt.executeQuery())
-		{
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery.toString());) {
+			int colIndex = 1;
+			if(isLocation) {
+				pStmt.setString(colIndex++, location);
+			}
+			if(isTitle) {
+				pStmt.setString(colIndex++, title);
+			}
+			try(ResultSet rs = pStmt.executeQuery()) {
 				while(rs.next()) {
 					JobOpeningsDTO jobOpeningsDTO =new JobOpeningsDTO();
 					jobOpeningsDTO.setHiringLead(rs.getString("HIRINGLEAD"));
@@ -195,6 +218,9 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}
+			}
+					
+				
 		}catch(SQLException sql) {
 			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
 			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
