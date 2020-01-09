@@ -13,6 +13,7 @@ export class NotificationService {
   viewTemplate(templateName){
     return this._service.fetch('GET_FILTERED_TEMPLATE','?name='+templateName);
   }
+  
 
   searchTemplate(templateModel) {
     
@@ -27,7 +28,7 @@ export class NotificationService {
           queryParam = queryParam + '&name='+templateModel.name;
         }
         console.log("Template Model QueryParam  : == " + queryParam);
-    return this._service.fetch('GET_FILTERED_TEMPLATE', queryParam);
+    return this._service.post('GET_FILTERED_TEMPLATE', null);
   }
 
   loadConfiguration(configurationData) {
@@ -86,6 +87,10 @@ export class NotificationService {
   }
   createChannel(channel){
     return this._service.post('CHANNEL',channel);
+  }
+
+  searchCandidate(){
+    return this._service.fetch('SEARCH_CANDIDATE');
   }
 
   prepareExpression(expressionInput) {

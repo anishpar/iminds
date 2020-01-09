@@ -20,7 +20,8 @@ export const APIConfigurations = {
       'DEV.GET_REMAINING_EVENTS':'assets/json/notification/get_remaining_event.json',
       'DEV.VALIDATE_EXPRESSION':'assets/json/notification/validate_expression.json',
       'DEV.GET_SUPPORTED_ATTRIBUTES':'assets/json/notification/getSupportedAttributes.json',
-      'DEV.CHANNEL' :'assets/json/notification/createChannel.json'
+      'DEV.SEARCH_CANDIDATE' :'assets/json/notification/createChannel.json'
+
       
         // ENDS
     },
@@ -33,7 +34,7 @@ export const APIConfigurations = {
         'GET_ACCESS': 'customer/menu/loadUserMenuById/',
         'LOG_ERROR': 'uiLog/print/',
         'LOAD_CONFIGURATION': 'loadConfiguration',
-        'GET_FILTERED_TEMPLATE' : 'template',
+        'GET_FILTERED_TEMPLATE' : 'job/',
         'EVENT_TEMPLATE_CONFIGURATION' : 'templateRelation',
         'GET_EVENT_TAGS' : 'eventTag',
         'GET_REMAINING_EVENTS':'templateRelation/nonAssociatedEvent/',
@@ -49,5 +50,6 @@ export const APIConfigurations = {
       'REPROCESS_NOTIFICATION':'communicationMessage/reprocess',
       'GET_SUPPORTED_ATTRIBUTES':'channel/supportedAttribute',
       'CHANNEL': 'channel',
+      'SEARCH_CANDIDATE':'candidate/'
     }
 };
