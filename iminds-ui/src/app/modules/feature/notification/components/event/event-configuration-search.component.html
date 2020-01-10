@@ -27,18 +27,9 @@
                   <th>Phone</th>
                 </tr>
               </thead>
-              <tbody>
-
-                <!-- <tr *ngFor="let event of eventAssociationList.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index">
-                  <td>{{i+1+((pagination.currentPage-1)*pagination.itemsPerPage)}}</td>
-                  <td><a title="{{lang.view}}" [routerLink]="['/notification/view_event_configuration',event.channelAlias]" (click)="saveData(event.channelAlias,channelMap[event.channelAlias],eventMap[event.eventAlias])" >{{ eventMap[event.eventAlias] ?eventMap[event.eventAlias] :config.emptyString}}</a></td>
-                  <td>{{channelMap[event.channelAlias] ? channelMap[event.channelAlias] :config.emptyString}}</td>
-                  <td>{{event.templateRelation ?  event.templateRelation.length : config.emptyString }}</td>
-                  <td><a title="{{lang.edit}}" [routerLink]="['/notification/update_event_configuration',event.channelAlias]" (click)="saveData(event.channelAlias,channelMap[event.channelAlias],eventMap[event.eventAlias])"><span class="fa fa-edit fa-2-action "></span></a></td>
-                </tr> -->
-                 
-                <tr ngFor="let candidate of candidate">
-                  <td>1</td>
+              <tbody> 
+                 <tr *ngFor="let candidate of candidates let i = index;">
+                  <td>{{i+1}}</td>
                   <td><a title="{{lang.view}}" [routerLink]="" >{{candidate.name}}</a></td>
                   <td>{{candidate.jobOpening}}</td>
                   <td>{{candidate.status}}</td>
