@@ -13,6 +13,7 @@ import { DataStoreService } from 'src/app/modules/core/util/services/data-store.
 
 export class EventConfigurationSearchComponent extends MasterComponent
   implements OnInit, OnDestroy {
+  totalItems;
   candidates = [];
 
   constructor(public service: NotificationService,public dataStoreService :DataStoreService) {
@@ -20,11 +21,12 @@ export class EventConfigurationSearchComponent extends MasterComponent
   }
 
   ngOnInit() {
-
+    this.totalItems = 0;
      this.service.searchCandidate()
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
         if (this.candidates) {
+          this.totalItems = res.length;
           this.candidates = res;    
         }
 
