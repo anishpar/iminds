@@ -25,6 +25,7 @@ public class JobOpeningsDTO implements Serializable {
 	private List<JobSkillsDTO> jobSkills;
 	private List<JobQuestionsRelDTO> jobQuestionsRels;
 	private List<JobInterviewRelDTO> jobInterviewRels;
+	private Long candidateCount;
 	
 	/**
 	 * @return the jobOpeningid
@@ -243,6 +244,20 @@ public class JobOpeningsDTO implements Serializable {
 	public void setJobInterviewRels(List<JobInterviewRelDTO> jobInterviewRels) {
 		this.jobInterviewRels = jobInterviewRels;
 	}
+	
+	/**
+	 * @return the candidateCount
+	 */
+	public Long getCandidateCount() {
+		return candidateCount;
+	}
+	/**
+	 * @param candidateCount the candidateCount to set
+	 */
+	public void setCandidateCount(Long candidateCount) {
+		this.candidateCount = candidateCount;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -282,6 +297,8 @@ public class JobOpeningsDTO implements Serializable {
 		builder.append(jobQuestionsRels);
 		builder.append(", jobInterviewRels=");
 		builder.append(jobInterviewRels);
+		builder.append(", candidateCount=");
+		builder.append(candidateCount);
 		builder.append("]");
 		return builder.toString();
 	}

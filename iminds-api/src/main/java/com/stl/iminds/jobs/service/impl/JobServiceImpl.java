@@ -184,7 +184,7 @@ public class JobServiceImpl implements JobService{
 	
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
-		StringBuilder strQuery = new StringBuilder("SELECT JO.HIRINGLEAD,JO.CREATIONDATE,JO.TITLE,CD.TBLMCANDIDATES FROM TBLMJOBOPENING JO, TBLMCANDIDATES CD, TBLMCANDIDATEJOBREL CJ WHERE CD.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID ");
+		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS FROM TBLMJOBOPENING ");
 		
 		if(location != null && !"".equals(location)) {
 			isLocation = true;
@@ -216,6 +216,8 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setHiringLead(rs.getString("HIRINGLEAD"));
 					jobOpeningsDTO.setTitle(rs.getString("TITLE"));
 					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
+					jobOpeningsDTO.setJobStatus(rs.getString("JOBSTATUS"));
+					jobOpeningsDTO.setCandidateCount(getCandidateCountForOneJob(rs.getLong("JOBOPENINGID")));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}
 			}
@@ -235,5 +237,35 @@ public class JobServiceImpl implements JobService{
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
 		return listSearchJobOpenings;
+	}
+
+	private long getCandidateCountForOneJob(long jobOpeningId) {
+		
+		String strMethodName = "getCandidateCountForOneJob";
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to get count of per job using Job ID: "+ jobOpeningId);
+		
+		StringBuilder strQuery = new StringBuilder("SELECT COUNT(1) FROM TBLMCANDIDATES WHERE CANDIDATEID IN(SELECT CANDIDATEID FROM TBLMCANDIDATEJOBREL WHERE JOBOPENINGID = ?)");
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery.toString());) {
+				pStmt.setLong(1, jobOpeningId);
+			
+			try(ResultSet rs = pStmt.executeQuery()) {
+				while(rs.next()) {
+					return rs.getLong("COUNT(1)");
+				}
+			}
+					
+				
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+		return 0;
+	
+		
 	}
 }
