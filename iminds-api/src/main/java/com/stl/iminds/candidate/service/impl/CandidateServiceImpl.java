@@ -201,9 +201,9 @@ public class CandidateServiceImpl implements CandidateService{
 							if(candidateSkillsDTO.getJobSkillId().equals(jobskillid)) {
 								
 								if(jobSkillCriteria != null) {
-									jobSkillCriteria = jobSkillCriteria + ";" + name + "-" + (experience * 100/minimumExp  ) ;
+									jobSkillCriteria = jobSkillCriteria + "<br>" + name + " - " + (experience * 100/minimumExp  ) + " %";
 								} else {
-									jobSkillCriteria = name + "-" +  String.valueOf((experience * 100/minimumExp));
+									jobSkillCriteria = name + " - " +  String.valueOf((experience * 100/minimumExp)) +" %";
 								}
 							}
 						}
