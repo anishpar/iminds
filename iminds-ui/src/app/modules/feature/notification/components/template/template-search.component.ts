@@ -96,7 +96,7 @@ export class TemplateSearchComponent extends MasterComponent{
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(res => {
           this.searched = true;
-  
+          
           if (this.jobs) {
             this.totalItems = res.length;
             this.jobs = res;    

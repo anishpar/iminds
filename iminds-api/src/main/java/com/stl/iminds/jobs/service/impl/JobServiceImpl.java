@@ -217,6 +217,7 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setTitle(rs.getString("TITLE"));
 					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
 					jobOpeningsDTO.setJobStatus(rs.getString("JOBSTATUS"));
+					jobOpeningsDTO.setJobOpeningid(rs.getLong("JOBOPENINGID"));
 					jobOpeningsDTO.setCandidateCount(getCandidateCountForOneJob(rs.getLong("JOBOPENINGID")));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}

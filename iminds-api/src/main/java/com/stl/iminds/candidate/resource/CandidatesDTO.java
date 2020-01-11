@@ -47,6 +47,8 @@ public class CandidatesDTO implements Serializable {
 	
 	private List<CandidateHistoryDTO> candidateHistory;
 	
+	private String jobSkillCriteria;
+	
 	/**
 	 * @return the candidateid
 	 */
@@ -228,6 +230,13 @@ public class CandidatesDTO implements Serializable {
 	public void setCandidateHistory(List<CandidateHistoryDTO> candidateHistory) {
 		this.candidateHistory = candidateHistory;
 	}
+	
+	public String getJobSkillCriteria() {
+		return jobSkillCriteria;
+	}
+	public void setJobSkillCriteria(String jobSkillCriteria) {
+		this.jobSkillCriteria = jobSkillCriteria;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -251,8 +260,22 @@ public class CandidatesDTO implements Serializable {
 		builder.append(lastModifiedDate);
 		builder.append(", jobOpening=");
 		builder.append(jobOpening);
+		builder.append(", candidateSkills=");
+		builder.append(candidateSkills);
+		builder.append(", candidateQuestions=");
+		builder.append(candidateQuestions);
+		builder.append(", candidateJobRel=");
+		builder.append(candidateJobRel);
+		builder.append(", candidateResults=");
+		builder.append(candidateResults);
+		builder.append(", candidateHistory=");
+		builder.append(candidateHistory);
+		builder.append(", jobSkillCriteria=");
+		builder.append(jobSkillCriteria);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 	
 }

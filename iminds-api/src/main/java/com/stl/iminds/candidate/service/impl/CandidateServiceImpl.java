@@ -19,11 +19,13 @@ import com.stl.iminds.cache.constant.CacheConstant;
 import com.stl.iminds.candidate.mapper.CandidateMapper;
 import com.stl.iminds.candidate.model.Candidates;
 import com.stl.iminds.candidate.repository.CandidateRepository;
+import com.stl.iminds.candidate.resource.CandidateSkillsDTO;
 import com.stl.iminds.candidate.resource.CandidatesDTO;
 import com.stl.iminds.candidate.service.CandidateService;
 import com.stl.iminds.commons.exception.NotificationException;
 import com.stl.iminds.commons.exception.TechnicalExceptionType;
 import com.stl.iminds.commons.security.utils.CommonConstant;
+import com.stl.iminds.jobs.resource.JobSkillsDTO;
 
 @Service
 public class CandidateServiceImpl implements CandidateService{
@@ -41,7 +43,7 @@ public class CandidateServiceImpl implements CandidateService{
 		String strMethodName = "searchCandidate";
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 		
-		String strQuery = "SELECT C.CANDIDATEID,C.CANDIDATENAME,C.EMAIL,C.MOBILE,C.STATUS,C.RATING,C.CREATIONDATE,C.LASTMODIFIEDDATE,CJ.JOBOPENINGID,JO.TITLE FROM TBLMCANDIDATES C,TBLMCANDIDATEJOBREL CJ, TBLMJOBOPENING JO WHERE C.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID";
+		String strQuery = "SELECT C.CANDIDATEID,C.CANDIDATENAME,C.EMAIL,C.MOBILE,C.STATUS,C.RATING,C.CREATIONDATE,C.LASTMODIFIEDDATE,CJ.JOBOPENINGID,JO.TITLE FROM TBLMCANDIDATES C,TBLMCANDIDATEJOBREL CJ, TBLMJOBOPENING JO WHERE C.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID AND JO.JOBOPENINGID = ?";
 		
 		List<CandidatesDTO> lstCandidatesDTO = new ArrayList<>();
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
@@ -92,5 +94,130 @@ public class CandidateServiceImpl implements CandidateService{
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
 		return candidatesDTO;
+	}
+	
+	
+	public List<CandidatesDTO> filterCandidate(String jobOpeningId) {
+		String strMethodName = "filterCandidate";
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
+		
+		String strQuery = "SELECT C.CANDIDATEID,C.CANDIDATENAME,C.EMAIL,C.MOBILE,C.STATUS,C.RATING,C.CREATIONDATE,C.LASTMODIFIEDDATE, CJ.JOBOPENINGID,JO.TITLE ,CK.JOBSKILLID, CK.EXPERIENCE\n" + 
+				"FROM TBLMCANDIDATES C,TBLMCANDIDATEJOBREL CJ, TBLMJOBOPENING JO, TBLMCANDIDATESKILLS CK WHERE C.CANDIDATEID=CJ.CANDIDATEID AND CJ.JOBOPENINGID = JO.JOBOPENINGID AND CK.CANDIDATEID = CJ.CANDIDATEID AND JO.JOBOPENINGID = ?";
+		
+		List<CandidatesDTO> lstCandidatesDTO = new ArrayList<>();
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery);){
+			pStmt.setLong(1, Long.parseLong(jobOpeningId));
+			try(ResultSet rs = pStmt.executeQuery()) {
+				while(rs.next()) {
+					CandidatesDTO candidatesDTO =new CandidatesDTO();
+					candidatesDTO.setCandidateid(rs.getLong("CANDIDATEID"));
+					candidatesDTO.setName(rs.getString("CANDIDATENAME"));
+					candidatesDTO.setEmail(rs.getString("EMAIL"));
+					candidatesDTO.setMobile(rs.getString("MOBILE"));
+					candidatesDTO.setStatus(rs.getString("STATUS"));
+					candidatesDTO.setRating(rs.getString("RATING"));
+					candidatesDTO.setCreationDate(rs.getDate("CREATIONDATE"));
+					candidatesDTO.setLastModifiedDate(rs.getDate("LASTMODIFIEDDATE"));
+					candidatesDTO.setJobOpening(rs.getString("TITLE"));
+					
+					CandidateSkillsDTO candidateSkillsDTO = new CandidateSkillsDTO();
+					candidateSkillsDTO.setJobSkillId(rs.getLong("JOBSKILLID"));
+					candidateSkillsDTO.setExperience(rs.getLong("EXPERIENCE"));
+					
+					
+					
+					boolean bFound = false;
+					for(int index = 0; index < lstCandidatesDTO.size(); index++) {
+						CandidatesDTO candidatesDTO2 = lstCandidatesDTO.get(index);
+						if(candidatesDTO2.getCandidateid().equals(candidatesDTO.getCandidateid())) {
+							bFound = true;
+							List<CandidateSkillsDTO> candidateSkills = candidatesDTO2.getCandidateSkills();
+							candidateSkills.add(candidateSkillsDTO);
+							candidatesDTO.setCandidateSkills(candidateSkills);
+							break;
+						}
+					}
+					
+					if(!bFound) {
+						List<CandidateSkillsDTO> lstCandidateSkillsDTO = new ArrayList<>();
+						lstCandidateSkillsDTO.add(candidateSkillsDTO);
+						candidatesDTO.setCandidateSkills(lstCandidateSkillsDTO);
+						lstCandidatesDTO.add(candidatesDTO);
+					}
+				}
+			}
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "lstCandidatesDTO : "+lstCandidatesDTO);
+		
+		List<JobSkillsDTO> listJobSkills = new ArrayList<>();
+		strQuery = "SELECT JOBSKILLID, NAME, MINIMUMEXP FROM TBLMJOBSKILLS WHERE JOBOPENINGID = ?";
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
+			pStmt.setLong(1, Long.parseLong(jobOpeningId));
+			try(ResultSet rs = pStmt.executeQuery()) {
+				while(rs.next()) {
+					JobSkillsDTO jobSkillsDTO =new JobSkillsDTO();
+					jobSkillsDTO.setJobskillid(rs.getLong("JOBSKILLID"));
+					jobSkillsDTO.setName(rs.getString("NAME"));
+					jobSkillsDTO.setMinimumExp(rs.getLong("MINIMUMEXP"));
+					listJobSkills.add(jobSkillsDTO);
+				}
+			}
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "listJobSkills : "+listJobSkills);
+		
+		if(listJobSkills != null && !listJobSkills.isEmpty()) {
+			for(int index = 0; index < listJobSkills.size(); index++) {
+				JobSkillsDTO jobSkillsDTO = listJobSkills.get(index);
+				Long jobskillid = jobSkillsDTO.getJobskillid();
+				Long minimumExp = jobSkillsDTO.getMinimumExp();
+				String name = jobSkillsDTO.getName();
+				if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "jobskillid : "+jobskillid);
+				
+				for(int in=0 ;in < lstCandidatesDTO.size() ;in++) {
+					CandidatesDTO candidatesDTO = lstCandidatesDTO.get(in);
+					String jobSkillCriteria = candidatesDTO.getJobSkillCriteria();
+					
+					List<CandidateSkillsDTO> candidateSkills = candidatesDTO.getCandidateSkills();
+					if(candidateSkills != null) {
+						for(int i=0 ;i < candidateSkills.size() ;i++) {
+							CandidateSkillsDTO candidateSkillsDTO = candidateSkills.get(i);
+							Long experience = candidateSkillsDTO.getExperience();
+							if(candidateSkillsDTO.getJobSkillId().equals(jobskillid)) {
+								
+								if(jobSkillCriteria != null) {
+									jobSkillCriteria = jobSkillCriteria + ";" + name + "-" + (experience * 100/minimumExp  ) ;
+								} else {
+									jobSkillCriteria = name + "-" +  String.valueOf((experience * 100/minimumExp));
+								}
+							}
+						}
+					}
+					
+					candidatesDTO.setJobSkillCriteria(jobSkillCriteria);
+				}
+				
+			}
+		}
+		
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job opening get successfully with data : "+ lstCandidatesDTO);
+		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
+		
+		return lstCandidatesDTO;
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stl.core.base.logger.ILogger;
@@ -58,6 +59,20 @@ public class CandidateController {
 			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 			CandidatesDTO candidatesDTO= candidateService.viewCandidates(id);
 			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, candidatesDTO);
+		}catch(STLException e) {
+			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
+			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
+		}
+	}
+    
+    @GetMapping("/filter")
+	public Response<List<CandidatesDTO>> filterCandidate(
+			@RequestParam(value = "jobOpeningId", required = false) String jobOpeningId) {
+		String strMethodName = "filterCandidate";
+		try {
+			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
+			List<CandidatesDTO> lstCandidatesDTO= candidateService.filterCandidate(jobOpeningId);
+			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, lstCandidatesDTO);
 		}catch(STLException e) {
 			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
 			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);

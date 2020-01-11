@@ -10,4 +10,6 @@ public interface CandidateService {
 	
 	public CandidatesDTO viewCandidates(Long candidateId);
 	
+	public List<CandidatesDTO> filterCandidate(String jobOpeningId);
+	
 }

@@ -51,6 +51,7 @@ export const APIConfigurations = {
       'GET_SUPPORTED_ATTRIBUTES':'channel/supportedAttribute',
       'CHANNEL': 'channel',
       'SEARCH_CANDIDATE':'candidate/',
+      'FILTER_CANDIDATE':'candidate/filter',
       'ADD_JOB_OPENING':'job/'
     }
 };

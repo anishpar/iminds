@@ -107,6 +107,12 @@ export class NotificationService {
     return this._service.fetch('SEARCH_CANDIDATE');
   }
 
+  filterCandidate(jobOpeningId){
+
+    let queryParam = '?jobOpeningId='+jobOpeningId;
+    return this._service.fetch('FILTER_CANDIDATE', queryParam);
+  }
+
   prepareExpression(expressionInput) {
     //prepare expression
     let expression = '';

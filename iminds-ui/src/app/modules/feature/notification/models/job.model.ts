@@ -6,5 +6,6 @@ export class Job {
     public hiringLead: String;
     public creationDate: String;
     public status: String;
+    public jobOpeningid : number;
 
 }
