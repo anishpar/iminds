@@ -25,7 +25,7 @@
                   <th>Last Updated</th>
                   <th>Applied Date</th>
                   <th>Phone</th>
-                  <th>Data Stats</th>
+                  <th *ngIf="filterpage">Data Stats</th>
                 </tr>
               </thead>
               <tbody> 
@@ -37,7 +37,7 @@
                   <td>{{candidate.creationDate}}</td>
                   <td>{{candidate.lastModifiedDate}}</td>
                   <td>{{candidate.mobile}}</td>
-                  <td>{{candidate.jobSkillCriteria}}</td>
+                  <td *ngIf="filterpage">{{candidate.jobSkillCriteria}}</td>
                 </tr>
               </tbody>
             </table>
