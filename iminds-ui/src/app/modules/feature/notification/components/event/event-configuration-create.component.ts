@@ -29,11 +29,8 @@ implements OnInit, OnDestroy {
     ngOnInit() {
         let channelName = this.getNavParam('channelName');
         this.channel = this.dataStoreService.getData(channelName);
-        if(channelName==null){
-            this.router.navigate(['notification/search_channel'])
-          }else{
-            this.viewChannel(channelName);
-          } 
+        this.viewChannel(channelName);
+          
     }
     viewChannel(channelName:String){
       
