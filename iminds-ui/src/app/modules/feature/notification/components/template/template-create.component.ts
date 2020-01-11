@@ -72,6 +72,12 @@ export class TemplateCreateComponent extends MasterComponent
   interviewTypes = [];
   interviewType = new InterviewType();
 
+  jobSkill1 = new JobSkillRel();
+  jobSkill2 = new JobSkillRel();
+  jobSkill3 = new JobSkillRel();
+
+  jobSkills = [];
+
   addJobOpening = new AddJobOpening();
 
 
@@ -169,14 +175,42 @@ export class TemplateCreateComponent extends MasterComponent
 
  
   onSubmit() {
-    console.log(this.addJobOpening);
     
+    this.jobSkills.push(this.jobSkill1);
+    this.jobSkills.push(this.jobSkill2);
+    this.jobSkills.push(this.jobSkill3);
+    this.addJobOpening.jobSkills =  this.jobSkills;
+    console.log(this.addJobOpening);
     this.service.addJobOpening(this.addJobOpening)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
-        this.router.navigate(['/notification/create_template']);
+        this.reset();
       });
   } 
+
+  reset() {
+    this.addJobOpening.title = '';
+    this.addJobOpening.jobStatus = '';
+    this.addJobOpening.hiringLead = '';
+    this.addJobOpening.department = '';
+    this.addJobOpening.employeeType = '';
+    this.addJobOpening.jobDescription = '';
+    this.addJobOpening.minimumExp = null;
+    this.addJobOpening.location = '';
+    this.addJobOpening.compensation = '';
+    this.addJobOpening.jobSkills = [];
+    this.addJobOpening.jobQuestionsRels = [];
+    this.addJobOpening.jobInterviewRels = [];
+
+    this.jobSkill1.minimumExp = null;
+    this.jobSkill1.name = '';
+    
+    this.jobSkill2.minimumExp = null;
+    this.jobSkill2.name = '';
+
+    this.jobSkill3.minimumExp = null;
+    this.jobSkill3.name = '';
+  }
 
   ngOnDestroy() {
     this.manageDestroy();

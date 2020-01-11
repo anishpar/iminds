@@ -86,7 +86,8 @@
               
                         <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
                             <td>
-                                {{job.candidateCount}}        
+                                <a title="{{job.jobOpening}}" routerLink="/notification/view_template" 
+                                (click)="setNavParam('templateName',template.name)">{{job.candidateCount}} </a>       
                             </td>
                             
                             <td>    

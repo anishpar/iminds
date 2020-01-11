@@ -31,7 +31,7 @@
         <div class="card-body">
           <div class="form-group">
             <label for="inputName">Posting Title</label>
-            <input type="text" id="inputName" class="form-control" value="">
+            <input type="text" id="inputName" class="form-control" value="" [(ngModel)]="addJobOpening.title">
           </div>
           <div class="form-group">
             <label for="inputStatus">Job Status</label>
@@ -96,12 +96,12 @@
           
           <div class="form-group">
             <label for="MinExp">Minimum Experience</label>
-            <input type="number" id="inputExp" class="form-control" value="" [(ngModel)]="addJobOpening.minimumExperience">
+            <input type="number" id="inputExp" class="form-control" value="" [(ngModel)]="addJobOpening.minimumExp">
           </div>
           
           <div class="form-group">
             <label for="inputDescription">Job Description</label>
-            <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+            <textarea id="inputDescription" class="form-control" rows="4" [(ngModel)]="addJobOpening.jobDescription"></textarea>
           </div>
           <div class="form-group">
             <label for="inputLocation">Location</label>
@@ -118,7 +118,7 @@
           </div>
           <div class="form-group">
             <label for="inputCompo">Compensation</label>
-            <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">
+            <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc" [(ngModel)]="addJobOpening.compensation">
           </div>
         </div>
         <!-- /.card-body -->
@@ -140,7 +140,7 @@
             <table id="dataTable" width="100%">
               <thead>
                 <tr>
-                  <th>Skill Type</th>
+                  
                   <th>Skill</th>
                   <th>Minimum Experience</th>
                   <th>Remove</th>
@@ -148,23 +148,27 @@
               </thead>
               <tbody>
                   <tr>
-                      <td>
-                          <select class="form-control custom-select">
-                              <option selected="">MinimumSkill</option>
-                              <option>PreferredSkill</option>
-                            </select>
-                            
-                      </td>
-                      <td> <input type="text" id="skillset" class="form-control" value=""> </td>
-                     <td><input type="number" id="inputExpSkill" class="form-control" value=""></td>
+                      
+                      <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill1.name"> </td>
+                     <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill1.minimumExp"></td>
                       <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
                   </tr>
+                  <tr>
+                    
+                    <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill2.name"> </td>
+                   <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill2.minimumExp"></td>
+                    <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                </tr>
+                <tr>
+                  
+                  <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill3.name"> </td>
+                 <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill3.minimumExp"></td>
+                  <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+              </tr>
               </tbody>
             </table>
           </div>
-          <div class="form-group">
-              <button type="button" class="btn btn-success float-right" >Add</button>
-          </div>
+        
         </div>
         <!-- /.card-body -->
       </div>

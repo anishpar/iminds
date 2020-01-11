@@ -50,6 +50,7 @@ export const APIConfigurations = {
       'REPROCESS_NOTIFICATION':'communicationMessage/reprocess',
       'GET_SUPPORTED_ATTRIBUTES':'channel/supportedAttribute',
       'CHANNEL': 'channel',
-      'SEARCH_CANDIDATE':'candidate/'
+      'SEARCH_CANDIDATE':'candidate/',
+      'ADD_JOB_OPENING':'job/'
     }
 };

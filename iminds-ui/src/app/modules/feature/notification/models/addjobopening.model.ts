@@ -8,6 +8,7 @@ export class AddJobOpening {
     public hiringLead: String;
     public department: String;
     public employeeType: String;
+    public jobDescription: String;
     public minimumExp: number;
     public location : String;
     public compensation : String;

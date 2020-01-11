@@ -140,7 +140,7 @@ public class JobServiceImpl implements JobService{
 		}
 		
 		//Check city is null or not
-		if(CommonUtility.isNull(jobOpeningsDTO.getCity())){
+		/*if(CommonUtility.isNull(jobOpeningsDTO.getCity())){
 			LOGGER.errorLog(CLASSNAME, strMethodName, "city can not be null or empty.");
 			throw STLExceptionHelper.throwException(NotificationException.class, NotificationEntityType.TEMPLATE, BusinessExceptionType.MISSING_MANDATORY_PARAMETERS, CommonConstant.CITY);
 		}
@@ -149,7 +149,7 @@ public class JobServiceImpl implements JobService{
 		if(CommonUtility.isNull(jobOpeningsDTO.getState())){
 			LOGGER.errorLog(CLASSNAME, strMethodName, "state can not be null or empty.");
 			throw STLExceptionHelper.throwException(NotificationException.class, NotificationEntityType.TEMPLATE, BusinessExceptionType.MISSING_MANDATORY_PARAMETERS, CommonConstant.STATE);
-		}
+		}*/
 				
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, "Ended.");
 	}
