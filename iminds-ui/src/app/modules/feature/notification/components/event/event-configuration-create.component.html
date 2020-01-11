@@ -1,137 +1,72 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
-  <h2 class="h3 mb-0">{{ lang.notification.eventTemplateAssociation }}</h2>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <form #createTemplate="ngForm" (ngSubmit)="onSubmit(createTemplate.form.valid)">
-          
-          
-          <div class="row">
-       
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.notification.channelAlias}}</label>
-              <stl-input-typeahead [optionList]="channels" name="channelAlias" returnField="alias" 
-                      labelField="alias" valueField="alias" sortOptions="true" [label]="lang.selectOption" 
-                      [(ngModel)]="eventConfigurationModel.channelAlias" (ngModelChange)="onChangeChannel()"
-                      id="channelAlias">
-                    </stl-input-typeahead>
-
-            </div>
-            <div class="form-group col-md-3">
-              <label class="required-label">{{lang.notification.eventAlias}}</label>
-              <stl-input-typeahead [optionList]="events" name="eventAlias" returnField="alias" 
-              labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption" 
-              [(ngModel)]="eventConfigurationModel.eventAlias" (ngModelChange)="onChangeEvent()"  id="eventAlias">
-              </stl-input-typeahead>
-            </div>
-          </div>
-
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
-            <h6 class="h6 mb-0">{{ lang.notification.templateConfiguration }}</h6>
-          </div>
-          
-
-          <div>
-              <div class="row">
-                  <div class="form-group col-md-3">
-                      <label class="required-label">{{lang.notification.configurationType}}</label>
-                     
-                      <select [(ngModel)]="templateRelation.type" name="configurationType" class="form-control" 
-                      (ngModelChange)="onChangeConfigType()">
-                     
-                        <option value="">{{lang.selectOption}}</option>
-                        <option value="DEFAULT" [disabled] = "defaultTemplateCount != 0">{{lang.default}}</option>
-                        <option value="EXPRESSION_BASED">{{lang.exprBased}}</option>
-                    </select>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                     
-                      <label class="required-label">{{lang.notification.conditionExpr}}</label>
-                       <stl-expression-builder [paramList]="tagsForEventExpressionBuild" [(ngModel)]="expressionInput" 
-                       name="conditionExpr" [disabled]="templateRelation.type!='EXPRESSION_BASED' || !(tagsForEventExpressionBuild && tagsForEventExpressionBuild.length > 0)" 
-                       [required]="templateRelation.type=='EXPRESSION_BASED'"
-                       (ngModelChange)="expressionChanged = true"></stl-expression-builder>
-                       <span  class="text-danger error-span" *ngIf="errorMessageForExpression && errorMessageForExpression.length > 0">{{errorMessageForExpression}}</span>
-                       <span  class="text-danger error-span" *ngIf="templateRelation.type=='EXPRESSION_BASED' && (!tagsForEventExpressionBuild || tagsForEventExpressionBuild.length == 0) && !(errorMessageForExpression && errorMessageForExpression.length > 0)">{{ lang.notification.errorNoTagsFound }}</span>
-                    </div>
-              </div>
-              
-              <div class="row">
-                  <div class="form-group col-md-3">
-                    <label class="required-label">{{lang.notification.template}}</label>
-                    <stl-input-typeahead [optionList]="templates" name="template" returnField="name" 
-                      labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption" 
-                      [(ngModel)]="templateRelation.name">
-                    </stl-input-typeahead>
-
-
-                    </div>
-
-                    <div class="form-group col-md-3">
-                      <label class="required-label">{{lang.notification.sendTo}}</label>
-                      <stl-multi-select [items]="sendToList" [(ngModel)]="sendToSelected" name="sendTo" [allowCustomInputs]="true"></stl-multi-select>
-                    </div>
-                  </div>
-              </div>
-              
-              <div class="row">
-                <button type="button" class="btn btn-primary" (click) = "validateExpression()"
-                  [disabled]="!(expressionChanged && templateRelation.type && templateRelation.type=='EXPRESSION_BASED')" >
-                  {{lang.validate}}
-                </button>
-                <button type="button" class="btn btn-primary" (click) = "addTemplate()"
-                 [disabled]="!(!expressionChanged && templateRelation.type && templateRelation.name  && sendToSelected && sendToSelected.length > 0)" >{{lang.add}}
-                </button>
-
-              </div>
-
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>{{lang.sr}}</th>
-                  <th>{{lang.expression}}</th>
-                  <th>{{lang.notification.template}}</th>
-                  <th>{{lang.priority}}</th>
-                  <th>{{lang.up}}</th>
-                  <th>{{lang.down}}</th>
-                  <!--<th>{{lang.edit}}</th>-->
-                  <th>{{lang.remove}}</th>
-                </tr>
-              </thead>
+    <h2 class="h3 mb-0">{{ lang.notification.viewChannel }}</h2>
+  </div>
   
-              
-              <tbody>
-                <tr *ngFor="let templateRelation of eventConfigurationModel.templateRelation; let i = index">
-                  <td>{{i+1}}</td>
-                  <td>{{templateRelation && templateRelation.conditionExpression ? templateRelation.conditionExpression : 'default'}}</td>
-                  <td>{{templateRelation && templateRelation.name ? templateRelation.name :lang.emptyString}}</td>
-                  <td>{{templateRelation && templateRelation.priority ? templateRelation.priority :lang.emptyString}}</td>
-                  <td><i class="fas fa-arrow-up" (click)="upArrow(templateRelation)"></i></td>
-                  <td><i class="fas fa-arrow-down" (click)="downArrow(templateRelation)"></i></td>
-                  <!-- <td><i class="fas fa-edit"></i></td> -->
-                  <td><i class="fa fa-minus-square" (click)="removeTemplate(templateRelation,i)"></i></td>
-
-                </tr>
-            </table>
-          </div>
-        
-          <div class="row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary"
-                [disabled]="!(createTemplate.form.valid && eventConfigurationModel.templateRelation.length > 0)">{{lang.create}}</button>
-                <button class="btn btn-primary" routerLink="/notification/search_event_configuration" type="button"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
+  <div class="col-md-12" *ngIf='channel'>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.name}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{channel.name ?channel.name : config.emptyString}}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.alias}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                        {{channel.id ? channel.id : config.emptyString}}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.notification.mimeType}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                            {{channel.mimeType ? channel.mimeType : config.emptyString}}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                        <label class="label-header">{{lang.description}}</label>
+                    </div>
+                    <div class="col-md-10  col-sm-6 view-value">
+                        {{channel.description ?channel.description : config.emptyString}}
+                    </div>
+                    <div class="{{config.viewLabelClass}}">
+                            <label class="label-header">{{lang.notification.className}}</label>
+                    </div>
+                    <div class="col-md-10  col-sm-6 view-value">
+                            {{channel.className ?channel.className : config.emptyString}}
+                    </div> 
             </div>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
   </div>
-</div>
+  <div class="row">
+
+        <div class="col-md-12" *ngIf="searched && totalItems == 0">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
+            <h6 class="h6 mb-0">{{ lang.notification.channelcharacteristics }}</h6>
+          </div>
+          <div class="page-header col-sm-12 alert alert-info text-center">{{lang.notification.channelcharacteristicsNoResults}}</div>
+        </div>
+      </div>
+
+
+      <div class="col-md-12" *ngIf="searched && totalItems > 0">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
+          <h6 class="h6 mb-0">{{ lang.notification.channelcharacteristics }}</h6>
+        </div>
+        <div class="row">
+          <ng-container *ngFor="let channelData of  channel.channelAttribute; let i = index">
+              <ng-container *ngIf="channelData">
+                    <div class="{{config.viewLabelClass}}">
+                            <label class="label-header"> {{channelData && channelData.attributeName ? channelData.attributeName: lang.emptyString}}</label>
+                    </div>
+                    <div class="{{config.viewValueClass}}">
+                            {{channelData.attributeValue ?channelData.attributeValue : config.emptyString}}
+                     </div>
+              </ng-container>
+          </ng-container>
+        </div>
+        <button class="btn btn-primary" onclick="window.history.back()" type="button" id="back"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
+        <button class="btn btn-primary" type="button" id="update" [routerLink]="['/notification/update_channel']" (click)="setNavParam('channel',channel)">{{lang.update}}</button>
+      </div>
