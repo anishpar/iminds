@@ -15,6 +15,9 @@ import {AddJobOpening}  from '../../models/addjobopening.model';
 import {HiringLead}  from '../../models/hiringlead.model';
 import {SkillType}  from '../../models/skilltype.model';
 import {InterviewType}  from '../../models/interviewtype.model';
+import {JobInterviewRel}  from '../../models/jobinterview.model';
+import {JobQuestionsRel}  from '../../models/jobquestions.model';
+import {JobSkillRel}  from '../../models/jobskillrel.model';
 import { EventConfiguration } from '../../models/event-configuration.model';
 import { Router } from '@angular/router';
 
@@ -165,6 +168,15 @@ export class TemplateCreateComponent extends MasterComponent
   }
 
  
+  onSubmit() {
+    console.log(this.addJobOpening);
+    
+    this.service.addJobOpening(this.addJobOpening)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(res => {
+        this.router.navigate(['/notification/create_template']);
+      });
+  } 
 
   ngOnDestroy() {
     this.manageDestroy();

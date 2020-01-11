@@ -10,6 +10,10 @@ export class NotificationService {
     return this._service.post('CREATE_TEMPLATE', templateData);
   }
 
+  addJobOpening(addJobOpening) {
+    return this._service.post('ADD_JOB_OPENING', addJobOpening);
+  }
+
   viewTemplate(templateName){
     return this._service.fetch('GET_FILTERED_TEMPLATE','?name='+templateName);
   }
