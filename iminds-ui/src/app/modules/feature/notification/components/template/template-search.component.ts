@@ -54,6 +54,10 @@ export class TemplateSearchComponent extends MasterComponent{
       this.location.name = 'UK';
       this.location.alias = 'UK';
       this.locations.push(this.location);
+      this.location = new Location();
+      this.location.name = 'Ahmedabad';
+      this.location.alias = 'Ahmedabad';
+      this.locations.push(this.location);
       console.log('evetns :'+this.locations);
 
       this.title.name = 'Sr. Software Engineer';

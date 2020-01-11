@@ -22,10 +22,10 @@ export class StlErrorHandler implements ErrorHandler {
     if (!environment.production) {
       console.error(err);
     }
-    this._service.fetchPost('LOG_ERROR', errorData).subscribe((res) => {
-        console.log('error reported successfully');
-    }, err => {
-      console.log('error while loggin error');
-    });
+    //this._service.fetchPost('LOG_ERROR', errorData).subscribe((res) => {
+    //    console.log('error reported successfully');
+    //}, err => {
+    //  console.log('error while loggin error');
+    //});
   }
 }

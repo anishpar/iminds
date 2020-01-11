@@ -7,6 +7,14 @@ import {CKEditor4} from 'ckeditor4-angular/ckeditor';
 import {TemplateDetailModel} from '../../models/template-detail.model';
 import {TimeRangeModel} from '../../../shared/models/time-range.model';
 import { EventTags } from '../../models/tags.model';
+import {Department}  from '../../models/department.model';
+import { Location } from '../../models/location.model';
+import {JobStatus}  from '../../models/job.status.model';
+import {EmployeeType}  from '../../models/employeetype.model';
+import {AddJobOpening}  from '../../models/addjobopening.model';
+import {HiringLead}  from '../../models/hiringlead.model';
+import {SkillType}  from '../../models/skilltype.model';
+import {InterviewType}  from '../../models/interviewtype.model';
 import { EventConfiguration } from '../../models/event-configuration.model';
 import { Router } from '@angular/router';
 
@@ -40,201 +48,130 @@ export class TemplateCreateComponent extends MasterComponent
   eventTagModel = [];
   editor = [];
   skills: any;
+  jobstatuses = [];
+  jobstatus = new JobStatus();
+
+  hiringLeads = [];
+  hiringLead = new HiringLead();
+
+  departments = [];
+  department = new Department();
+
+  employeeTypes = [];
+  employeeType = new EmployeeType();
+
+  locations = [];
+  location = new Location();
+
+  skillTypes = [];
+  skillType = new SkillType();
+
+  interviewTypes = [];
+  interviewType = new InterviewType();
+
+  addJobOpening = new AddJobOpening();
+
 
   constructor(public service: NotificationService, private router: Router) {
     super();
     this.eventConfigurationModel.templateRelation = [];
   }
   ngOnInit() {
-    this.service.loadConfiguration(this.configurationData)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(res => {
-        this.channels = res['channels'];
-        this.templateModel.channelAlias = '';
-        this.events = res['events'];
-        this.templateModel.eventAlias = '';
-        this.languages = res['languages'];
-        this.images = res['images'];
-        this.resetTemplateContent();
-      });
-    this.templateModel.dateRange = new TimeRangeModel();
+    this.jobstatus.name = 'Draft';
+    this.jobstatuses.push(this.jobstatus);
+    this.jobstatus = new JobStatus();
+    this.jobstatus.name = 'Open';
+    this.jobstatuses.push(this.jobstatus);
+    this.jobstatus = new JobStatus();
+    this.jobstatus.name = 'OnHold';
+    this.jobstatuses.push(this.jobstatus);
+    this.jobstatus = new JobStatus();
+    this.jobstatus.name = 'Filled';
+    this.jobstatuses.push(this.jobstatus);
+    this.jobstatus = new JobStatus();
+    this.jobstatus.name = 'Canceled';
+    this.jobstatuses.push(this.jobstatus);
+    
+
+    this.hiringLead.name = 'Maulik Shah';
+    this.hiringLeads.push(this.hiringLead);
+    this.hiringLead = new HiringLead();
+    this.hiringLead.name = 'Sanjay Madhu';
+    this.hiringLeads.push(this.hiringLead);
+    this.hiringLead = new HiringLead();
+    this.hiringLead.name = 'Pankti Joshipura';
+    this.hiringLeads.push(this.hiringLead);
+    this.hiringLead = new HiringLead();
+    this.hiringLead.name = 'Ajay Iyer';
+    this.hiringLeads.push(this.hiringLead);
+
+    this.department.name = 'SU';
+    this.departments.push(this.department);
+    this.department = new Department();
+    this.department.name = 'DU';
+    this.departments.push(this.department);
+    this.department = new Department();
+    this.department.name = 'HR';
+    this.departments.push(this.department);
+    this.department = new Department();
+    this.department.name = 'Admin';
+    this.departments.push(this.department);
+    this.department = new Department();
+    this.department.name = 'Finance';
+    this.departments.push(this.department);
+
+
+    this.employeeType.name = 'Full Time';
+    this.employeeTypes.push(this.employeeType);
+    this.employeeType = new Department();
+    this.employeeType.name = 'Part Time';
+    this.employeeTypes.push(this.employeeType);
+    this.employeeType = new Department();
+    this.employeeType.name = 'Intern';
+    this.employeeTypes.push(this.employeeType);
+    this.employeeType = new Department();
+    this.employeeType.name = 'Contractor';
+    this.employeeTypes.push(this.employeeType);
+
+    this.location.name = 'Ahmedabad';
+    this.locations.push(this.location);
+    this.location = new Location();
+    this.location.name = 'Pune';
+    this.locations.push(this.location);
+    this.location = new Location();
+    this.location.name = 'Delhi';
+    this.locations.push(this.location);
+    this.location = new Location();
+    this.location.name = 'London';
+    this.locations.push(this.location);
+
+    this.skillType.name = 'MinimumSkill';
+    this.skillTypes.push(this.skillType);
+    this.skillType = new SkillType();
+    this.skillType.name = 'PreferredSkill';
+    this.skillTypes.push(this.skillType);
+
+    this.interviewType.name = 'Audio';
+    this.interviewTypes.push(this.interviewType);
+    this.interviewType = new InterviewType();
+    this.interviewType.name = 'Video';
+    this.interviewTypes.push(this.interviewType);
+    this.interviewType = new InterviewType();
+    this.interviewType.name = 'Screening';
+    this.interviewTypes.push(this.interviewType);
+    this.interviewType = new InterviewType();
+    this.interviewType.name = 'Aptitude';
+    this.interviewTypes.push(this.interviewType);
   }
 
-  onSubmit(isValid: boolean) {
-    // check form validation
-    if (!isValid) {
-      return;
-    }
-    const emptyContent = this.templateContent.find(a => a.selected && (a.content === null || a.content === ''));
-    if (emptyContent !== undefined && emptyContent !== null) {
-      // set focus on empty content
-      this.editor[emptyContent.language].focus();
-      return;
-    }
-    const bigContent = this.templateContent.find(a => a.selected && a.content.length > this.config.maxLength.maxText);
-    if (bigContent !== undefined && bigContent !== null) {
-      // set focus on big content
-      this.editor[bigContent.language].focus();
-      return;
-    }
-    this.templateModel.templateContent = this.templateContent.filter(a => a.selected);
-    // check all active contents
-    this.templateModel.status = this.status ? 'SHOW' : 'HIDE';
-    this.service.createTemplate(this.templateModel)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(res => {
-        // redirect to search template page
-        this.router.navigate(['/notification/search_template']);
-      });
-  }
+ 
 
   ngOnDestroy() {
     this.manageDestroy();
   }
 
-  public onReady(event: CKEditor4.EventInfo, alias: string) {
-    this.editor[alias] = event.editor;
-  }
+  
 
-  public onTagSelect(alias: string) {
-    this.editor[alias].focus();
-    this.editor[alias].fire( 'saveSnapshot' );
-    this.editor[alias].insertHtml(this.eventTagModel[alias]);
-    this.editor[alias].fire( 'saveSnapshot' );
-  }
-
-  public onTagSelectSMS(i: number, alias: string) {
-    this.templateContent[i].content = this.templateContent[i].content + this.eventTagModel[alias];
-  }
-
-  /* public addNewSkills() {
-    let rows = document.getElementById("dataTable");
-    let rowIdIndex = rows.innerHTML.indexOf("row");
-    if (rowIdIndex == -1) {
-      this.rowId = 1;
-    }
-
-    this.skills = ['CSharp', '.Net Framework', 'Asp.Net', 
-    'Asp.Net Core', 'Angular 1.x', 'Angular 2.x', 'Web API', 'Azure', 'Javascript', 'SQL'];
-    
-    let comp = this.comFacResolver.resolveComponentFactory(SkillsRatingComponent);
-    let dynamicComp = this.container.createComponent(comp);
-    dynamicComp.instance.reference = dynamicComp;
-
-    dynamicComp.instance.skills = this.skills;
-    dynamicComp.instance.index = this.rowId;
-
-    dynamicComp.instance.selectedSkill = '';
-    dynamicComp.instance.yearsOfExperiences = '0';
-    dynamicComp.instance.selectedRating = this.ratings[0];
-
-    this.rowId += 1;
-
-    let com = this.container;
-    if (com !== undefined) {
-      this.embeddedViews = com['_embeddedViews'].length;
-    }
-  } */
-
-  public onImageSelect(alias: string) {
-    this.editor[alias].focus();
-    this.editor[alias].fire( 'saveSnapshot' );
-    this.editor[alias].insertHtml('<img src=\'' + this.imageRefId[alias] + '\'/>');
-    this.editor[alias].fire( 'saveSnapshot' );
-  }
-
-  public resetTemplateContent() {
-    this.templateContent = [];
-    for (let i = 0; i < this.languages.length; i++) {
-      const alias = this.languages[i].alias;
-      this.templateContent[i] = new TemplateDetailModel();
-      this.templateContent[i].language = alias;
-      this.templateContent[i].content = '';
-      this.messageTag[alias] = '';
-      this.invalidContent[alias] = false;
-      this.maxContent[alias] = false;
-      this.eventTagModel[alias] = new EventTags();
-      this.imageRefId[alias] = '';
-    }
-    this.templateContent[0].selected = true;
-    this.defaultParamNameList = [];
-  }
-
-
-  public onChannelChange() {
-    if (this.templateModel.channelAlias === 'SMS') {
-      this.templateContent = new Array();
-      for (let i = 0; i < this.languages.length; i++) {
-        const alias = this.languages[i].alias;
-        this.templateContent[i] = new TemplateDetailModel();
-        this.templateContent[i].language = alias;
-        this.templateContent[i].content = '';
-        this.messageTag[alias] = '';
-        this.invalidContent[alias] = false;
-        this.maxContent[alias] = false;
-        this.eventTagModel[alias] = new EventTags();
-        this.imageRefId[alias] = '';
-      }
-      this.templateContent[0].selected = true;
-    } else {
-      for (let i = 0; i < this.languages.length; i++) {
-        const alias = this.languages[i].alias;
-        this.messageTag[alias] = '';
-        this.eventTagModel[alias] = new EventTags();
-        this.imageRefId[alias] = '';
-      }
-      this.templateContent[0].selected = true;
-    }
-  }
-
-  public onEventChange() {
-    const defaultParamNameList = [];
-    this.templateContent = new Array();
-      for (let i = 0; i < this.languages.length; i++) {
-        const alias = this.languages[i].alias;
-        this.templateContent[i] = new TemplateDetailModel();
-        this.templateContent[i].language = alias;
-        this.templateContent[i].content = '';
-        this.messageTag[alias] = '';
-        this.invalidContent[alias] = false;
-        this.maxContent[alias] = false;
-        this.eventTagModel[alias] = new EventTags();
-        this.imageRefId[alias] = '';
-      }
-      this.templateContent[0].selected = true;
-      this.service.getEventTags('?eventAlias=' + this.templateModel.eventAlias)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(res => {
-        this.eventTagsAPIResponse = res;
-        if (this.eventTagsAPIResponse != null) {
-          for (let index = 0; index < this.eventTagsAPIResponse.length; index++) {
-            this.eventTag = new EventTags();
-            this.eventTag.id = '${' + this.eventTagsAPIResponse[index].tagAlias + '}';
-            this.eventTag.text = this.eventTagsAPIResponse[index].tagName;
-            defaultParamNameList.push(this.eventTag);
-          }
-          this.defaultParamNameList = defaultParamNameList;
-        } else {
-          this.defaultParamNameList = [];
-        }
-      });
-  }
-
-  public onBlurCkEditor(i: number, alias: string) {
-    this.invalidContent[alias] = false;
-    const val = this.templateContent[i].content;
-    if (val === '' || val == null || val.toString().trim() === '') {
-      this.invalidContent[alias] = true;
-    }
-  }
-  public onDataChanged(i: number, alias: string) {
-    this.invalidContent[alias] = false;
-    this.maxContent[alias] = false;
-    const val = this.templateContent[i].content;
-    if (val === '' || val == null || val.toString().trim() === '') {
-      this.invalidContent[alias] = true;
-    } else if (val.length > this.config.maxLength.maxText) {
-      this.maxContent[alias] = true;
-    }
-  }
+  
 }
+
