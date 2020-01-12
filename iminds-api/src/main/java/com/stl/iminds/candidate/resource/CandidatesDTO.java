@@ -4,15 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
-
-import com.stl.iminds.candidate.model.CandidateHistory;
-import com.stl.iminds.candidate.model.CandidateJobRel;
-import com.stl.iminds.candidate.model.CandidateQuestions;
-import com.stl.iminds.candidate.model.CandidateResult;
-import com.stl.iminds.candidate.model.CandidateSkills;
-
 public class CandidatesDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

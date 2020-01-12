@@ -1,12 +1,10 @@
 package com.stl.iminds.jobs.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +20,7 @@ import com.stl.core.base.logger.LogManager;
 import com.stl.core.base.utils.Response;
 import com.stl.core.commons.exception.STLException;
 import com.stl.core.commons.utils.CommonConstantCode;
+import com.stl.iminds.candidate.resource.CandidatesDTO;
 import com.stl.iminds.commons.security.utils.CommonConstant;
 import com.stl.iminds.jobs.resource.JobOpeningsDTO;
 import com.stl.iminds.jobs.service.JobService;
@@ -107,6 +106,21 @@ public class JobController {
 			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
 			List<JobOpeningsDTO> jobOpeningsResp= jobService.searchJobOpenings(location,title);
 			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, jobOpeningsResp);
+		}catch(STLException e) {
+			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
+			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
+		}
+	}
+    
+    
+    @PostMapping("/apply")
+	public Response<CandidatesDTO> applyJob(@Valid @RequestBody CandidatesDTO candidatesDTO) {
+		String strMethodName = "applyJob";
+		if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG + candidatesDTO);
+		try {
+			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
+			candidatesDTO= jobService.applyJob(candidatesDTO);
+			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, candidatesDTO);
 		}catch(STLException e) {
 			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
 			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);

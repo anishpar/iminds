@@ -38,7 +38,7 @@
 
                     <div class="form-group">
                         <label for="inputName">Email Id</label>
-                        <input type="text" id="inputClientCompany" class="form-control" [(ngModel)]="candidateJobApply.emailId">
+                        <input type="text" id="inputClientCompany" class="form-control" [(ngModel)]="candidateJobApply.email">
                         
                       </div>
 
@@ -132,21 +132,21 @@
                             
                             <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill1.name" disabled="true"> </td>
                            <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill1.minimumExp" disabled="true"></td>
-                           <td><input type="number" id="inputExpSkill" class="form-control" value="" ></td>
+                           <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="candidateSkill1.experience"></td>
                             <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
                         </tr>
                         <tr>
                           
                           <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill2.name" disabled="true"> </td>
                          <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill2.minimumExp" disabled="true"></td>
-                         <td><input type="number" id="inputExpSkill" class="form-control" value=""  ></td>
+                         <td><input type="number" id="inputExpSkill" class="form-control" value=""  [(ngModel)]="candidateSkill2.experience"></td>
                           <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
                       </tr>
                       <tr>
                         
                         <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill3.name" disabled="true"> </td>
                        <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill3.minimumExp" disabled="true"></td>
-                       <td><input type="number" id="inputExpSkill" class="form-control" value="" ></td>
+                       <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="candidateSkill3.experience"></td>
                         <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
                     </tr>
                     </tbody>

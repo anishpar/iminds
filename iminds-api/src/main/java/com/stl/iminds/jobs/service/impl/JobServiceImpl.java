@@ -16,6 +16,7 @@ import com.stl.core.base.logger.LogManager;
 import com.stl.core.commons.db.DBManager;
 import com.stl.core.commons.exception.STLExceptionHelper;
 import com.stl.iminds.cache.constant.CacheConstant;
+import com.stl.iminds.candidate.resource.CandidateSkillsDTO;
 import com.stl.iminds.candidate.resource.CandidatesDTO;
 import com.stl.iminds.commons.exception.BusinessExceptionType;
 import com.stl.iminds.commons.exception.NotificationEntityType;
@@ -268,5 +269,129 @@ public class JobServiceImpl implements JobService{
 		return 0;
 	
 		
+	}
+	
+	
+	@Override
+	public CandidatesDTO applyJob(CandidatesDTO candidatesDTO) {
+		String strMethodName = "applyJob";
+	
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG+ candidatesDTO);
+		
+		String strQuery = "SELECT SEQ_CANDIDATES.NEXTVAL CANDIDATEID FROM DUAL";
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
+			
+			try(ResultSet rs = pStmt.executeQuery()){
+				if (rs.next()) {
+					Long newId = rs.getLong("CANDIDATEID");
+					candidatesDTO.setCandidateid(newId);
+				}
+			}
+
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+
+		strQuery = "INSERT INTO TBLMCANDIDATES(CANDIDATEID, EMAIL, MOBILE, STATUS, RATING, CREATIONDATE, LASTMODIFIEDDATE, CANDIDATENAME, CANDIDATERESUME)\n" + 
+				"VALUES (SEQ_CANDIDATES.NEXTVAL,?,?,'DRAFT', NULL,SYSDATE,SYSDATE,?,NULL)";
+		
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
+			
+			int colIndex = 1;
+			pStmt.setString(colIndex++, candidatesDTO.getEmail());
+			pStmt.setString(colIndex++, candidatesDTO.getMobile());
+			pStmt.setString(colIndex++, candidatesDTO.getName());
+			
+			int iCount = pStmt.executeUpdate();
+			try(ResultSet rs = pStmt.getGeneratedKeys()){
+				if (rs.next()) {
+					Long newId = rs.getLong(1);
+					candidatesDTO.setCandidateid(newId);
+				}
+			}
+
+			if(iCount > 0) {
+				if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "Candidate Inserted successfully :"+candidatesDTO);
+			} 
+				
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+		Long candidateid = candidatesDTO.getCandidateid();
+		// Add Candidate Skills
+		strQuery = "INSERT INTO TBLMCANDIDATESKILLS(CANDIDATESKILLID, CANDIDATEID, JOBSKILLID, DESCRIPTION, EXPERIENCE)\n" + 
+				"VALUES (SEQ_CANDIDATESKILL.NEXTVAL,?,?,NULL,?)";
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
+			
+			List<CandidateSkillsDTO> candidateSkills = candidatesDTO.getCandidateSkills();
+			if(candidateSkills != null && !candidateSkills.isEmpty()) {
+				for(int index = 0; index < candidateSkills.size(); index++) {
+					CandidateSkillsDTO candidateSkillsDTO = candidateSkills.get(index);
+					int colIndex = 1;
+					pStmt.setLong(colIndex++, candidateid);
+					pStmt.setLong(colIndex++, candidateSkillsDTO.getJobSkillId());
+					pStmt.setLong(colIndex++, candidateSkillsDTO.getExperience());
+					pStmt.addBatch();
+				}
+			}
+			
+			int[] status = pStmt.executeBatch();
+			for (int i = 0; i < status.length; i++) {
+				if (status[i] != -2 && status[i] < 0) {
+					LOGGER.errorLog(CLASSNAME,strMethodName,"Error Occoured.");
+					throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+				}
+			}
+				
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		
+		
+		// Insert Relation Table
+		strQuery = "INSERT INTO TBLMCANDIDATEJOBREL(CANDIDATEJOBRELID, CANDIDATEID, JOBOPENINGID)\n" + 
+				"VALUES (SEQ_CANDIDATEJOBREL.NEXTVAL,?,?)";
+		
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
+			
+			int colIndex = 1;
+			pStmt.setLong(colIndex++, candidateid);
+			pStmt.setLong(colIndex++, candidatesDTO.getCandidateJobRel().get(0).getJobOpeningId());
+			
+			int iCount = pStmt.executeUpdate();
+			if(iCount > 0) {
+				if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "Relation Inserted successfully :"+candidatesDTO);
+			} 
+				
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job opening created successfully with data : "+ candidatesDTO);
+		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
+		
+		return candidatesDTO;
 	}
 }

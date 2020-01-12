@@ -53,6 +53,7 @@ export const APIConfigurations = {
       'SEARCH_CANDIDATE':'candidate/',
       'FILTER_CANDIDATE':'candidate/filter',
       'ADD_JOB_OPENING':'job/',
-      'SEARCH_JOB_OPENING_BY_ID':'job/'
+      'SEARCH_JOB_OPENING_BY_ID':'job/',
+      'APPLY_JOB':'job/apply',
     }
 };

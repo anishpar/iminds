@@ -10,8 +10,12 @@ export class NotificationService {
     return this._service.post('CREATE_TEMPLATE', templateData);
   }
 
-  addJobOpening(addJobOpening) {
-    return this._service.post('ADD_JOB_OPENING', addJobOpening);
+  addJobOpening(candidateJobApply) {
+    return this._service.post('ADD_JOB_OPENING', candidateJobApply);
+  }
+
+  applyjob(addJobOpening) {
+    return this._service.post('APPLY_JOB', addJobOpening);
   }
 
   viewTemplate(templateName){

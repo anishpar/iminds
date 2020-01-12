@@ -19,6 +19,8 @@ import {JobInterviewRel}  from '../../models/jobinterview.model';
 import {JobQuestionsRel}  from '../../models/jobquestions.model';
 import {CandidateJobApply}  from '../../models/candidatejobapply.model';
 import {JobSkillRel}  from '../../models/jobskillrel.model';
+import {CandidateJobRel}  from '../../models/candidatejobrel.model';
+import {CandidateSkillRel}  from '../../models/candidatekillrel.model';
 import { EventConfiguration } from '../../models/event-configuration.model';
 import { Router } from '@angular/router';
 
@@ -70,16 +72,25 @@ import { Router } from '@angular/router';
 
   interviewTypes = [];
   interviewType = new InterviewType();
+  jobOpeningId = null;
 
   jobSkill1 = new JobSkillRel();
   jobSkill2 = new JobSkillRel();
   jobSkill3 = new JobSkillRel();
+
+  candidateSkill1 = new CandidateSkillRel();
+  candidateSkill2 = new CandidateSkillRel();
+  candidateSkill3 = new CandidateSkillRel();
+  candidateSkills1 = [];
 
   jobSkills = [];
 
   addJobOpening = new AddJobOpening();
 
   candidateJobApply = new CandidateJobApply();
+
+  candidateJobRel = new CandidateJobRel();
+  candidateJobRels = [];
 
 
   constructor(public service: NotificationService, private router: Router) {
@@ -89,10 +100,10 @@ import { Router } from '@angular/router';
   ngOnInit() {
 
     let job = this.getNavParam('jobOpeningId');
-    let jobOpeningId = job.jobOpeningid;
-    console.log("jobOpeningId :"+jobOpeningId);
+    this.jobOpeningId = job.jobOpeningid;
+    console.log("jobOpeningId :"+this.jobOpeningId);
     
-    this.service.getJobDetailByJobId(jobOpeningId)
+    this.service.getJobDetailByJobId(this.jobOpeningId)
     .pipe(takeUntil(this.onDestroy$))
     .subscribe(res => {
         this.addJobOpening = res;
@@ -106,14 +117,27 @@ import { Router } from '@angular/router';
 
  
   onSubmit() {
+    console.log(this.jobSkill1);
+    this.candidateSkill1.jobSkillId = this.jobSkill1.jobskillid;
+    this.candidateSkill2.jobSkillId = this.jobSkill2.jobskillid;
+    this.candidateSkill3.jobSkillId = this.jobSkill3.jobskillid;
     
+    console.log(this.candidateSkill1);
+    this.candidateSkills1.push(this.candidateSkill1);
+    this.candidateSkills1.push(this.candidateSkill2);
+    this.candidateSkills1.push(this.candidateSkill3);
+
+    const candidateSkills1Clone  = Object.assign([], this.candidateSkills1);
+    this.candidateJobApply.candidateSkills = candidateSkills1Clone;
+
+
+    this.candidateJobRel.jobOpeningId = this.jobOpeningId;
+    this.candidateJobRels.push(this.candidateJobRel);
+    const candidateJobRelsClone  = Object.assign([], this.candidateJobRels);
+    this.candidateJobApply.candidateJobRel = candidateJobRelsClone;
+
     console.log(this.candidateJobApply);
-    this.jobSkills.push(this.jobSkill1);
-    this.jobSkills.push(this.jobSkill2);
-    this.jobSkills.push(this.jobSkill3);
-    this.addJobOpening.jobSkills =  this.jobSkills;
-    console.log(this.addJobOpening);
-    this.service.addJobOpening(this.addJobOpening)
+    this.service.applyjob(this.candidateJobApply)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
         this.reset();
@@ -142,6 +166,14 @@ import { Router } from '@angular/router';
 
     this.jobSkill3.minimumExp = null;
     this.jobSkill3.name = '';
+
+    this.candidateJobApply.name = '';
+    this.candidateJobApply.mobile = '';
+    this.candidateJobApply.email = '';
+
+    this.candidateSkill1.experience = null;
+    this.candidateSkill2.experience = null;
+    this.candidateSkill3.experience = null;
   }
 
   ngOnDestroy() {
