@@ -17,6 +17,7 @@ import {SkillType}  from '../../models/skilltype.model';
 import {InterviewType}  from '../../models/interviewtype.model';
 import {JobInterviewRel}  from '../../models/jobinterview.model';
 import {JobQuestionsRel}  from '../../models/jobquestions.model';
+import {CandidateJobApply}  from '../../models/candidatejobapply.model';
 import {JobSkillRel}  from '../../models/jobskillrel.model';
 import { EventConfiguration } from '../../models/event-configuration.model';
 import { Router } from '@angular/router';
@@ -78,6 +79,8 @@ import { Router } from '@angular/router';
 
   addJobOpening = new AddJobOpening();
 
+  candidateJobApply = new CandidateJobApply();
+
 
   constructor(public service: NotificationService, private router: Router) {
     super();
@@ -92,11 +95,10 @@ import { Router } from '@angular/router';
     this.service.getJobDetailByJobId(jobOpeningId)
     .pipe(takeUntil(this.onDestroy$))
     .subscribe(res => {
-      
-      
-      
         this.addJobOpening = res;
-        
+        this.jobSkill1 = this.addJobOpening.jobSkills[0];
+        this.jobSkill2 = this.addJobOpening.jobSkills[1];
+        this.jobSkill3 = this.addJobOpening.jobSkills[2];
       
     }); 
 
@@ -105,6 +107,7 @@ import { Router } from '@angular/router';
  
   onSubmit() {
     
+    console.log(this.candidateJobApply);
     this.jobSkills.push(this.jobSkill1);
     this.jobSkills.push(this.jobSkill2);
     this.jobSkills.push(this.jobSkill3);
