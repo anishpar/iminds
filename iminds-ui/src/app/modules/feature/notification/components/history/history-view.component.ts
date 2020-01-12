@@ -84,6 +84,18 @@ import { Router } from '@angular/router';
     this.eventConfigurationModel.templateRelation = [];
   }
   ngOnInit() {
+
+    let job = this.getNavParam('jobInfo');
+    let jobOpeningId = job.jobOpeningid;
+
+    
+    this.service.getJobDetailByJobId(jobOpeningId)
+    .pipe(takeUntil(this.onDestroy$))
+    .subscribe(res => {
+    }); 
+
+    
+
     this.jobstatus.name = 'Draft';
     this.jobstatuses.push(this.jobstatus);
     this.jobstatus = new JobStatus();

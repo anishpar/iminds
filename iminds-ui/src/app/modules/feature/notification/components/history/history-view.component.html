@@ -29,24 +29,31 @@
                 </div>
               </div>
               <div class="card-body">
+
+                  <div class="form-group">
+                      <label for="inputName">Applicant Name</label>
+                      <input type="text" id="inputClientCompany" class="form-control" [(ngModel)]="addJobOpening.compensation">
+                      
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputName">Email Id</label>
+                        <input type="text" id="inputClientCompany" class="form-control" [(ngModel)]="addJobOpening.compensation">
+                        
+                      </div>
+
+                      <div class="form-group">
+                          <label for="inputName">Mobile Number</label>
+                          <input type="text" id="inputClientCompany" class="form-control" [(ngModel)]="addJobOpening.compensation">
+                          
+                        </div>
+
                 <div class="form-group">
                   <label for="inputName">Posting Title</label>
-                  <input type="text" id="inputName" class="form-control" value="" [(ngModel)]="addJobOpening.title">
+                  <label class="form-control" for="inputName">Actual Value</label>
+                  
                 </div>
-                <div class="form-group">
-                  <label for="inputStatus">Job Status</label>
-                  <!--<select class="form-control custom-select">
-                    <option selected="">Draft</option>
-                    <option>Open</option>
-                    <option>OnHold</option>
-                    <option>Filled</option>
-                    <option>Canceled</option>
-                  </select>-->
-                  <stl-input-typeahead [optionList]="jobstatuses" id="name" name="name" returnField="name"
-                                             labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
-                                             [(ngModel)]="addJobOpening.jobStatus">
-                  </stl-input-typeahead>
-                </div>
+               
                 <div class="form-group">
                   <label for="inputlead">Hiring Lead</label>
                   <!--<select class="form-control custom-select">
@@ -56,28 +63,10 @@
                     <option>Pankti Joshipura</option>
                     <option>Ajay Iyer</option>
                   </select>-->
-                  <stl-input-typeahead [optionList]="hiringLeads" id="name" name="name" returnField="name"
-                                             labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
-                                             [(ngModel)]="addJobOpening.hiringLead">
-                  </stl-input-typeahead>
+                  <label class="form-control" for="inputName">Actual Value</label>
                 </div>
       
-                <div class="form-group">
-                  <label for="inputDept">Department</label>
-                  <!--<select class="form-control custom-select">
-                    <option selected="">Select One</option>
-                    <option>TU</option>
-                    <option>SU</option>
-                    <option>DU</option>
-                    <option>HR</option>
-                    <option>Admin</option>
-                    <option>Finance</option>
-                  </select>-->
-                  <stl-input-typeahead [optionList]="departments" id="name" name="name" returnField="name"
-                                             labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
-                                             [(ngModel)]="addJobOpening.department">
-                  </stl-input-typeahead>
-                </div>
+             
       
                 <div class="form-group">
                   <label for="inputEmpType">Employee Type</label>
@@ -88,15 +77,12 @@
                     <option>Intern</option>
                     <option>Contractor</option>
                   </select>-->
-                  <stl-input-typeahead [optionList]="employeeTypes" id="name" name="name" returnField="name"
-                                             labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
-                                             [(ngModel)]="addJobOpening.employeeType">
-                  </stl-input-typeahead>
+                  <label class="form-control" for="inputName">Actual Value</label>
                 </div>
                 
                 <div class="form-group">
                   <label for="MinExp">Minimum Experience</label>
-                  <input type="number" id="inputExp" class="form-control" value="" [(ngModel)]="addJobOpening.minimumExp">
+                  <label class="form-control" for="inputName">Actual Value</label>
                 </div>
                 
                 <div class="form-group">
@@ -111,10 +97,7 @@
                     <option>Delhi,India</option>
                     <option>London,US</option>
                   </select>-->
-                  <stl-input-typeahead [optionList]="locations" id="name" name="name" returnField="name"
-                                             labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
-                                             [(ngModel)]="addJobOpening.location">
-                  </stl-input-typeahead>
+                  <label class="form-control" for="inputName">Actual Value</label>
                 </div>
                 <div class="form-group">
                   <label for="inputCompo">Compensation</label>

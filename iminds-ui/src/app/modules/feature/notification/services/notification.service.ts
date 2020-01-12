@@ -45,6 +45,11 @@ export class NotificationService {
   return this._service.fetch('GET_FILTERED_TEMPLATE', queryParam);
   }
 
+  getJobDetailByJobId(jobOpeningId) {
+    let queryParam = jobOpeningId;
+    return this._service.fetch('SEARCH_JOB_OPENING_BY_ID', queryParam);
+  }
+
   loadConfiguration(configurationData) {
     return this._service.fetchPost('LOAD_CONFIGURATION', configurationData);
   }

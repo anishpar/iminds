@@ -52,6 +52,7 @@ export const APIConfigurations = {
       'CHANNEL': 'channel',
       'SEARCH_CANDIDATE':'candidate/',
       'FILTER_CANDIDATE':'candidate/filter',
-      'ADD_JOB_OPENING':'job/'
+      'ADD_JOB_OPENING':'job/',
+      'SEARCH_JOB_OPENING_BY_ID':'job/'
     }
 };
