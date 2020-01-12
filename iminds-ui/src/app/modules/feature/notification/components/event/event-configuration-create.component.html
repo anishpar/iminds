@@ -1,73 +1,218 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
-    <h2 class="h3 mb-0">{{ lang.notification.viewChannel }}</h2>
-  </div>
-  
-  <!--<div class="col-md-12" *ngIf='channel'>-->
-  <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.name}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{channel.name ?channel.name : config.emptyString}}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.alias}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                        {{channel.id ? channel.id : config.emptyString}}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.notification.mimeType}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                            {{channel.mimeType ? channel.mimeType : config.emptyString}}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                        <label class="label-header">{{lang.description}}</label>
-                    </div>
-                    <div class="col-md-10  col-sm-6 view-value">
-                        {{channel.description ?channel.description : config.emptyString}}
-                    </div>
-                    <div class="{{config.viewLabelClass}}">
-                            <label class="label-header">{{lang.notification.className}}</label>
-                    </div>
-                    <div class="col-md-10  col-sm-6 view-value">
-                            {{channel.className ?channel.className : config.emptyString}}
-                    </div> 
-            </div>
-        </div>
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Candidate Stats</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-  </div>
-  <div class="row">
+    <!-- /.content-header -->
 
-        <div class="col-md-12" *ngIf="searched && totalItems == 0">
-          <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
-            <h6 class="h6 mb-0">{{ lang.notification.channelcharacteristics }}</h6>
+
+
+    <div class="row">
+        <div class="col-lg-6 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+            <div><font size="4px">Name  : Jay Vaishnav</font></div>
+            
+            </div>
+            
           </div>
-          <div class="page-header col-sm-12 alert alert-info text-center">{{lang.notification.channelcharacteristicsNoResults}}</div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+                
+                <div><font size="4px">Title  : Software Engineer</font></div>
+            </div>
+           
+            
+          </div>
         </div>
       </div>
 
 
-      <div class="col-md-12" *ngIf="searched && totalItems > 0">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4 page-header">
-          <h6 class="h6 mb-0">{{ lang.notification.channelcharacteristics }}</h6>
-        </div>
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Info boxes -->
+        <!-- /.row -->
         <div class="row">
-          <ng-container *ngFor="let channelData of  channel.channelAttribute; let i = index">
-              <ng-container *ngIf="channelData">
-                    <div class="{{config.viewLabelClass}}">
-                            <label class="label-header"> {{channelData && channelData.attributeName ? channelData.attributeName: lang.emptyString}}</label>
-                    </div>
-                    <div class="{{config.viewValueClass}}">
-                            {{channelData.attributeValue ?channelData.attributeValue : config.emptyString}}
-                     </div>
-              </ng-container>
-          </ng-container>
+          <!-- Left col -->
+          <div class="col-md-8">
+           
+     
+            <!-- /.row -->
+
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="card">
+              <div class="card-header border-transparent">
+                <h3 class="card-title"><b>Section Score </b>
+                    <button type="button" class="btn btn-primary"> 4 / 6 </button>
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table m-0">
+                    <thead>
+                    <tr>
+                      <th>Questions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td> 
+                          <font color="green">
+                        <b>1) What is the average of first five multiples of 12?</b>
+                        </font>
+                          <br>
+                          <br>
+                          <div style="background-color:#f1f8e9">A.  36</div>
+                          <br>
+                          <div>B.  38</div>
+                          <br>
+                          <div>C.  40</div>
+                          <br>
+                          <div>D.  42</div>
+
+                      </td>
+                      
+                    </tr>
+                    <tr>
+                        <td> 
+                            <font color="red">
+                          <b>2) What is the difference in the place value of 5 in the numeral 754853?</b>
+                          </font>
+                            <br>
+                            <br>
+                            <div>A.  49500</div>
+                            <br>
+                            <div style="background-color:#f1f8e9">B.  49950</div>
+                            <br>
+                            <div>C.  45000</div>
+                            <br>
+                            <div style="background-color:#fbe9e7">D.  49940</div>
+  
+                        </td>
+                      
+                    </tr>
+                    <tr>
+                        <td> 
+                            <font color="green">
+                          <b>3) What is the compound interest on Rs. 2500 for 2 years at rate of interest 4% per annum?</b>
+                          </font>
+                            <br>
+                            <br>
+                            <div>A.  Rs. 180</div>
+                            <br>
+                            <div style="background-color:#f1f8e9">B.  Rs. 204</div>
+                            <br>
+                            <div>C.  Rs. 210</div>
+                            <br>
+                            <div>D.  Rs. 220</div>
+  
+                        </td>
+                      
+                    </tr>
+                    <tr>
+                     
+                    </tr>
+                    <tr>
+                        <td> 
+                            <font color="green">
+                          <b>4) A mother is twice as old as her son. If 20 years ago, the age of the mother was 10 times the age of the son, what is the present age of the mother?</b>
+                          </font>
+                            <br>
+                            <br>
+                            <div>A.  38 years</div>
+                            <br>
+                            <div>B.  40 years</div>
+                            <br>
+                            <div>C.  43 years</div>
+                            <br>
+                            <div style="background-color:#f1f8e9">D.  45 years</div>
+  
+                        </td>
+                     
+                    </tr>
+                    <tr>
+                        <td> 
+                            <font color="red">
+                          <b>5) If January 1, 1996, was Monday, what day of the week was January 1, 1997?</b>
+                          </font>
+                            <br>
+                            <br>
+                            <div>A.  Thursday</div>
+                            <br>
+                            <div style="background-color:#f1f8e9">B.  Wednesday</div>
+                            <br>
+                            <div style="background-color:#fbe9e7">C.  Friday</div>
+                            <br>
+                            <div>D.  Sunday</div>
+  
+                        </td>
+                      
+                    </tr>
+                    <tr>
+                        <td> 
+                            <font color="green">
+                          <b>6) The speed of a boat in still water is 5km/hr. If the speed of the boat against the stream is 3 km/hr, what is the speed of the stream?</b>
+                          </font>
+                            <br>
+                            <br>
+                            <div>A.  1.5 km/hr</div>
+                            <br>
+                            <div style="background-color:#f1f8e9">B.  2 km/hr</div>
+                            <br>
+                            <div>C.  2.5 km/hr</div>
+                            <br>
+                            <div>D.  1 km/hr</div>
+  
+                        </td>
+                      
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+
+          <div class="col-md-4">
+            <!-- /.info-box -->
+            <div class="info-box mb-9">
+              <!--<div class="info-box-content">-->
+                <!--<span class="info-box-text">Mentions</span>
+                <span class="info-box-number">92,050</span>-->
+                <video width="360" height="240" controls>
+                  <source src="assets/video/Test.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              <!--</div>--> 
+              <!-- /.info-box-content -->
+            </div>
+
+
+            
+          </div>
+          <!-- /.col -->
         </div>
-        <button class="btn btn-primary" onclick="window.history.back()" type="button" id="back"><i class="fa fa-arrow-left"></i> {{lang.back}}</button>
-        <button class="btn btn-primary" type="button" id="update" [routerLink]="['/notification/update_channel']" (click)="setNavParam('channel',channel)">{{lang.update}}</button>
-      </div>
+        <!-- /.row -->
+      </div><!--/. container-fluid -->
+    </section>
+    <!-- /.content -->
+  
