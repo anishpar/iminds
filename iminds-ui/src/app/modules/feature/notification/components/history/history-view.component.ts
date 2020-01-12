@@ -85,102 +85,21 @@ import { Router } from '@angular/router';
   }
   ngOnInit() {
 
-    let job = this.getNavParam('jobInfo');
+    let job = this.getNavParam('jobOpeningId');
     let jobOpeningId = job.jobOpeningid;
-
+    console.log("jobOpeningId :"+jobOpeningId);
     
     this.service.getJobDetailByJobId(jobOpeningId)
     .pipe(takeUntil(this.onDestroy$))
     .subscribe(res => {
+      
+      
+      
+        this.addJobOpening = res;
+        
+      
     }); 
 
-    
-
-    this.jobstatus.name = 'Draft';
-    this.jobstatuses.push(this.jobstatus);
-    this.jobstatus = new JobStatus();
-    this.jobstatus.name = 'Open';
-    this.jobstatuses.push(this.jobstatus);
-    this.jobstatus = new JobStatus();
-    this.jobstatus.name = 'OnHold';
-    this.jobstatuses.push(this.jobstatus);
-    this.jobstatus = new JobStatus();
-    this.jobstatus.name = 'Filled';
-    this.jobstatuses.push(this.jobstatus);
-    this.jobstatus = new JobStatus();
-    this.jobstatus.name = 'Canceled';
-    this.jobstatuses.push(this.jobstatus);
-    
-
-    this.hiringLead.name = 'Maulik Shah';
-    this.hiringLeads.push(this.hiringLead);
-    this.hiringLead = new HiringLead();
-    this.hiringLead.name = 'Sanjay Madhu';
-    this.hiringLeads.push(this.hiringLead);
-    this.hiringLead = new HiringLead();
-    this.hiringLead.name = 'Pankti Joshipura';
-    this.hiringLeads.push(this.hiringLead);
-    this.hiringLead = new HiringLead();
-    this.hiringLead.name = 'Ajay Iyer';
-    this.hiringLeads.push(this.hiringLead);
-
-    this.department.name = 'SU';
-    this.departments.push(this.department);
-    this.department = new Department();
-    this.department.name = 'DU';
-    this.departments.push(this.department);
-    this.department = new Department();
-    this.department.name = 'HR';
-    this.departments.push(this.department);
-    this.department = new Department();
-    this.department.name = 'Admin';
-    this.departments.push(this.department);
-    this.department = new Department();
-    this.department.name = 'Finance';
-    this.departments.push(this.department);
-
-
-    this.employeeType.name = 'Full Time';
-    this.employeeTypes.push(this.employeeType);
-    this.employeeType = new Department();
-    this.employeeType.name = 'Part Time';
-    this.employeeTypes.push(this.employeeType);
-    this.employeeType = new Department();
-    this.employeeType.name = 'Intern';
-    this.employeeTypes.push(this.employeeType);
-    this.employeeType = new Department();
-    this.employeeType.name = 'Contractor';
-    this.employeeTypes.push(this.employeeType);
-
-    this.location.name = 'Ahmedabad';
-    this.locations.push(this.location);
-    this.location = new Location();
-    this.location.name = 'Pune';
-    this.locations.push(this.location);
-    this.location = new Location();
-    this.location.name = 'Delhi';
-    this.locations.push(this.location);
-    this.location = new Location();
-    this.location.name = 'London';
-    this.locations.push(this.location);
-
-    this.skillType.name = 'MinimumSkill';
-    this.skillTypes.push(this.skillType);
-    this.skillType = new SkillType();
-    this.skillType.name = 'PreferredSkill';
-    this.skillTypes.push(this.skillType);
-
-    this.interviewType.name = 'Audio';
-    this.interviewTypes.push(this.interviewType);
-    this.interviewType = new InterviewType();
-    this.interviewType.name = 'Video';
-    this.interviewTypes.push(this.interviewType);
-    this.interviewType = new InterviewType();
-    this.interviewType.name = 'Screening';
-    this.interviewTypes.push(this.interviewType);
-    this.interviewType = new InterviewType();
-    this.interviewType.name = 'Aptitude';
-    this.interviewTypes.push(this.interviewType);
   }
 
  

@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                   <label for="inputName">Posting Title</label>
-                  <label class="form-control" for="inputName">Actual Value</label>
+                  <label class="form-control" for="inputName">{{addJobOpening.title}}</label>
                   
                 </div>
                
@@ -63,7 +63,7 @@
                     <option>Pankti Joshipura</option>
                     <option>Ajay Iyer</option>
                   </select>-->
-                  <label class="form-control" for="inputName">Actual Value</label>
+                  <label class="form-control" for="inputName">{{addJobOpening.hiringLead}}</label>
                 </div>
       
              
@@ -77,17 +77,17 @@
                     <option>Intern</option>
                     <option>Contractor</option>
                   </select>-->
-                  <label class="form-control" for="inputName">Actual Value</label>
+                  <label class="form-control" for="inputName">{{addJobOpening.employeeType}}</label>
                 </div>
                 
                 <div class="form-group">
                   <label for="MinExp">Minimum Experience</label>
-                  <label class="form-control" for="inputName">Actual Value</label>
+                  <label class="form-control" for="inputName">{{addJobOpening.minimumExp}}</label>
                 </div>
                 
                 <div class="form-group">
                   <label for="inputDescription">Job Description</label>
-                  <textarea id="inputDescription" class="form-control" rows="4" [(ngModel)]="addJobOpening.jobDescription"></textarea>
+                  <textarea id="inputDescription" class="form-control" rows="4" disabled="true">{{addJobOpening.jobDescription}}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="inputLocation">Location</label>
@@ -97,7 +97,7 @@
                     <option>Delhi,India</option>
                     <option>London,US</option>
                   </select>-->
-                  <label class="form-control" for="inputName">Actual Value</label>
+                  <label class="form-control" for="inputName">{{addJobOpening.location}}</label>
                 </div>
                 <div class="form-group">
                   <label for="inputCompo">Compensation</label>
