@@ -27,6 +27,7 @@ export class EventConfigurationSearchComponent extends MasterComponent
     let job = this.getNavParam('jobInfo');
     if(job != null) {
       let jobOpeningId = job.jobOpeningid;
+      console.log("------------"+jobOpeningId);
       this.totalItems = 0;
       this.filterpage = true;
       this.service.filterCandidate(jobOpeningId)
