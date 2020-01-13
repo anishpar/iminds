@@ -101,7 +101,7 @@ ul.dropdown-menu.dropdown-user li {
 
   }
 
-
+  .pull-right { float: right;}
 
 .wrapper { width: 90%; margin: 0 auto;}
 .content-wrapper { padding: 10px 20px;}
@@ -114,3 +114,5 @@ a {
 .navbar-light .navbar-nav .nav-link{
     color: #fff;
 }
+
+.ui-select-placeholder, .ui-select-toggle i { line-height: 2;}
