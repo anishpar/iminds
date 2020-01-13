@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.stl.core.base.logger.ILogger;
 import com.stl.core.base.logger.LogManager;
@@ -272,6 +273,7 @@ public class JobServiceImpl implements JobService{
 	}
 	
 	
+	@Transactional
 	@Override
 	public CandidatesDTO applyJob(CandidatesDTO candidatesDTO) {
 		String strMethodName = "applyJob";
@@ -299,23 +301,18 @@ public class JobServiceImpl implements JobService{
 		
 
 		strQuery = "INSERT INTO TBLMCANDIDATES(CANDIDATEID, EMAIL, MOBILE, STATUS, RATING, CREATIONDATE, LASTMODIFIEDDATE, CANDIDATENAME, CANDIDATERESUME)\n" + 
-				"VALUES (SEQ_CANDIDATES.NEXTVAL,?,?,'DRAFT', NULL,SYSDATE,SYSDATE,?,NULL)";
+				"VALUES (?,?,?,'DRAFT', NULL,SYSDATE,SYSDATE,?,NULL)";
 		
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
 				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
 			
 			int colIndex = 1;
+			pStmt.setLong(colIndex++, candidatesDTO.getCandidateid());
 			pStmt.setString(colIndex++, candidatesDTO.getEmail());
 			pStmt.setString(colIndex++, candidatesDTO.getMobile());
 			pStmt.setString(colIndex++, candidatesDTO.getName());
 			
 			int iCount = pStmt.executeUpdate();
-			try(ResultSet rs = pStmt.getGeneratedKeys()){
-				if (rs.next()) {
-					Long newId = rs.getLong(1);
-					candidatesDTO.setCandidateid(newId);
-				}
-			}
 
 			if(iCount > 0) {
 				if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "Candidate Inserted successfully :"+candidatesDTO);
