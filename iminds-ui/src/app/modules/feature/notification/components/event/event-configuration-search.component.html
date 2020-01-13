@@ -39,7 +39,7 @@
                   <td>{{candidate.lastModifiedDate}}</td>
                   <td>{{candidate.mobile}}</td>
                   <!--<td *ngIf="filterpage" style="white-space: pre;">{{candidate.jobSkillCriteria}}</td>-->
-                  <td *ngIf="filterpage" [innerHTML]="candidate.jobSkillCriteria">/td>
+                  <td *ngIf="filterpage" [innerHTML]="candidate.jobSkillCriteria" class="text-right">/td>
                   <td><button class="btn btn-success" routerLink="/notification/create_event_configuration" 
                     (click)="setNavParam('CandidateInfo',null)">View Score</button></td>
                 </tr>
