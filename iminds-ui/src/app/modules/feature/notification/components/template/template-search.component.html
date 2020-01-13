@@ -86,16 +86,24 @@
                         </tr>
               
                         <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
-                            <td>
+                            <td *ngIf="job.candidateCount > 0">
                                 <a title="{{job.jobOpening}}" routerLink="/notification/search_event_configuration" 
-                                (click)="setNavParam('jobInfo',job)">{{job.candidateCount}} </a>       
+                                (click)="setNavParam('jobInfo',job)"><b><u>{{job.candidateCount}} </u></b></a>       
+                            </td>
+
+                            <td *ngIf="job.candidateCount == 0">
+                              {{job.candidateCount}} 
                             </td>
                             
-                            <td>    
+                            <td>              
+                                {{job.title}}
+                            </td>
+
+                            <!-- <td>    
                                 <a title="{{job.jobOpening}}" routerLink="/notification/view_template" 
                                 (click)="setNavParam('templateName',template.name)">
                                 {{job.title}}</a>                             
-                            </td>
+                            </td>-->
                                 
                             <td>
                                 {{job.hiringLead}}
