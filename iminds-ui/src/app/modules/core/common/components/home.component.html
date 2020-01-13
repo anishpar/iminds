@@ -46,6 +46,8 @@
                 
               </div>
             </div>
+
+            
             <!-- ./col -->
             <div class="col-lg-4 col-6">
               <!-- small box -->
@@ -68,12 +70,12 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <div class="col-md-6">
+          <div class="col-md-4">
            
               <div class="small-box bg-dark">
                   <div class="inner">
                   <div>
-                    Hiring Statistics</div>
+                    Investment Statistics</div>
                   
                   </div>
                   
@@ -83,15 +85,9 @@
             <div class="card">
               
                 <div style="display: block">
-                    <canvas baseChart
-                            [datasets]="barChartData"
-                            [labels]="mbarChartLabels"
-                            [options]="barChartOptions"
-                            [colors]="barChartColors"
-                            [legend]="barChartLegend"
-                            [chartType]="barChartType"
-                            (chartHover)="chartHovered($event)"
-                            (chartClick)="chartClicked($event)"></canvas>
+                    <canvas #myCanvas id="canvas" baseChart [chartType]="chartType" 
+                    [datasets]="chartData" [labels]="chartLabels" [colors]="chartColors" 
+                    [options]="chartOptions"></canvas>
                   </div>
               
             </div>
@@ -99,12 +95,12 @@
           </div>
           <!-- /.col -->
 
-          <div class="col-md-6">
+          <div class="col-md-4">
 
               <div class="small-box bg-dark">
                   <div class="inner">
                   <div>
-                    Department Funnel Report</div>
+                      Hiring Statistics</div>
                   
                   </div>
                   
@@ -115,14 +111,14 @@
               
               <div style="display: block">
                   <canvas baseChart
-                          [datasets]="barChartData1"
-                          [labels]="mbarChartLabels1"
-                          [options]="barChartOptions1"
-                          [colors]="barChartColors1"
-                          [legend]="barChartLegend1"
-                          [chartType]="barChartType1"
-                          (chartHover)="chartHovered1($event)"
-                          (chartClick)="chartClicked1($event)"></canvas>
+                          [datasets]="barChartData"
+                          [labels]="mbarChartLabels"
+                          [options]="barChartOptions"
+                          [colors]="barChartColors"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
                 </div>
             
           </div>
@@ -130,7 +126,40 @@
 
             
           </div>
-          <!-- /.col -->
+          
+
+          <div class="col-md-4">
+
+          <div class="small-box bg-dark">
+              <div class="inner">
+              <div>
+                Department Funnel Report</div>
+              
+              </div>
+              
+            </div>
+       
+       <!-- TABLE: LATEST ORDERS -->
+       <div class="card">
+          
+          <div style="display: block">
+              <canvas baseChart
+                      [datasets]="barChartData1"
+                      [labels]="mbarChartLabels1"
+                      [options]="barChartOptions1"
+                      [colors]="barChartColors1"
+                      [legend]="barChartLegend1"
+                      [chartType]="barChartType1"
+                      (chartHover)="chartHovered1($event)"
+                      (chartClick)="chartClicked1($event)"></canvas>
+            </div>
+        
+      </div>
+
+
+        
+      </div>
+
         </div>
         <!-- /.row -->
       </div><!--/. container-fluid -->

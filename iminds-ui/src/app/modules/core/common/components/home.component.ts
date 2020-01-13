@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { MasterComponent } from './master.component';
 
 @Component({
@@ -15,6 +15,9 @@ export class HomeComponent extends MasterComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
+
+
+ 
 
     public mbarChartLabels:string[] = ['2012', '2013', '2014', '2015', '2016', '2017', '2018'];
     public barChartType:string = 'bar';
@@ -124,6 +127,57 @@ export class HomeComponent extends MasterComponent implements OnInit {
         clone[0].data = data;
         this.barChartData1 = clone;
       } 
+
+
+      /////////////////////////////////////////////////////////////////////////////////////
+
+      public chartType: string = 'line';
+      public chartData = [{
+        data: [3, 1, 4, 2, 7],
+        label: 'Investment',
+        fill: false
+      }];
+      public chartLabels = ['2015', '2016', '2017', '2018', '2019'];
+      public chartColors = [{
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+           borderColor: 'rgba(179, 71, 168, 1)'
+      }];
+      public chartOptions = {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              stepSize: 1
+            }
+          }]
+        },
+        annotation: {
+           drawTime: 'beforeDatasetsDraw',
+           annotations: [{
+              type: 'box',
+              id: 'a-box-1',
+              yScaleID: 'y-axis-0',
+              yMin: 0,
+              yMax: 1,
+              backgroundColor: '#4cf03b'
+           }, {
+              type: 'box',
+              id: 'a-box-2',
+              yScaleID: 'y-axis-0',
+              yMin: 1,
+              yMax: 2.7,
+              backgroundColor: '#fefe32'
+           }, {
+              type: 'box',
+              id: 'a-box-3',
+              yScaleID: 'y-axis-0',
+              yMin: 2.7,
+              yMax: 5,
+              backgroundColor: '#fe3232'
+           }]
+        }
+      }
+      
 
   ngOnInit() {
   }
