@@ -20,7 +20,7 @@ import { StlErrorHandler } from './services/stl-error.handler';
 import { CrudeService } from './services/crude.service';
 import { ExpressionBuilderComponent } from './components/expression-builder/expression-builder.component';
 import { MultiSelectComponent } from './components/multi-select.component';
-
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 @NgModule({
   declarations: [ StlValidatorDirective
      , InputTypeaheadComponent , InputTypeaheadComponent
@@ -32,7 +32,7 @@ import { MultiSelectComponent } from './components/multi-select.component';
     PaginationModule.forRoot() , TimepickerModule.forRoot(), PopoverModule.forRoot()
     , ModalModule.forRoot(), BsDatepickerModule.forRoot(), CookieModule.forRoot()
     , AccordionModule.forRoot(), TabsModule.forRoot()
-    , TooltipModule.forRoot(), UiSwitchModule
+    , TooltipModule.forRoot(), UiSwitchModule,ChartsModule
   ],
   providers: [
     {provide: ErrorHandler, useClass: StlErrorHandler, deps: [ CrudeService ]}
@@ -44,7 +44,7 @@ import { MultiSelectComponent } from './components/multi-select.component';
      , PaginationComponent, InputDateComponent, InputDateRangeComponent, ExpressionBuilderComponent
      , MultiSelectComponent
      , PopoverModule, ModalModule, AccordionModule, RouterModule, CommonModule, FormsModule, TabsModule, SelectModule, TooltipModule
-     , TimepickerModule, UiSwitchModule
+     , TimepickerModule, UiSwitchModule,ChartsModule
     ]
 })
 export class UtilModule { }

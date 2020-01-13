@@ -20,6 +20,9 @@ import { LoginComponent } from './modules/core/login/components/login.component'
 import { LoginRouteGuardService } from './modules/core/common/services/login-route.guard.service';
 import { HomeComponent } from './modules/core/common/components/home.component';
 
+
+
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', pathMatch: 'full', component: HomeComponent },
