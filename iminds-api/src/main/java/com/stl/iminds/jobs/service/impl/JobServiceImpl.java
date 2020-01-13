@@ -301,7 +301,7 @@ public class JobServiceImpl implements JobService{
 		
 
 		strQuery = "INSERT INTO TBLMCANDIDATES(CANDIDATEID, EMAIL, MOBILE, STATUS, RATING, CREATIONDATE, LASTMODIFIEDDATE, CANDIDATENAME, CANDIDATERESUME)\n" + 
-				"VALUES (?,?,?,'DRAFT', NULL,SYSDATE,SYSDATE,?,NULL)";
+				"VALUES (?,?,?,'Draft', NULL,SYSDATE,SYSDATE,?,NULL)";
 		
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
 				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery)){
