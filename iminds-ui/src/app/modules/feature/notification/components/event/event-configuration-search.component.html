@@ -32,7 +32,7 @@
               <tbody> 
                  <tr *ngFor="let candidate of candidates let i = index;">
                   <td>{{i+1}}</td>
-                  <td><a title="{{lang.view}}" [routerLink]="" >{{candidate.name}}</a></td>
+                  <td>{{candidate.name}}</td>
                   <td>{{candidate.jobOpening}}</td>
                   <td>{{candidate.status}}</td>
                   <td>{{candidate.creationDate}}</td>
