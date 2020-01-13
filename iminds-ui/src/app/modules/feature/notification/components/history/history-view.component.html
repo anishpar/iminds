@@ -124,7 +124,7 @@
                         <th>Skill</th>
                         <th>Minimum Experience</th>
                         <th>Total Experience</th>
-                        <th>Remove</th>
+                        <!--<th>Remove</th>-->
                       </tr>
                     </thead>
                     <tbody>
@@ -133,21 +133,21 @@
                             <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill1.name" disabled="true"> </td>
                            <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill1.minimumExp" disabled="true"></td>
                            <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="candidateSkill1.experience"></td>
-                            <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                            <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
                         </tr>
                         <tr>
                           
                           <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill2.name" disabled="true"> </td>
                          <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill2.minimumExp" disabled="true"></td>
                          <td><input type="number" id="inputExpSkill" class="form-control" value=""  [(ngModel)]="candidateSkill2.experience"></td>
-                          <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                          <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
                       </tr>
                       <tr>
                         
                         <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill3.name" disabled="true"> </td>
                        <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill3.minimumExp" disabled="true"></td>
                        <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="candidateSkill3.experience"></td>
-                        <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                        <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
                     </tr>
                     </tbody>
                   </table>
@@ -200,9 +200,9 @@
         <div class="row">
           <div class="col-12">
 
-            <button type="submit" class="btn btn-secondary" id="submit"
-            >Cancel</button>
-            <button (click)="onSubmit()" type="submit" class="btn btn-success" id="submit"
+            <button type="submit" class="btn btn-secondary" id="submit" 
+            onclick="window.history.back()">Cancel</button>
+            <button (click)="onSubmit()" type="submit" class="btn btn-success float-right" id="submit"
                       >Apply</button>
       
             <!--<input type="submit" value="Save Changes" class="btn btn-success float-right" ng-click="onSubmit()"/>-->

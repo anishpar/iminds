@@ -143,7 +143,7 @@
                   
                   <th>Skill</th>
                   <th>Minimum Experience</th>
-                  <th>Remove</th>
+                  <!--<th>Remove</th>-->
                 </tr>
               </thead>
               <tbody>
@@ -151,19 +151,19 @@
                       
                       <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill1.name"> </td>
                      <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill1.minimumExp"></td>
-                      <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                      <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
                   </tr>
                   <tr>
                     
                     <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill2.name"> </td>
                    <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill2.minimumExp"></td>
-                    <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                    <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
                 </tr>
                 <tr>
                   
                   <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill3.name"> </td>
                  <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill3.minimumExp"></td>
-                  <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
+                  <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
               </tr>
               </tbody>
             </table>
@@ -256,7 +256,8 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <a href="#" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-secondary" id="submit" 
+      onclick="window.history.back()">Cancel</button>
       <button (click)="onSubmit()" type="submit" class="btn btn-success float-right" id="submit"
                 >Save Changes</button>
 
