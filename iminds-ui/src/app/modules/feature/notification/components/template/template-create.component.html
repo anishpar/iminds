@@ -118,7 +118,7 @@
           </div>
           <div class="form-group">
             <label for="inputCompo">Compensation</label>
-            <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc" [(ngModel)]="addJobOpening.compensation">
+            <input type="text" id="inputClientCompany" class="form-control" placeholder="INR" [(ngModel)]="addJobOpening.compensation">
           </div>
         </div>
         <!-- /.card-body -->
@@ -150,23 +150,27 @@
                   <tr>
                       
                       <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill1.name"> </td>
-                     <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill1.minimumExp"></td>
-                      <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
+                     <td><input type="number" placeholder="Year" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill1.minimumExp"></td>
+                      <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
                   </tr>
                   <tr>
                     
                     <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill2.name"> </td>
                    <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill2.minimumExp"></td>
-                    <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
+                    <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
                 </tr>
                 <tr>
                   
                   <td> <input type="text" id="skillset" class="form-control" value="" [(ngModel)]="jobSkill3.name"> </td>
                  <td><input type="number" id="inputExpSkill" class="form-control" value="" [(ngModel)]="jobSkill3.minimumExp"></td>
-                  <!--<td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>-->
+                  <td> <button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button> </td>
               </tr>
               </tbody>
             </table>
+          </div>
+
+          <div class="form-group">
+              <button type="button" class="btn btn-success float-right" >Add</button>
           </div>
         
         </div>
@@ -182,7 +186,7 @@
               <i class="fas fa-minus"></i></button>
           </div>
         </div>
-        <div class="card-body p-0">
+        <div class="card-body">
           <table class="table">
             <thead>
               <tr>
@@ -202,10 +206,13 @@
               </tr>
             </tbody>
           </table>
+
+          <div class="form-group">
+              <button type="button" class="btn btn-success float-right" >Add Custom Questions</button>
+          </div>
+
         </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-success float-right" >Add Custom Questions</button>
-        </div>
+        
         <!-- /.card-body -->
       </div>
 
@@ -246,9 +253,13 @@
                 </tbody>
               </table>
             </div>
-           
+            <div class="form-group">
+                <button type="button" class="btn btn-success float-right" >Add</button>
+            </div>
           </div>
           <!-- /.card-body -->
+          
+
         </div>
 
       <!-- /.card -->

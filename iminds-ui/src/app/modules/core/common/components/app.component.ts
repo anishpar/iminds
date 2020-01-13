@@ -116,10 +116,7 @@ export class AppComponent extends MasterComponent implements OnInit, OnDestroy {
 
   }
 
-  logout() {
-    this._auth.logout();
-  }
-
+  
   ngOnDestroy() {
     this.manageDestroy();
   }

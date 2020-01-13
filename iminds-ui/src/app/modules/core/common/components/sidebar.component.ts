@@ -16,6 +16,9 @@ export class SidebarComponent extends MasterComponent implements OnInit {
 
   ngOnInit() {
   }
+  logout() {
+    this._auth.logout();
+  }
 
   navigate(route:string) {
     this.router.navigate([route]);
