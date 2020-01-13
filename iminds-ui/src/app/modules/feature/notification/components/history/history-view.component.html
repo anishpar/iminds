@@ -54,19 +54,6 @@
                   
                 </div>
                
-                <div class="form-group">
-                  <label for="inputlead">Hiring Lead</label>
-                  <!--<select class="form-control custom-select">
-                    <option selected="">Select One</option>
-                    <option>Maulik Shah</option>
-                    <option>sanjay Madhu</option>
-                    <option>Pankti Joshipura</option>
-                    <option>Ajay Iyer</option>
-                  </select>-->
-                  <label class="form-control" for="inputName">{{addJobOpening.hiringLead}}</label>
-                </div>
-      
-             
       
                 <div class="form-group">
                   <label for="inputEmpType">Employee Type</label>
@@ -81,7 +68,7 @@
                 </div>
                 
                 <div class="form-group">
-                  <label for="MinExp">Minimum Experience</label>
+                  <label for="MinExp">Minimum Experience(Years)</label>
                   <label class="form-control" for="inputName">{{addJobOpening.minimumExp}}</label>
                 </div>
                 
@@ -122,8 +109,8 @@
                       <tr>
                         
                         <th>Skill</th>
-                        <th>Minimum Experience</th>
-                        <th>Total Experience</th>
+                        <th>Minimum Experience(Years)</th>
+                        <th>Total Experience(Years)</th>
                         <!--<th>Remove</th>-->
                       </tr>
                     </thead>
@@ -159,37 +146,23 @@
             <!-- /.card -->
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Questions</h3>
+                <h3 class="card-title">Upload Resume</h3>
       
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
                 </div>
               </div>
+              
+              
+              <br/>
               <div class="card-body p-0">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Questions</th>
-                      <th>Is Mandatory</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-      
-                    <tr>
-                      <td>Resume</td>
-                      <td><ui-switch size="small" name="resume"></ui-switch></td>
-                    </tr>
-                    <tr>
-                      <td>Desired Salary</td>
-                      <td><ui-switch size="small" name="desiredSalary"></ui-switch></td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <button class="btn btn-light" >
+                    <input type="file"  #fileInput (change)="onFileSelect(fileInput)"/>
+                  </button>
               </div>
-              <div class="form-group">
-                  <button type="button" class="btn btn-success float-right" >Add Custom Questions</button>
-              </div>
+              <br/>
+
               <!-- /.card-body -->
             </div>
       

@@ -82,7 +82,7 @@ import { Router } from '@angular/router';
   candidateSkill2 = new CandidateSkillRel();
   candidateSkill3 = new CandidateSkillRel();
   candidateSkills1 = [];
-
+  fileInfo: string;
   jobSkills = [];
 
   addJobOpening = new AddJobOpening();
@@ -178,6 +178,31 @@ import { Router } from '@angular/router';
 
   ngOnDestroy() {
     this.manageDestroy();
+  }
+
+  onFileSelect(input: HTMLInputElement): void {
+
+    /**
+     * Format the size to a human readable string
+     *
+     * @param bytes
+     * @returns the formatted string e.g. `105 kB` or 25.6 MB
+     */
+    function formatBytes(bytes: number): string {
+      const UNITS = ['Bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+      const factor = 1024;
+      let index = 0;
+
+      while (bytes >= factor) {
+        bytes /= factor;
+        index++;
+      }
+
+      return `${parseFloat(bytes.toFixed(2))} ${UNITS[index]}`;
+    }
+
+    const file = input.files[0];
+    this.fileInfo = `${file.name} (${formatBytes(file.size)})`;
   }
 
   
