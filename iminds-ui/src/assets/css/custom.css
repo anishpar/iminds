@@ -116,3 +116,8 @@ a {
 }
 
 .ui-select-placeholder, .ui-select-toggle i { line-height: 2;}
+
+.small-box div.inner div {
+    font-weight: bold;
+    font-size: 1.1em;
+}
