@@ -70,7 +70,14 @@
           <!-- Left col -->
           <div class="col-md-6">
            
-     
+              <div class="small-box bg-dark">
+                  <div class="inner">
+                  <div>
+                    Hiring Statistics</div>
+                  
+                  </div>
+                  
+                </div>
             
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
@@ -93,20 +100,29 @@
           <!-- /.col -->
 
           <div class="col-md-6">
+
+              <div class="small-box bg-dark">
+                  <div class="inner">
+                  <div>
+                    Department Funnel Report</div>
+                  
+                  </div>
+                  
+                </div>
            
            <!-- TABLE: LATEST ORDERS -->
            <div class="card">
               
               <div style="display: block">
                   <canvas baseChart
-                          [datasets]="barChartData"
-                          [labels]="mbarChartLabels"
-                          [options]="barChartOptions"
-                          [colors]="barChartColors"
-                          [legend]="barChartLegend"
-                          [chartType]="barChartType"
-                          (chartHover)="chartHovered($event)"
-                          (chartClick)="chartClicked($event)"></canvas>
+                          [datasets]="barChartData1"
+                          [labels]="mbarChartLabels1"
+                          [options]="barChartOptions1"
+                          [colors]="barChartColors1"
+                          [legend]="barChartLegend1"
+                          [chartType]="barChartType1"
+                          (chartHover)="chartHovered1($event)"
+                          (chartClick)="chartClicked1($event)"></canvas>
                 </div>
             
           </div>
