@@ -340,7 +340,7 @@ public class JobServiceImpl implements JobService{
 					int colIndex = 1;
 					pStmt.setLong(colIndex++, candidateid);
 					pStmt.setLong(colIndex++, candidateSkillsDTO.getJobSkillId());
-					pStmt.setLong(colIndex++, candidateSkillsDTO.getExperience());
+					pStmt.setDouble(colIndex++, candidateSkillsDTO.getExperience());
 					pStmt.addBatch();
 				}
 			}

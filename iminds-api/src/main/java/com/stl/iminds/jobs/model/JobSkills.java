@@ -28,7 +28,7 @@ public class JobSkills implements Serializable {
 	
 	private String description;
 	
-	private Long minimumExp;
+	private Double minimumExp;
 	
 	@ManyToOne
     @JoinColumn(name="jobOpeningid", nullable=false)
@@ -93,14 +93,14 @@ public class JobSkills implements Serializable {
 	/**
 	 * @return the minimumExp
 	 */
-	public Long getMinimumExp() {
+	public Double getMinimumExp() {
 		return minimumExp;
 	}
 
 	/**
 	 * @param minimumExp the minimumExp to set
 	 */
-	public void setMinimumExp(Long minimumExp) {
+	public void setMinimumExp(Double minimumExp) {
 		this.minimumExp = minimumExp;
 	}
 

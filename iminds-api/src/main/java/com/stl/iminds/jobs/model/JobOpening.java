@@ -36,7 +36,7 @@ public class JobOpening implements Serializable {
 	
 	private String employeeType;
 	
-	private Long minimumExp;
+	private Double minimumExp;
 	
 	@Lob
 	private String jobDescription;
@@ -151,14 +151,14 @@ public class JobOpening implements Serializable {
 	/**
 	 * @return the minimumExp
 	 */
-	public Long getMinimumExp() {
+	public Double getMinimumExp() {
 		return minimumExp;
 	}
 
 	/**
 	 * @param minimumExp the minimumExp to set
 	 */
-	public void setMinimumExp(Long minimumExp) {
+	public void setMinimumExp(Double minimumExp) {
 		this.minimumExp = minimumExp;
 	}
 

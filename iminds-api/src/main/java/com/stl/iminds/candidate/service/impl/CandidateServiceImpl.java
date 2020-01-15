@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -123,7 +124,7 @@ public class CandidateServiceImpl implements CandidateService{
 					
 					CandidateSkillsDTO candidateSkillsDTO = new CandidateSkillsDTO();
 					candidateSkillsDTO.setJobSkillId(rs.getLong("JOBSKILLID"));
-					candidateSkillsDTO.setExperience(rs.getLong("EXPERIENCE"));
+					candidateSkillsDTO.setExperience(rs.getDouble("EXPERIENCE"));
 					
 					
 					
@@ -167,7 +168,7 @@ public class CandidateServiceImpl implements CandidateService{
 					JobSkillsDTO jobSkillsDTO =new JobSkillsDTO();
 					jobSkillsDTO.setJobskillid(rs.getLong("JOBSKILLID"));
 					jobSkillsDTO.setName(rs.getString("NAME"));
-					jobSkillsDTO.setMinimumExp(rs.getLong("MINIMUMEXP"));
+					jobSkillsDTO.setMinimumExp(rs.getDouble("MINIMUMEXP"));
 					listJobSkills.add(jobSkillsDTO);
 				}
 			}
@@ -185,7 +186,7 @@ public class CandidateServiceImpl implements CandidateService{
 			for(int index = 0; index < listJobSkills.size(); index++) {
 				JobSkillsDTO jobSkillsDTO = listJobSkills.get(index);
 				Long jobskillid = jobSkillsDTO.getJobskillid();
-				Long minimumExp = jobSkillsDTO.getMinimumExp();
+				Double minimumExp = jobSkillsDTO.getMinimumExp();
 				String name = jobSkillsDTO.getName();
 				if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "jobskillid : "+jobskillid);
 				
@@ -197,13 +198,18 @@ public class CandidateServiceImpl implements CandidateService{
 					if(candidateSkills != null) {
 						for(int i=0 ;i < candidateSkills.size() ;i++) {
 							CandidateSkillsDTO candidateSkillsDTO = candidateSkills.get(i);
-							Long experience = candidateSkillsDTO.getExperience();
+							Double experience = candidateSkillsDTO.getExperience();
 							if(candidateSkillsDTO.getJobSkillId().equals(jobskillid)) {
-								
+								double score = (experience * 100/minimumExp);
+								NumberFormat nf= NumberFormat.getNumberInstance();
+						        nf.setMinimumFractionDigits(2);
+								nf.setMaximumFractionDigits(2);
+								String strScore = nf.format(score);
+					
 								if(jobSkillCriteria != null) {
-									jobSkillCriteria = jobSkillCriteria + "<br>" + name + " - " + (experience * 100/minimumExp  ) + " %";
+									jobSkillCriteria =  jobSkillCriteria + "<br>" + name + " - " +"<b>"+ strScore + " % </b>";
 								} else {
-									jobSkillCriteria = name + " - " +  String.valueOf((experience * 100/minimumExp)) +" %";
+									jobSkillCriteria =  name + " - " +  "<b>" + strScore +" %</b>";
 								}
 							}
 						}

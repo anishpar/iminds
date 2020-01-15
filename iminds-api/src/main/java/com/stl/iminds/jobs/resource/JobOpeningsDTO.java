@@ -13,7 +13,7 @@ public class JobOpeningsDTO implements Serializable {
 	private String hiringLead;
 	private String department;
 	private String employeeType;
-	private Long minimumExp;
+	private Double minimumExp;
 	private String jobDescription;
 	private String location;
 	private String city ;
@@ -102,13 +102,13 @@ public class JobOpeningsDTO implements Serializable {
 	/**
 	 * @return the minimumExp
 	 */
-	public Long getMinimumExp() {
+	public Double getMinimumExp() {
 		return minimumExp;
 	}
 	/**
 	 * @param minimumExp the minimumExp to set
 	 */
-	public void setMinimumExp(Long minimumExp) {
+	public void setMinimumExp(Double minimumExp) {
 		this.minimumExp = minimumExp;
 	}
 	/**

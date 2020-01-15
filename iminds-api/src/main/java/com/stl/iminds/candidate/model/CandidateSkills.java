@@ -28,7 +28,7 @@ public class CandidateSkills implements Serializable {
 	
 	private String description;
 	
-	private Long experience;
+	private Double experience;
 
 	@ManyToOne
     @JoinColumn(name="candidateId", nullable=false)
@@ -79,14 +79,14 @@ public class CandidateSkills implements Serializable {
 	/**
 	 * @return the experience
 	 */
-	public Long getExperience() {
+	public Double getExperience() {
 		return experience;
 	}
 
 	/**
 	 * @param experience the experience to set
 	 */
-	public void setExperience(Long experience) {
+	public void setExperience(Double experience) {
 		this.experience = experience;
 	}
 	

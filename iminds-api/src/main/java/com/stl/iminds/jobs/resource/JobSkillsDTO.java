@@ -9,7 +9,7 @@ public class JobSkillsDTO implements Serializable{
 	private String type;
 	private String name;
 	private String description;
-	private Long minimumExp;
+	private Double minimumExp;
 	/**
 	 * @return the jobskillid
 	 */
@@ -61,13 +61,13 @@ public class JobSkillsDTO implements Serializable{
 	/**
 	 * @return the minimumExp
 	 */
-	public Long getMinimumExp() {
+	public Double getMinimumExp() {
 		return minimumExp;
 	}
 	/**
 	 * @param minimumExp the minimumExp to set
 	 */
-	public void setMinimumExp(Long minimumExp) {
+	public void setMinimumExp(Double minimumExp) {
 		this.minimumExp = minimumExp;
 	}
 	
