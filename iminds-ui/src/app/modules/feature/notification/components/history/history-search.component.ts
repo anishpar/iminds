@@ -25,6 +25,7 @@ import {CandidateSkillRel}  from '../../models/candidatekillrel.model';
 import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagination.config';
 import { HistoryReceiverModel } from '../../models/history-receiver.model';
 import { HistoryDetailsModel } from '../../models/history-details.model';
+import {AssociateRecruiter} from '../../models/associate.recruiter.model';
 import {TemplateModel} from '../../models/template.model';
 import {JobOpeningStatusChange} from '../../models/jobopeningstatuschange.model';
 import { EventConfiguration } from '../../models/event-configuration.model';
@@ -62,6 +63,8 @@ export class SearchHistoryComponent extends MasterComponent
     skills: any;
     jobstatuses = [];
     jobstatus = new JobStatus();
+    associateRecruiter = new AssociateRecruiter();
+    associateRecruiters = [];
 
     jobOpeningStatusChange = new JobOpeningStatusChange();
   
@@ -109,17 +112,17 @@ export class SearchHistoryComponent extends MasterComponent
     }
     ngOnInit() {
 
-      this.hiringLead.name = 'Faiyaz Maru';
-      this.hiringLeads.push(this.hiringLead);
-      this.hiringLead = new HiringLead();
-      this.hiringLead.name = 'Khyati Jani';
-      this.hiringLeads.push(this.hiringLead);
-      this.hiringLead = new HiringLead();
-      this.hiringLead.name = 'Roma Patel';
-      this.hiringLeads.push(this.hiringLead);
-      this.hiringLead = new HiringLead();
-      this.hiringLead.name = 'Sreekanth Menon';
-      this.hiringLeads.push(this.hiringLead);
+      this.associateRecruiter.name = 'Faiyaz Maru';
+      this.associateRecruiters.push(this.associateRecruiter);
+      this.associateRecruiter = new AssociateRecruiter();
+      this.associateRecruiter.name = 'Khyati Jani';
+      this.associateRecruiters.push(this.associateRecruiter);
+      this.associateRecruiter = new AssociateRecruiter();
+      this.associateRecruiter.name = 'Roma Patel';
+      this.associateRecruiters.push(this.associateRecruiter);
+      this.associateRecruiter = new AssociateRecruiter();
+      this.associateRecruiter.name = 'Sreekanth Menon';
+      this.associateRecruiters.push(this.associateRecruiter);
   
       let job = this.getNavParam('jobInfo');
       this.jobOpeningId = job.jobOpeningid;

@@ -68,9 +68,9 @@
               <option>Filled</option>
               <option>Canceled</option>
             </select>-->
-            <stl-input-typeahead [optionList]="hiringLeads" id="name" name="name" returnField="name"
+            <stl-input-typeahead [optionList]="associateRecruiters" id="name" name="name" returnField="name"
                                        labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
-                                       >
+                                       [(ngModel)]="jobOpeningStatusChange.recruiter">
             </stl-input-typeahead>
           </div>
          
