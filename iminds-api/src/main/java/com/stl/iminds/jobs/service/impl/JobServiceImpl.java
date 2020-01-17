@@ -113,12 +113,6 @@ public class JobServiceImpl implements JobService{
 			throw STLExceptionHelper.throwException(NotificationException.class, NotificationEntityType.TEMPLATE, BusinessExceptionType.MISSING_MANDATORY_PARAMETERS, CommonConstant.POSTING_TITLE);
 		}
 		
-		//Check job status is null or not
-		if(CommonUtility.isNull(jobOpeningsDTO.getJobStatus())){
-			LOGGER.errorLog(CLASSNAME, strMethodName, "job status can not be null or empty.");
-			throw STLExceptionHelper.throwException(NotificationException.class, NotificationEntityType.TEMPLATE, BusinessExceptionType.MISSING_MANDATORY_PARAMETERS, CommonConstant.JOB_STATUS);
-		}
-		
 		//Check Hiring Lead is null or not
 		if(CommonUtility.isNull(jobOpeningsDTO.getHiringLead())){
 			LOGGER.errorLog(CLASSNAME, strMethodName, "Hiring Lead can not be null or empty.");
