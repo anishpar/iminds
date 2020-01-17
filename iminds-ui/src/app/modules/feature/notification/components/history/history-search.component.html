@@ -125,8 +125,8 @@
     <div class="col-12">
 
       <button type="submit" class="btn btn-danger" id="submit" 
-      onclick="window.history.back()">Decline</button>
-      <button (click)="onSubmit()" type="submit" class="btn btn-success float-right" id="submit"
+      (click)="onDecline()">Decline</button>
+      <button (click)="onApprove()" type="submit" class="btn btn-success float-right" id="submit"
                 >Approve</button>
 
       <!--<input type="submit" value="Save Changes" class="btn btn-success float-right" ng-click="onSubmit()"/>-->

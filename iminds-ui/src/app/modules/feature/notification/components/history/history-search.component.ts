@@ -113,7 +113,7 @@ export class SearchHistoryComponent extends MasterComponent
       this.jobOpeningId = job.jobOpeningid;
       console.log("jobOpeningId :"+this.jobOpeningId);
       
-      this.service.getJobDetailForApproval(this.jobOpeningId)
+      this.service.getJobDetailByJobId(this.jobOpeningId)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
           this.addJobOpening = res;
@@ -132,7 +132,7 @@ export class SearchHistoryComponent extends MasterComponent
       console.log(this.jobOpeningStatusChange);
      
   
-      this.service.createChannel(this.jobOpeningStatusChange)
+      this.service.changeJobStatus(this.jobOpeningStatusChange)
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(res => {
                 this.router.navigate(['/notification/create_channel']);
@@ -145,7 +145,7 @@ export class SearchHistoryComponent extends MasterComponent
       console.log(this.jobOpeningStatusChange);
      
   
-      this.service.createChannel(this.jobOpeningStatusChange)
+      this.service.changeJobStatus(this.jobOpeningStatusChange)
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(res => {
                 this.router.navigate(['/notification/create_channel']);

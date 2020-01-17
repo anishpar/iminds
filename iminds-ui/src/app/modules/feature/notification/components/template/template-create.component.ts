@@ -128,6 +128,9 @@ export class TemplateCreateComponent extends MasterComponent
     this.department = new Department();
     this.department.name = 'Finance';
     this.departments.push(this.department);
+    this.department = new Department();
+    this.department.name = 'TU';
+    this.departments.push(this.department);
 
 
     this.employeeType.name = 'Full Time';

@@ -92,7 +92,7 @@ export class ChannelCreateComponent extends MasterComponent implements OnInit, O
     this.templateList = [];
     this.jobs = [];   
     
-    this.service.searchJob(this.jobRequest)
+    this.service.getJobDetailForApproval(this.jobRequest)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
         this.searched = true;
