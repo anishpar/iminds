@@ -108,6 +108,18 @@ export class SearchHistoryComponent extends MasterComponent
       this.eventConfigurationModel.templateRelation = [];
     }
     ngOnInit() {
+
+      this.hiringLead.name = 'Maulik Shah';
+      this.hiringLeads.push(this.hiringLead);
+      this.hiringLead = new HiringLead();
+      this.hiringLead.name = 'Sanjay Madhu';
+      this.hiringLeads.push(this.hiringLead);
+      this.hiringLead = new HiringLead();
+      this.hiringLead.name = 'Pankti Joshipura';
+      this.hiringLeads.push(this.hiringLead);
+      this.hiringLead = new HiringLead();
+      this.hiringLead.name = 'Ajay Iyer';
+      this.hiringLeads.push(this.hiringLead);
   
       let job = this.getNavParam('jobInfo');
       this.jobOpeningId = job.jobOpeningid;
