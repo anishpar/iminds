@@ -12,6 +12,7 @@ import { EventConfigurationUpdateComponent } from './components/event/event-conf
 import { TemplateSearchComponent } from './components/template/template-search.component';
 import { TemplateViewComponent } from './components/template/template-view.component';
 import { ChannelCreateComponent } from './components/channel/channel-create.component';
+import { SearchJobApplicationComponent } from './components/event/search-job-opening.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'update_event_configuration/:channelAlias', component: EventConfigurationUpdateComponent },
   { path: 'view_template', component: TemplateViewComponent },
   { path: 'create_channel', component: ChannelCreateComponent },
+  { path: 'search_jobapplication', component: SearchJobApplicationComponent }
 
 
 ];
@@ -38,7 +40,7 @@ const routes: Routes = [
     EventConfigurationSearchComponent, EventConfigurationCreateComponent, EventConfigurationUpdateComponent,
     ViewEventConfigurationComponent,
     SearchHistoryComponent, ViewHistoryComponent,
-    ChannelCreateComponent],
+    ChannelCreateComponent, SearchJobApplicationComponent],
   providers: [],
   exports: []
 })

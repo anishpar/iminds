@@ -82,7 +82,7 @@
                             <th>Hiring Lead</th>
                             <th>Created On</th>
                             <th>Status</th> 
-                            <th>Apply</th> 
+                           
                         </tr>
               
                         <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
@@ -117,9 +117,7 @@
                                 {{job.jobStatus}}
                             </td>   
 
-                            <td>
-                                    <button class="btn btn-success" [routerLink]="['/notification/view_history']" (click)="setNavParam('jobOpeningId',job)">Apply</button>
-                            </td>
+                          
                             
                         </tr>
                     </table>
