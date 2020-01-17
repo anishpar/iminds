@@ -28,6 +28,7 @@ import com.stl.iminds.commons.utils.CommonUtility;
 import com.stl.iminds.jobs.mapper.JobMapper;
 import com.stl.iminds.jobs.model.JobOpening;
 import com.stl.iminds.jobs.repository.JobRepository;
+import com.stl.iminds.jobs.resource.JobOpeningChangeStatusDTO;
 import com.stl.iminds.jobs.resource.JobOpeningsDTO;
 import com.stl.iminds.jobs.service.JobService;
 
@@ -433,5 +434,34 @@ public class JobServiceImpl implements JobService{
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
 		return candidatesDTO;
+	}
+	
+	public void changeApprovalStatus(JobOpeningChangeStatusDTO jobOpeningChangeStatusDTO) {
+		String strMethodName = "createJobOpenings";
+		
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG+ jobOpeningChangeStatusDTO);
+		
+		String strQuery = "UPDATE TBLMJOBOPENING SET APPROVALSTATUS = ? WHERE JOBOPENINGID = ? ";
+		
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery.toString());) {
+			int colIndex = 1;
+			pStmt.setString(colIndex++, jobOpeningChangeStatusDTO.getStatus());
+			pStmt.setString(colIndex++, jobOpeningChangeStatusDTO.getJobOpeningid());
+			
+			int iCount = pStmt.executeUpdate();
+
+			if(iCount > 0) {
+				if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, "Job Approval StatusUpdated successfully with status:"+jobOpeningChangeStatusDTO.getStatus());
+			} 
+			
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 	}
 }

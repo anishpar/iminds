@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,6 +23,7 @@ import com.stl.core.commons.exception.STLException;
 import com.stl.core.commons.utils.CommonConstantCode;
 import com.stl.iminds.candidate.resource.CandidatesDTO;
 import com.stl.iminds.commons.security.utils.CommonConstant;
+import com.stl.iminds.jobs.resource.JobOpeningChangeStatusDTO;
 import com.stl.iminds.jobs.resource.JobOpeningsDTO;
 import com.stl.iminds.jobs.service.JobService;
 
@@ -140,4 +142,19 @@ public class JobController {
 			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
 		}
 	}
+    
+    @PostMapping("/changeApprovalStatus")
+    public Response<JobOpeningChangeStatusDTO> changeApprovalStatus(@Valid @RequestBody JobOpeningChangeStatusDTO jobOpeningChangeStatusDTO){
+    	String strMethodName = "changeApprovalStatus";
+		try {
+			
+			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
+			jobService.changeApprovalStatus(jobOpeningChangeStatusDTO);
+			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, null);
+		}catch(STLException e) {
+			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
+			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
+		}
+    }
+    
 }
