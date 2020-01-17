@@ -1,112 +1,117 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4 page-main-header">
-  <h2 class="h3 mb-0">Search Existing Candidate</h2>
+    <h2 class="h3 mb-0">Approve Job Openings</h2>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
-      <div class="panel panel-default">
-          <div class="panel-body">
-              <form #searchTemplate="ngForm" (ngSubmit)="onSubmit (searchTemplate.form.valid)">
-                  <div class="row ">
-                      
-                      <div class="form-group col-md-3">   
-                          
-                          <!--<stl-input-typeahead [optionList]="events" [label]="lang.selectOption"> 
-                          </stl-input-typeahead>
-                          
-                          {{events | json}}   
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form #searchTemplate="ngForm" (ngSubmit)="onSubmit (searchTemplate.form.valid)">
+                    <div class="row ">
+                        
+                        <div class="form-group col-md-3">   
+                            
+                            <!--<stl-input-typeahead [optionList]="events" [label]="lang.selectOption"> 
+                            </stl-input-typeahead>
+                            
+                            {{events | json}}   
 
-                          <div class="form-group">
-                              <label for="inputStatus">Location</label>
-                              <select class="form-control custom-select" [(ngModel)]="loc">
-                                <option selected="" disabled="">Select one</option>
-                                <option>India</option>
-                                <option>USA</option>
-                                <option>UK</option>
-                              </select>
-                            </div> -->
-                          <label class="label">Location</label>  
-                          <stl-input-typeahead [optionList]="locations" id="alias" name="alias" returnField="alias"
-                                     labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
-                                     [(ngModel)]="jobRequest.location">
-                          </stl-input-typeahead>
-                          
-                      </div>
+                            <div class="form-group">
+                                <label for="inputStatus">Location</label>
+                                <select class="form-control custom-select" [(ngModel)]="loc">
+                                  <option selected="" disabled="">Select one</option>
+                                  <option>India</option>
+                                  <option>USA</option>
+                                  <option>UK</option>
+                                </select>
+                              </div> -->
+                            <label class="label">Location</label>  
+                            <stl-input-typeahead [optionList]="locations" id="alias" name="alias" returnField="alias"
+                                       labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                       [(ngModel)]="jobRequest.location">
+                            </stl-input-typeahead>
+                            
+                        </div>
 
-                      <div class="form-group col-md-3">
-                      <label class="label">Title</label>                      
-                      <stl-input-typeahead [optionList]="titles" id="alias" name="alias" returnField="alias"
-                                     labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
-                                     [(ngModel)]="jobRequest.title" >
-                      </stl-input-typeahead>
-                      </div>
-                      
-                  </div>
+                        <div class="form-group col-md-3">
+                        <label class="label">Title</label>                      
+                        <stl-input-typeahead [optionList]="titles" id="alias" name="alias" returnField="alias"
+                                       labelField="name" valueField="alias" sortOptions="true" [label]="lang.selectOption"
+                                       [(ngModel)]="jobRequest.title" >
+                        </stl-input-typeahead>
+                        </div>
+                        
+                    </div>
+  
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <button id="submitBtn" type="submit" class="btn btn-primary" >
+                                <i class="fa fa-search"></i> {{lang.search}}
+                            </button>
+                            &nbsp;
 
-                  <div class="row">
-                      <div class="form-group col-md-12">
-                          <button id="submitBtn" type="submit" class="btn btn-primary" >
-                              <i class="fa fa-search"></i> {{lang.search}}
-                          </button>
-                          
-                          &nbsp;
-                          
-                          <button type="button" id="resetBtn" class="btn btn-primary" (click)="resetSearch()">
-                              <i class="fa fa-undo"></i>&nbsp;{{lang.reset}}
-                          </button>
-                      </div>
-                  </div> 
-              </form>
+                            
+                            <button type="button" id="resetBtn" class="btn btn-primary" (click)="resetSearch()">
+                                <i class="fa fa-undo"></i>&nbsp;{{lang.reset}}
+                            </button>
+                        </div>
+                    </div> 
+                </form>
 
-              <div class="row">
-                  <div class="col-md-12" *ngIf="searched && totalItems == 0">    
-                      <div class="page-header col-sm-12 alert alert-info text-center">    
-                          {{lang.searchComponent.noResults}}
-                      </div>
-                  </div>              
-                  
-                  <div class="col-sm-12 pull-right text-right vbottomoffset1" *ngIf="templateList && templateList.length > 0">                                        
-                      <stl-pagination *ngIf="totalItems" [totalItems]="totalItems" (changePage)="onChangePage($event)" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage" [maxSize]="10" (numPages)="numPages = $event" [boundaryLinks]="true"></stl-pagination>                    
-                  </div>
-              </div> 
+                <div class="row">
+                    <div class="col-md-12" *ngIf="searched && totalItems == 0">    
+                        <div class="page-header col-sm-12 alert alert-info text-center">    
+                            {{lang.searchComponent.noResults}}
+                        </div>
+                    </div>              
                     
-              <div class="table-responsive" *ngIf="searched">      
-                  <table class="table table-bordered" *ngIf="jobs && jobs.length > 0">        
-                      <tr>         
-                          <th>Candidates</th>        
-                          <th>Job Opening</th>
-                          <th>Hiring Lead</th>
-                          <th>Created On</th>
-                          <th>Status</th> 
-                      </tr>
-            
-                      <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
-                          <td>
-                              {{job.candidateCount}}        
-                          </td>
-                          
-                          <td>    
-                              <a title="{{job.jobOpening}}" routerLink="/notification/view_template" 
-                              (click)="setNavParam('templateName',template.name)">
-                              {{job.title}}</a>                             
-                          </td>
-                              
-                          <td>
-                              {{job.hiringLead}}
-                          </td>
-                              
-                          <td>
-                              {{job.creationDate}}
-                          </td>
-                              
-                          <td>
-                              {{job.status}}
-                          </td>   
-                          
-                      </tr>
-                  </table>
-              </div>
-          </div>
-      </div>
-  </div>
+                    <div class="col-sm-12 pull-right text-right vbottomoffset1" *ngIf="templateList && templateList.length > 0">                                        
+                        <stl-pagination *ngIf="totalItems" [totalItems]="totalItems" (changePage)="onChangePage($event)" [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage" [maxSize]="10" (numPages)="numPages = $event" [boundaryLinks]="true"></stl-pagination>                    
+                    </div>
+                </div> 
+                      
+                <div class="table-responsive" *ngIf="searched">      
+                    <table class="table table-bordered" *ngIf="jobs && jobs.length > 0">        
+                        <tr>         
+                           
+                            <th>Job Opening</th>
+                            <th>Hiring Lead</th>
+                            <th>Created On</th>
+                            <th>Status</th> 
+                           
+                        </tr>
+              
+                        <tr *ngFor="let job of jobs.slice(((pagination.currentPage-1)*pagination.itemsPerPage),pagination.currentPage*pagination.itemsPerPage); let i = index; trackBy: trackByHistoryNo">
+                                     
+                            
+                            <td>              
+                                <a title="{{job.jobOpening}}" routerLink="/notification/search_history" 
+                                (click)="setNavParam('jobInfo',job)"><u>{{job.title}} </u></a>       
+                            </td>
+
+                            <!-- <td>    
+                                <a title="{{job.jobOpening}}" routerLink="/notification/view_template" 
+                                (click)="setNavParam('templateName',template.name)">
+                                {{job.title}}</a>                             
+                            </td>-->
+                                
+                            <td>
+                                {{job.hiringLead}}
+                            </td>
+                                
+                            <td>
+                                {{job.creationDate}}
+                            </td>
+                                
+                            <td>
+                                {{job.jobStatus}}
+                            </td>   
+
+                            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

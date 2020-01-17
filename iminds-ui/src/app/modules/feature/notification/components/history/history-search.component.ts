@@ -2,12 +2,33 @@ import { MasterComponent } from 'src/app/modules/core/common/components/master.c
 import { OnInit, OnDestroy, Component } from '@angular/core';
 import { HistoryModel } from '../../models/history.model';
 import { DateRangeModel } from '../../../shared/models/date-range.model';
-import { NotificationService } from '../../services/notification.service';
 import { takeUntil } from 'rxjs/operators';
+import {NotificationService} from '../../services/notification.service';
+import {CKEditor4} from 'ckeditor4-angular/ckeditor';
+import {TemplateDetailModel} from '../../models/template-detail.model';
+import {TimeRangeModel} from '../../../shared/models/time-range.model';
+import { EventTags } from '../../models/tags.model';
+import {Department}  from '../../models/department.model';
+import { Location } from '../../models/location.model';
+import {JobStatus}  from '../../models/job.status.model';
+import {EmployeeType}  from '../../models/employeetype.model';
+import {AddJobOpening}  from '../../models/addjobopening.model';
+import {HiringLead}  from '../../models/hiringlead.model';
+import {SkillType}  from '../../models/skilltype.model';
+import {InterviewType}  from '../../models/interviewtype.model';
+import {JobQuestionsRel}  from '../../models/jobquestions.model';
+import {JobInterviewRel}  from '../../models/jobinterview.model';
+import {CandidateJobApply}  from '../../models/candidatejobapply.model';
+import {JobSkillRel}  from '../../models/jobskillrel.model';
+import {CandidateJobRel}  from '../../models/candidatejobrel.model';
+import {CandidateSkillRel}  from '../../models/candidatekillrel.model';
 import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagination.config';
 import { HistoryReceiverModel } from '../../models/history-receiver.model';
 import { HistoryDetailsModel } from '../../models/history-details.model';
+import {TemplateModel} from '../../models/template.model';
+import { EventConfiguration } from '../../models/event-configuration.model';
 import { DataStoreService } from 'src/app/modules/core/util/services/data-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'stl-history-search',
@@ -16,205 +37,183 @@ import { DataStoreService } from 'src/app/modules/core/util/services/data-store.
 
 export class SearchHistoryComponent extends MasterComponent
   implements OnInit, OnDestroy {
-  configurationData = ['events', 'channels', 'DISPATCH_STATUS'];
-  historyModel = new HistoryModel();
-  channels = [];
-  events = [];
-  dispatchStatus = [];
-  pagination;
-  totalItems;
-  searched = false;
-  historyList = [];
-  checkAll;
-
-  constructor(public service: NotificationService,public dataStoreService :DataStoreService) {
-    super();
-    this.pagination = Object.assign({}, PaginationConfig);
-  }
-
-  ngOnInit() {
-    this.checkAll = false;
-    let curDate: Date = new Date();
-    let daysBack: Date = new Date(curDate.getTime() - (6 * 24 * 60 * 60 * 1000));
-    this.historyModel.dateRange = new DateRangeModel();
-    this.service.loadConfiguration(this.configurationData)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(res => {
-        this.channels = res['channels'];
-        this.historyModel.channelAlias = '';
-        this.events = res['events'];
-        this.historyModel.eventAlias = '';
-        this.dispatchStatus = res['DISPATCH_STATUS'];
-        this.historyModel.dispatchStatus = '';
-      });      
-      this.historyModel.dateRange = { "fromDate": this.dateToCSVFormat(daysBack), "toDate": this.dateToCSVFormat(curDate) } ;
-  }
-  ngOnDestroy() {
-    this.manageDestroy();
-  }
-
-  onSubmit(isValid: boolean) {
-    this.checkAll = false;
-    let tempHistoryList = [];
-    let indexCount = 0;
-    let tempTransactionId;
-    let tempRecipient;
-    let tempEvent;
-    let tempChannel;
-    let tempRequestIdentifier;
-    let tempLastProcessDate;
-    let tempDispatchStatus;
-    let communicationDetails = [];
-    let receiver = [];
-    // check form validation
-    if (!isValid) {
-      return;
+    configurationData = ['languages', 'channels', 'events', 'images'];
+    templateModel = new TemplateModel();
+    templateContent = new Array();
+    channels = [];
+    events = [];
+    languages = [];
+    images = [];
+    invalidContent = [];
+    maxContent = [];
+    messageTag = [];
+    rowId: number;
+    status = true;
+    eventTagsAPIResponse = [];
+    eventTag ;
+    listEventTags = [];
+    imageRefId = [];
+    eventConfigurationModel = new EventConfiguration();
+    public defaultParamNameList = [];
+    eventTagModel = [];
+    editor = [];
+    skills: any;
+    jobstatuses = [];
+    jobstatus = new JobStatus();
+  
+    hiringLeads = [];
+    hiringLead = new HiringLead();
+  
+    departments = [];
+    department = new Department();
+  
+    employeeTypes = [];
+    employeeType = new EmployeeType();
+  
+    locations = [];
+    location = new Location();
+  
+    skillTypes = [];
+    skillType = new SkillType();
+  
+    interviewTypes = [];
+    interviewType = new InterviewType();
+    jobOpeningId = null;
+  
+    jobSkill1 = new JobSkillRel();
+    jobSkill2 = new JobSkillRel();
+    jobSkill3 = new JobSkillRel();
+  
+    candidateSkill1 = new CandidateSkillRel();
+    candidateSkill2 = new CandidateSkillRel();
+    candidateSkill3 = new CandidateSkillRel();
+    candidateSkills1 = [];
+    fileInfo: string;
+    jobSkills = [];
+  
+    addJobOpening = new AddJobOpening();
+  
+    candidateJobApply = new CandidateJobApply();
+  
+    candidateJobRel = new CandidateJobRel();
+    candidateJobRels = [];
+  
+  
+    constructor(public service: NotificationService, private router: Router) {
+      super();
+      this.eventConfigurationModel.templateRelation = [];
     }
-
-    this.totalItems = 0;
-    this.pagination = Object.assign({}, PaginationConfig);
-    this.historyList = [];
-    this.service.searchHistory(this.historyModel)
+    ngOnInit() {
+  
+      let job = this.getNavParam('jobInfo');
+      this.jobOpeningId = job.jobOpeningid;
+      console.log("jobOpeningId :"+this.jobOpeningId);
+      
+      this.service.getJobDetailByJobId(this.jobOpeningId)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
-        this.searched = true;
-
-        if (this.historyList) {
-
-          this.totalItems = res.length;
-
-          for (let i = 0; i < this.totalItems; i++) {            
-            tempTransactionId = res[i].id;
-            tempEvent = res[i].eventAlias;
-            tempRequestIdentifier = res[i].referenceEntityId;
-
-            //store the history data into cache for view
-            this.dataStoreService.setData(tempTransactionId,res[i]);
-
-            communicationDetails = [];
-            if (res[i].communicationDetails) {
-              communicationDetails = res[i].communicationDetails;
-
-              for (let j = 0; j < communicationDetails.length; j++) {
-                tempChannel = communicationDetails[j]["@type"];
-                receiver = [];
-                receiver = communicationDetails[j].receiver;
-
-                for (let k = 0; k < receiver.length; k++) {
-                  tempHistoryList = [];
-                  tempRecipient = receiver[k].communicationAddress;
-                  tempDispatchStatus = receiver[k].status;
-                  tempLastProcessDate = receiver[k].sendTimeComplete;
-                  tempHistoryList['transectionId'] = tempTransactionId;
-                  tempHistoryList['recipient'] = tempRecipient;
-                  tempHistoryList['eventAlias'] = tempEvent;
-                  tempHistoryList['channelAlias'] = tempChannel;
-                  tempHistoryList['requestIdentifier'] = tempRequestIdentifier;
-                  tempHistoryList['lastProcessDate'] = tempLastProcessDate;
-                  tempHistoryList['dispatchStatus'] = tempDispatchStatus;
-
-                  this.historyList[indexCount] = tempHistoryList;
-                  indexCount = indexCount + 1;
-                } // receiver
-              } // communicationDetails        
-            } else {
-              tempHistoryList = [];
-              tempHistoryList['transectionId'] = tempTransactionId;
-              tempHistoryList['recipient'] = '';
-              tempHistoryList['eventAlias'] = tempEvent;
-              tempHistoryList['channelAlias'] = '';
-              tempHistoryList['requestIdentifier'] = tempRequestIdentifier;
-              tempHistoryList['lastProcessDate'] = '';
-              tempHistoryList['dispatchStatus'] = '';
-
-              this.historyList[indexCount] = tempHistoryList;
-              indexCount = indexCount + 1;
-            }
-          } // totalItems      
+          this.addJobOpening = res;
+          this.jobSkill1 = this.addJobOpening.jobSkills[0];
+          this.jobSkill2 = this.addJobOpening.jobSkills[1];
+          this.jobSkill3 = this.addJobOpening.jobSkills[2];
+        
+      }); 
+  
+    }
+  
+   
+    onSubmit() {
+      console.log(this.jobSkill1);
+      this.candidateSkill1.jobSkillId = this.jobSkill1.jobskillid;
+      this.candidateSkill2.jobSkillId = this.jobSkill2.jobskillid;
+      this.candidateSkill3.jobSkillId = this.jobSkill3.jobskillid;
+      
+      console.log(this.candidateSkill1);
+      this.candidateSkills1.push(this.candidateSkill1);
+      this.candidateSkills1.push(this.candidateSkill2);
+      this.candidateSkills1.push(this.candidateSkill3);
+  
+      const candidateSkills1Clone  = Object.assign([], this.candidateSkills1);
+      this.candidateJobApply.candidateSkills = candidateSkills1Clone;
+  
+  
+      this.candidateJobRel.jobOpeningId = this.jobOpeningId;
+      this.candidateJobRels.push(this.candidateJobRel);
+      const candidateJobRelsClone  = Object.assign([], this.candidateJobRels);
+      this.candidateJobApply.candidateJobRel = candidateJobRelsClone;
+  
+      console.log(this.candidateJobApply);
+      this.service.applyjob(this.candidateJobApply)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe(res => {
+          this.reset();
+        });
+    } 
+  
+    reset() {
+      this.addJobOpening.title = '';
+      this.addJobOpening.jobStatus = '';
+      this.addJobOpening.hiringLead = '';
+      this.addJobOpening.department = '';
+      this.addJobOpening.employeeType = '';
+      this.addJobOpening.jobDescription = '';
+      this.addJobOpening.minimumExp = null;
+      this.addJobOpening.location = '';
+      this.addJobOpening.compensation = '';
+      this.addJobOpening.jobSkills = [];
+      this.addJobOpening.jobQuestionsRels = [];
+      this.addJobOpening.jobInterviewRels = [];
+  
+      this.jobSkill1.minimumExp = null;
+      this.jobSkill1.name = '';
+      
+      this.jobSkill2.minimumExp = null;
+      this.jobSkill2.name = '';
+  
+      this.jobSkill3.minimumExp = null;
+      this.jobSkill3.name = '';
+  
+      this.candidateJobApply.name = '';
+      this.candidateJobApply.mobile = '';
+      this.candidateJobApply.email = '';
+  
+      this.candidateSkill1.experience = null;
+      this.candidateSkill2.experience = null;
+      this.candidateSkill3.experience = null;
+    }
+  
+    ngOnDestroy() {
+      this.manageDestroy();
+    }
+  
+    onFileSelect(input: HTMLInputElement): void {
+  
+      /**
+       * Format the size to a human readable string
+       *
+       * @param bytes
+       * @returns the formatted string e.g. `105 kB` or 25.6 MB
+       */
+      function formatBytes(bytes: number): string {
+        const UNITS = ['Bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        const factor = 1024;
+        let index = 0;
+  
+        while (bytes >= factor) {
+          bytes /= factor;
+          index++;
         }
-      });
-  }
-
-  resend() {
-    let totalCheckedCount = 0;
-    this.historyList.forEach(history =>{ 
-      if (history.checked) {
-        totalCheckedCount++;
+  
+        return `${parseFloat(bytes.toFixed(2))} ${UNITS[index]}`;
       }
-    });
-
-    if(totalCheckedCount == 0){
-      alert(this.lang.notification.resendAtleastOneSelection);
-    }else{
-      var c = confirm(this.lang.notification.total +  totalCheckedCount + this.lang.notification.notificationResendCount);  
-      if (c == true) {  
-         this.historyList.forEach(history =>{
-         
-          if (history.checked) {
-            let historyModel = new HistoryModel();
-    
-             let historyReceiver = new HistoryReceiverModel();
-             historyReceiver.communicationAddress = history.recipient;
-             let historyReceivers = []; 
-             historyReceivers.push(historyReceiver);
-    
-             let historyDetailsModel = new HistoryDetailsModel();
-             historyDetailsModel.receiver = historyReceivers;
-             historyDetailsModel["@type"] = history.channelAlias;
-    
-             let historyDetailModelList = []; 
-             historyDetailModelList.push(historyDetailsModel);
-            
-            historyModel.id = history.transectionId;
-            historyModel.communicationDetails = history.recipient;
-            historyModel.status = history.dispatchStatus;
-            historyModel.eventAlias = history.eventAlias;
-            historyModel.requestIdentifier = history.requestIdentifier;
-            historyModel.communicationDetails = historyDetailModelList;
-          
-           this.service.reProcessNotification(historyModel)
-              .pipe(takeUntil(this.onDestroy$))
-              .subscribe(res => {});
-          }
-        });  
-      }
+  
+      const file = input.files[0];
+      this.fileInfo = `${file.name} (${formatBytes(file.size)})`;
     }
+  
+    
+  
+    
   }
-
-  checkUncheckData() {
-    this.historyList.forEach(history =>{
-      history.checked = this.checkAll;
-    });
-  }
-
-  changeIndividual(){
-    let totalItems = this.historyList.length
-    let totalCheckedCount = 0;
-    this.historyList.forEach(history =>{
-      if (history.checked) {
-        totalCheckedCount++;
-      }
-    });
-    if(totalCheckedCount == totalItems){
-      this.checkAll = true;
-    }else{
-      this.checkAll = false;
-    }
-  }
-
-  trackByHistoryNo(index, item) {
-    return item.id;
-  }
-
-  resetSearch() {
-    let curDate: Date = new Date();
-    let daysBack: Date = new Date(curDate.getTime() - (6 * 24 * 60 * 60 * 1000));
-    this.historyModel.eventAlias = '';
-    this.historyModel.channelAlias = '';
-    this.historyModel.dispatchStatus = '';
-    this.historyModel.transectionId = '';    
-    this.historyModel.dateRange = { "fromDate": this.dateToCSVFormat(daysBack), "toDate": this.dateToCSVFormat(curDate) } ;
-  }
-}
-
-
+  
+  
