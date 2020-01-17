@@ -182,25 +182,19 @@ public class JobServiceImpl implements JobService{
 		List<JobOpeningsDTO> listSearchJobOpenings = new ArrayList();
 		boolean isLocation = false;
 		boolean isTitle = false;
-		List<String> bindVariables = new ArrayList();
 	
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
-		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS FROM TBLMJOBOPENING ");
+		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'APPROVED'");
 		
 		if(location != null && !"".equals(location)) {
 			isLocation = true;
-			strQuery.append(" WHERE LOCATION = ?");
+			strQuery.append(" AND LOCATION = ?");
 		}
 		
 		if(title != null && !"".equals(title)) {
 			isTitle = true;
-			if(isLocation) {
-				strQuery.append(" AND TITLE = ?");
-			}else {
-				strQuery.append(" WHERE TITLE = ?");
-			}
-			
+			strQuery.append(" AND TITLE = ?");
 		}
 		
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
@@ -220,12 +214,11 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
 					jobOpeningsDTO.setJobStatus(rs.getString("JOBSTATUS"));
 					jobOpeningsDTO.setJobOpeningid(rs.getLong("JOBOPENINGID"));
+					jobOpeningsDTO.setApprovalStatus("APPROVALSTATUS");
 					jobOpeningsDTO.setCandidateCount(getCandidateCountForOneJob(rs.getLong("JOBOPENINGID")));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}
 			}
-					
-				
 		}catch(SQLException sql) {
 			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
 			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
@@ -233,9 +226,6 @@ public class JobServiceImpl implements JobService{
 			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
 			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
 		}
-		
-		
-
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job searched successfully with data : "+ listSearchJobOpenings);
 		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
 		
@@ -268,8 +258,61 @@ public class JobServiceImpl implements JobService{
 		}
 		
 		return 0;
+	}
 	
+	@Override
+	public List<JobOpeningsDTO> searchJobOpeningsForRegisteredStatus(String location, String title) {
+		String strMethodName = "searchJobOpenings";
+		List<JobOpeningsDTO> listSearchJobOpenings = new ArrayList();
+		boolean isLocation = false;
+		boolean isTitle = false;
+	
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
+		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'REGISTERED'");
+		
+		if(location != null && !"".equals(location)) {
+			isLocation = true;
+			strQuery.append(" AND LOCATION = ?");
+		}
+		
+		if(title != null && !"".equals(title)) {
+			isTitle = true;
+			strQuery.append(" AND TITLE = ?");
+		}
+		
+		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
+				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery.toString());) {
+			int colIndex = 1;
+			if(isLocation) {
+				pStmt.setString(colIndex++, location);
+			}
+			if(isTitle) {
+				pStmt.setString(colIndex++, title);
+			}
+			try(ResultSet rs = pStmt.executeQuery()) {
+				while(rs.next()) {
+					JobOpeningsDTO jobOpeningsDTO =new JobOpeningsDTO();
+					jobOpeningsDTO.setHiringLead(rs.getString("HIRINGLEAD"));
+					jobOpeningsDTO.setTitle(rs.getString("TITLE"));
+					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
+					jobOpeningsDTO.setJobStatus(rs.getString("JOBSTATUS"));
+					jobOpeningsDTO.setJobOpeningid(rs.getLong("JOBOPENINGID"));
+					jobOpeningsDTO.setApprovalStatus("APPROVALSTATUS");
+					listSearchJobOpenings.add(jobOpeningsDTO);
+				}
+			}
+		}catch(SQLException sql) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,sql.getMessage(),sql);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.SQL);
+		}catch(Exception e) {
+			LOGGER.errorLog(CLASSNAME,strMethodName,e.getMessage(),e);
+			throw STLExceptionHelper.throwException(NotificationException.class, null, TechnicalExceptionType.TECHNICAL);
+		}
+		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"job searched successfully with data : "+ listSearchJobOpenings);
+		if(LOGGER.isInfoEnabled())  LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_END_LOG);
+		
+		return listSearchJobOpenings;
 	}
 	
 	

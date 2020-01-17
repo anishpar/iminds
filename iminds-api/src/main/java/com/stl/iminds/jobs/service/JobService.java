@@ -15,6 +15,8 @@ public interface JobService {
 	
 	public List<JobOpeningsDTO> searchJobOpenings(String location, String title);
 	
+	public List<JobOpeningsDTO> searchJobOpeningsForRegisteredStatus(String location, String title);
+	
 	public CandidatesDTO applyJob(CandidatesDTO candidatesDTO);
 
 }

@@ -97,8 +97,7 @@ public class JobController {
 	 * @return Response with JobOpeningsDTO	 
 	 */    
     @GetMapping("/search")
-	public Response<List<JobOpeningsDTO>> searchJobOpenings(
-			@RequestParam(value = "location", required = false) String location,
+	public Response<List<JobOpeningsDTO>> searchJobOpenings(@RequestParam(value = "location", required = false) String location,
 			@RequestParam(value = "title", required = false) String title) {
 		String strMethodName = "searchJobOpenings";
 		try {
@@ -111,6 +110,21 @@ public class JobController {
 			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
 		}
 	}
+    
+    @GetMapping("/searchRegistered")
+   	public Response<List<JobOpeningsDTO>> searchJobOpeningsForRegisteredStatus(	@RequestParam(value = "location", required = false) String location,
+   			@RequestParam(value = "title", required = false) String title) {
+   		String strMethodName = "searchJobOpeningsForRegisteredStatus";
+   		try {
+   			
+   			if(LOGGER.isInfoEnabled()) LOGGER.infoLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG);
+   			List<JobOpeningsDTO> jobOpeningsResp= jobService.searchJobOpeningsForRegisteredStatus(location,title);
+   			return new Response<>(CommonConstantCode.SUCCESS_RESPONSE_CODE, CommonConstantCode.SUCCESS_RESPONSE_MESSAGE, jobOpeningsResp);
+   		}catch(STLException e) {
+   			LOGGER.errorLog(CLASSNAME, strMethodName, CommonConstant.METHOD_EXCEPTION_LOG, e);
+   			return new Response<>(e.getErrorCode(), e.getErrorMessage(), null);
+   		}
+   	}
     
     
     @PostMapping("/apply")

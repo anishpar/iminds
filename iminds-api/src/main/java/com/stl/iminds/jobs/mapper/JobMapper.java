@@ -26,7 +26,8 @@ public class JobMapper {
 		jobOpening.setMinimumExp(jobOpeningsDTO.getMinimumExp());		
 		jobOpening.setJobDescription(jobOpeningsDTO.getJobDescription());		
 		jobOpening.setLocation(jobOpeningsDTO.getLocation());
-		jobOpening.setCity(jobOpeningsDTO.getCity());		
+		jobOpening.setCity(jobOpeningsDTO.getCity());
+		jobOpening.setApprovalStatus(jobOpeningsDTO.getApprovalStatus());
 		jobOpening.setState(jobOpeningsDTO.getState());		
 		jobOpening.setCountry(jobOpeningsDTO.getCountry());		
 		jobOpening.setCompensation(jobOpeningsDTO.getCompensation());
@@ -102,6 +103,7 @@ public class JobMapper {
 		jobOpeningsDTO.setState(jobOpening.getState());		
 		jobOpeningsDTO.setCountry(jobOpening.getCountry());		
 		jobOpeningsDTO.setCompensation(jobOpening.getCompensation());
+		jobOpeningsDTO.setApprovalStatus(jobOpening.getApprovalStatus());
 		jobOpeningsDTO.setCreationDate(jobOpening.getCreationDate());
 		jobOpeningsDTO.setLastModifiedDate(jobOpening.getLastModifiedDate());		
 		
