@@ -33,20 +33,20 @@
             <label for="inputName">Posting Title</label>
             <input type="text" id="inputName" class="form-control" value="" [(ngModel)]="addJobOpening.title">
           </div>
-          <div class="form-group">
+          <!--<div class="form-group">
             <label for="inputStatus">Job Status</label>
-            <!--<select class="form-control custom-select">
+            
               <option selected="">Draft</option>
               <option>Open</option>
               <option>OnHold</option>
               <option>Filled</option>
               <option>Canceled</option>
-            </select>-->
+            </select>
             <stl-input-typeahead [optionList]="jobstatuses" id="name" name="name" returnField="name"
                                        labelField="name" valueField="name" sortOptions="true" [label]="lang.selectOption"
                                        [(ngModel)]="addJobOpening.jobStatus">
             </stl-input-typeahead>
-          </div>
+          </div>-->
           <div class="form-group">
             <label for="inputlead">Hiring Lead</label>
             <!--<select class="form-control custom-select">

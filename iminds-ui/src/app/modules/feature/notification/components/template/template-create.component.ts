@@ -199,6 +199,7 @@ export class TemplateCreateComponent extends MasterComponent
     this.addJobOpening.employeeType = '';
     this.addJobOpening.jobDescription = '';
     this.addJobOpening.minimumExp = null;
+    this.addJobOpening.noofopening = null;
     this.addJobOpening.location = '';
     this.addJobOpening.compensation = '';
     this.addJobOpening.jobSkills = [];
