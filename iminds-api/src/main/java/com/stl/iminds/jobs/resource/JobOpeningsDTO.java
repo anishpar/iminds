@@ -339,7 +339,7 @@ public class JobOpeningsDTO implements Serializable {
 		builder.append(jobInterviewRels);
 		builder.append(", candidateCount=");
 		builder.append(candidateCount);
-		builder.append(", noofopening=");
+		builder.append(", noofjobopening=");
 		builder.append(noofjobopening);
 		builder.append("]");
 		return builder.toString();

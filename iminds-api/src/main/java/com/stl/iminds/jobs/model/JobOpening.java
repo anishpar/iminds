@@ -398,7 +398,7 @@ public class JobOpening implements Serializable {
 		builder.append(approvalStatus);
 		builder.append(", recruiter=");
 		builder.append(recruiter);
-		builder.append(", noofopening=");
+		builder.append(", noofjobopening=");
 		builder.append(noofjobopening);
 		builder.append(", jobSkills=");
 		builder.append(jobSkills);
