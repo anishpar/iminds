@@ -64,8 +64,8 @@ export class ChannelCreateComponent extends MasterComponent implements OnInit, O
         this.title.alias = 'Software Engineer';
         this.titles.push(this.title);
         this.title = new Title();
-        this.title.name = 'Trainee';
-        this.title.alias = 'Trainee';
+        this.title.name = 'Jr. Software Engineer';
+        this.title.alias = 'Jr. Software Engineer';
         this.titles.push(this.title);
         console.log('evetns :'+this.titles);
     
