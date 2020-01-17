@@ -18,6 +18,7 @@ implements OnInit, OnDestroy {
     totalItems;
     fileUrl;
     searched = false;
+    candidate;
     channelList = [];
     channelModel: Channel;
     channelMap=[];
@@ -29,9 +30,9 @@ implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        let channelName = this.getNavParam('channelName');
-        this.channel = this.dataStoreService.getData(channelName);
-        this.viewChannel(channelName);
+        this.candidate = this.getNavParam('CandidateInfo');
+        
+        
           
     }
     viewChannel(channelName:String){

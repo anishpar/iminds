@@ -30,7 +30,9 @@
                 </tr>
               </thead>
               <tbody> 
+                
                  <tr *ngFor="let candidate of candidates let i = index;">
+                    
                   <td>{{i+1}}</td>
                   <td>{{candidate.name}}</td>
                   <td>{{candidate.jobOpening}}</td>
@@ -41,7 +43,7 @@
                   <!--<td *ngIf="filterpage" style="white-space: pre;">{{candidate.jobSkillCriteria}}</td>-->
                   <td *ngIf="filterpage" [innerHTML]="candidate.jobSkillCriteria" class="text-right">/td>
                   <td><button class="btn btn-success" routerLink="/notification/create_event_configuration" 
-                    (click)="setNavParam('CandidateInfo',null)">View Score</button></td>
+                    (click)="setNavParam('CandidateInfo',candidate)">View Score</button></td>
                 </tr>
               </tbody>
             </table>
