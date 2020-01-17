@@ -52,7 +52,7 @@ public class JobServiceImpl implements JobService{
 		validateJobOpeningRequest(jobOpeningsDTO);
 		
 		JobOpening jobOpening = JobMapper.convertJobOpeningDTOToJobOpening(jobOpeningsDTO);
-		
+		jobOpening.setApprovalStatus("REGISTERED");
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to save Job Opening Data : "+ jobOpening);
 		
 		jobRepository.save(jobOpening);
