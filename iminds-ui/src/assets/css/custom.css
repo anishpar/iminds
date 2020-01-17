@@ -127,3 +127,13 @@ table.table-bordered>tr>th, table.table-bordered>tbody>tr>th, table.table-border
     background-color: #337ab7;
     color: #FFF;
     }
+
+
+    abel.required-label {
+        font-family: 'OpenSans-Semibold';
+        }
+        
+        label.required-label::after {
+        content: " *";
+        color: red
+        }
