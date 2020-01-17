@@ -186,7 +186,7 @@ public class JobServiceImpl implements JobService{
 	
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
-		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS,RECRUITER,APPROVALSTATUS FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'APPROVED'");
+		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS,RECRUITER,APPROVALSTATUS,NOOFJOBOPENING FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'APPROVED'");
 		
 		if(location != null && !"".equals(location)) {
 			isLocation = true;
@@ -217,6 +217,7 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setJobOpeningid(rs.getLong("JOBOPENINGID"));
 					jobOpeningsDTO.setApprovalStatus(rs.getString("APPROVALSTATUS"));
 					jobOpeningsDTO.setRecruiter(rs.getString("RECRUITER"));
+					jobOpeningsDTO.setNoofopening(rs.getLong("NOOFJOBOPENING"));
 					jobOpeningsDTO.setCandidateCount(getCandidateCountForOneJob(rs.getLong("JOBOPENINGID")));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}
@@ -271,7 +272,7 @@ public class JobServiceImpl implements JobService{
 	
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
-		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'REGISTERED'");
+		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS,NOOFJOBOPENING FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'REGISTERED'");
 		
 		if(location != null && !"".equals(location)) {
 			isLocation = true;
@@ -300,7 +301,7 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setCreationDate(rs.getDate("CREATIONDATE"));
 					jobOpeningsDTO.setJobStatus(rs.getString("JOBSTATUS"));
 					jobOpeningsDTO.setJobOpeningid(rs.getLong("JOBOPENINGID"));
-					jobOpeningsDTO.setApprovalStatus("APPROVALSTATUS");
+					jobOpeningsDTO.setNoofopening(rs.getLong("NOOFJOBOPENING"));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}
 			}

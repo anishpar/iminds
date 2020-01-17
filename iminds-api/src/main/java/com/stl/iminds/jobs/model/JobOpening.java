@@ -58,6 +58,8 @@ public class JobOpening implements Serializable {
 	private String approvalStatus;
 	
 	private String recruiter;
+	
+	private long noofjobopening;
 
 	@OneToMany(mappedBy="jobOpening", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<JobSkills> jobSkills;
@@ -349,6 +351,15 @@ public class JobOpening implements Serializable {
 	public void setRecruiter(String recruiter) {
 		this.recruiter = recruiter;
 	}
+	
+
+	public long getNoofopening() {
+		return noofjobopening;
+	}
+
+	public void setNoofopening(long noofjobopening) {
+		this.noofjobopening = noofjobopening;
+	}
 
 	@Override
 	public String toString() {
@@ -387,6 +398,8 @@ public class JobOpening implements Serializable {
 		builder.append(approvalStatus);
 		builder.append(", recruiter=");
 		builder.append(recruiter);
+		builder.append(", noofopening=");
+		builder.append(noofjobopening);
 		builder.append(", jobSkills=");
 		builder.append(jobSkills);
 		builder.append(", jobQuestionsRels=");
@@ -396,6 +409,8 @@ public class JobOpening implements Serializable {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 	
 	
 }

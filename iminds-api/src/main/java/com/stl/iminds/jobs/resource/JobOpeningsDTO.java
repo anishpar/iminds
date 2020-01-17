@@ -28,6 +28,7 @@ public class JobOpeningsDTO implements Serializable {
 	private List<JobQuestionsRelDTO> jobQuestionsRels;
 	private List<JobInterviewRelDTO> jobInterviewRels;
 	private Long candidateCount;
+	private long noofjobopening;
 	
 	/**
 	 * @return the jobOpeningid
@@ -284,6 +285,15 @@ public class JobOpeningsDTO implements Serializable {
 	public void setApprovalStatus(String approvalStatus) {
 		this.approvalStatus = approvalStatus;
 	}
+	
+	
+	
+	public long getNoofopening() {
+		return noofjobopening;
+	}
+	public void setNoofopening(long noofjobopening) {
+		this.noofjobopening = noofjobopening;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -329,8 +339,11 @@ public class JobOpeningsDTO implements Serializable {
 		builder.append(jobInterviewRels);
 		builder.append(", candidateCount=");
 		builder.append(candidateCount);
+		builder.append(", noofopening=");
+		builder.append(noofjobopening);
 		builder.append("]");
 		return builder.toString();
 	}
+	
 	
 }

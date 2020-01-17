@@ -77,7 +77,7 @@
                             <th>Job Opening</th>
                             <th>Hiring Lead</th>
                             <th>Created On</th>
-                           
+                            <th>No of Open Positions</th>
                             <th>View</th> 
                            
                         </tr>
@@ -102,7 +102,9 @@
                             <td>
                                 {{job.creationDate}}
                             </td>
-                              
+                            <td>
+                                {{job.noofopening}}
+                            </td>
 
                             <td><button class="btn btn-success" routerLink="/notification/search_history" 
                                 (click)="setNavParam('jobInfo',job)">View</button></td>

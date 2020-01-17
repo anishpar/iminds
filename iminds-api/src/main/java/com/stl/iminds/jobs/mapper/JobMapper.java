@@ -32,6 +32,7 @@ public class JobMapper {
 		jobOpening.setCountry(jobOpeningsDTO.getCountry());		
 		jobOpening.setCompensation(jobOpeningsDTO.getCompensation());
 		jobOpening.setRecruiter(jobOpeningsDTO.getRecruiter());
+		jobOpening.setNoofopening(jobOpeningsDTO.getNoofopening());
 		
 		Date sysDate = new Date();
 		jobOpening.setCreationDate(sysDate);
@@ -108,6 +109,7 @@ public class JobMapper {
 		jobOpeningsDTO.setCreationDate(jobOpening.getCreationDate());
 		jobOpeningsDTO.setLastModifiedDate(jobOpening.getLastModifiedDate());		
 		jobOpeningsDTO.setRecruiter(jobOpening.getRecruiter());
+		jobOpeningsDTO.setNoofopening(jobOpening.getNoofopening());
 		
 		List<JobSkills> lstJobSkills = jobOpening.getJobSkills();
     	List<JobSkillsDTO> lstJobSkillsDto = new ArrayList<>();
