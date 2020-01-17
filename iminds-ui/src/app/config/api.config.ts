@@ -55,5 +55,8 @@ export const APIConfigurations = {
       'ADD_JOB_OPENING':'job/',
       'SEARCH_JOB_OPENING_BY_ID':'job/',
       'APPLY_JOB':'job/apply',
+      'JOB_STATUS_CHANGE':'job/changeApprovalStatus',
+      'GET_JOB_DETAIL_FOR_APPROVAL':'job/searchRegistered'
+      
     }
 };

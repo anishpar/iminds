@@ -26,6 +26,7 @@ import { PaginationConfig } from 'src/app/modules/core/util/configuration/pagina
 import { HistoryReceiverModel } from '../../models/history-receiver.model';
 import { HistoryDetailsModel } from '../../models/history-details.model';
 import {TemplateModel} from '../../models/template.model';
+import {JobOpeningStatusChange} from '../../models/jobopeningstatuschange.model';
 import { EventConfiguration } from '../../models/event-configuration.model';
 import { DataStoreService } from 'src/app/modules/core/util/services/data-store.service';
 import { Router } from '@angular/router';
@@ -40,6 +41,7 @@ export class SearchHistoryComponent extends MasterComponent
     configurationData = ['languages', 'channels', 'events', 'images'];
     templateModel = new TemplateModel();
     templateContent = new Array();
+    add
     channels = [];
     events = [];
     languages = [];
@@ -60,6 +62,8 @@ export class SearchHistoryComponent extends MasterComponent
     skills: any;
     jobstatuses = [];
     jobstatus = new JobStatus();
+
+    jobOpeningStatusChange = new JobOpeningStatusChange();
   
     hiringLeads = [];
     hiringLead = new HiringLead();
@@ -109,7 +113,7 @@ export class SearchHistoryComponent extends MasterComponent
       this.jobOpeningId = job.jobOpeningid;
       console.log("jobOpeningId :"+this.jobOpeningId);
       
-      this.service.getJobDetailByJobId(this.jobOpeningId)
+      this.service.getJobDetailForApproval(this.jobOpeningId)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(res => {
           this.addJobOpening = res;
@@ -122,65 +126,32 @@ export class SearchHistoryComponent extends MasterComponent
     }
   
    
-    onSubmit() {
-      console.log(this.jobSkill1);
-      this.candidateSkill1.jobSkillId = this.jobSkill1.jobskillid;
-      this.candidateSkill2.jobSkillId = this.jobSkill2.jobskillid;
-      this.candidateSkill3.jobSkillId = this.jobSkill3.jobskillid;
-      
-      console.log(this.candidateSkill1);
-      this.candidateSkills1.push(this.candidateSkill1);
-      this.candidateSkills1.push(this.candidateSkill2);
-      this.candidateSkills1.push(this.candidateSkill3);
+    onApprove() {
+      this.jobOpeningStatusChange.jobOpeningid = this.jobOpeningId;
+      this.jobOpeningStatusChange.status = "APPROVED";
+      console.log(this.jobOpeningStatusChange);
+     
   
-      const candidateSkills1Clone  = Object.assign([], this.candidateSkills1);
-      this.candidateJobApply.candidateSkills = candidateSkills1Clone;
-  
-  
-      this.candidateJobRel.jobOpeningId = this.jobOpeningId;
-      this.candidateJobRels.push(this.candidateJobRel);
-      const candidateJobRelsClone  = Object.assign([], this.candidateJobRels);
-      this.candidateJobApply.candidateJobRel = candidateJobRelsClone;
-  
-      console.log(this.candidateJobApply);
-      this.service.applyjob(this.candidateJobApply)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe(res => {
-          this.reset();
-        });
+      this.service.createChannel(this.jobOpeningStatusChange)
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(res => {
+                this.router.navigate(['/notification/create_channel']);
+            });
     } 
+
+    onDecline() {
+      this.jobOpeningStatusChange.jobOpeningid = this.jobOpeningId;
+      this.jobOpeningStatusChange.status = "DECLINED";
+      console.log(this.jobOpeningStatusChange);
+     
   
-    reset() {
-      this.addJobOpening.title = '';
-      this.addJobOpening.jobStatus = '';
-      this.addJobOpening.hiringLead = '';
-      this.addJobOpening.department = '';
-      this.addJobOpening.employeeType = '';
-      this.addJobOpening.jobDescription = '';
-      this.addJobOpening.minimumExp = null;
-      this.addJobOpening.location = '';
-      this.addJobOpening.compensation = '';
-      this.addJobOpening.jobSkills = [];
-      this.addJobOpening.jobQuestionsRels = [];
-      this.addJobOpening.jobInterviewRels = [];
-  
-      this.jobSkill1.minimumExp = null;
-      this.jobSkill1.name = '';
-      
-      this.jobSkill2.minimumExp = null;
-      this.jobSkill2.name = '';
-  
-      this.jobSkill3.minimumExp = null;
-      this.jobSkill3.name = '';
-  
-      this.candidateJobApply.name = '';
-      this.candidateJobApply.mobile = '';
-      this.candidateJobApply.email = '';
-  
-      this.candidateSkill1.experience = null;
-      this.candidateSkill2.experience = null;
-      this.candidateSkill3.experience = null;
-    }
+      this.service.createChannel(this.jobOpeningStatusChange)
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(res => {
+                this.router.navigate(['/notification/create_channel']);
+            });
+    } 
+
   
     ngOnDestroy() {
       this.manageDestroy();

@@ -54,6 +54,11 @@ export class NotificationService {
     return this._service.fetch('SEARCH_JOB_OPENING_BY_ID', queryParam);
   }
 
+  getJobDetailForApproval(jobOpeningId) {
+    let queryParam = jobOpeningId;
+    return this._service.fetch('GET_JOB_DETAIL_FOR_APPROVAL', queryParam);
+  }
+
   loadConfiguration(configurationData) {
     return this._service.fetchPost('LOAD_CONFIGURATION', configurationData);
   }
@@ -110,6 +115,10 @@ export class NotificationService {
   }
   createChannel(channel){
     return this._service.post('CHANNEL',channel);
+  }
+
+  changeJobStatus(jobOpeningStatusChange){
+    return this._service.post('JOB_STATUS_CHANGE',jobOpeningStatusChange);
   }
 
   searchCandidate(){
