@@ -109,16 +109,16 @@ export class SearchHistoryComponent extends MasterComponent
     }
     ngOnInit() {
 
-      this.hiringLead.name = 'Maulik Shah';
+      this.hiringLead.name = 'Faiyaz Maru';
       this.hiringLeads.push(this.hiringLead);
       this.hiringLead = new HiringLead();
-      this.hiringLead.name = 'Sanjay Madhu';
+      this.hiringLead.name = 'Khyati Jani';
       this.hiringLeads.push(this.hiringLead);
       this.hiringLead = new HiringLead();
-      this.hiringLead.name = 'Pankti Joshipura';
+      this.hiringLead.name = 'Roma Patel';
       this.hiringLeads.push(this.hiringLead);
       this.hiringLead = new HiringLead();
-      this.hiringLead.name = 'Ajay Iyer';
+      this.hiringLead.name = 'Sreekanth Menon';
       this.hiringLeads.push(this.hiringLead);
   
       let job = this.getNavParam('jobInfo');
