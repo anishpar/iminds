@@ -15,5 +15,6 @@ export class AddJobOpening {
     public jobSkills : JobSkillRel[];
     public jobQuestionsRels : JobQuestionsRel[];
     public jobInterviewRels : JobInterviewRel[];
+    public noofopening: number;
 
 }
