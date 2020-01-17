@@ -121,3 +121,9 @@ a {
     font-weight: bold;
     font-size: 1.1em;
 }
+
+
+table.table-bordered>tr>th, table.table-bordered>tbody>tr>th, table.table-bordered>thead>tr>th, .mso-report-header-background, .mso-report-footer-background {
+    background-color: #337ab7;
+    color: #FFF;
+    }
