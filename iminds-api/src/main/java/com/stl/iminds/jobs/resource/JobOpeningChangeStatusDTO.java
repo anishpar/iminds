@@ -8,6 +8,7 @@ public class JobOpeningChangeStatusDTO implements Serializable {
 	
 	private String jobOpeningid;
 	private String status;
+	private String recruiter;
 	/**
 	 * @return the jobOpeningid
 	 */
@@ -26,6 +27,19 @@ public class JobOpeningChangeStatusDTO implements Serializable {
 	public String getStatus() {
 		return status;
 	}
+	
+	/**
+	 * @return the recruiter
+	 */
+	public String getRecruiter() {
+		return recruiter;
+	}
+	/**
+	 * @param recruiter the recruiter to set
+	 */
+	public void setRecruiter(String recruiter) {
+		this.recruiter = recruiter;
+	}
 	/**
 	 * @param status the status to set
 	 */
@@ -39,6 +53,8 @@ public class JobOpeningChangeStatusDTO implements Serializable {
 		builder.append(jobOpeningid);
 		builder.append(", status=");
 		builder.append(status);
+		builder.append(", recruiter=");
+		builder.append(recruiter);
 		builder.append("]");
 		return builder.toString();
 	}

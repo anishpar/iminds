@@ -23,6 +23,7 @@ public class JobOpeningsDTO implements Serializable {
 	private Date creationDate;
 	private Date lastModifiedDate;
 	private String approvalStatus;
+	private String recruiter;
 	private List<JobSkillsDTO> jobSkills;
 	private List<JobQuestionsRelDTO> jobQuestionsRels;
 	private List<JobInterviewRelDTO> jobInterviewRels;
@@ -259,8 +260,18 @@ public class JobOpeningsDTO implements Serializable {
 		this.candidateCount = candidateCount;
 	}
 	
-	
-	
+	/**
+	 * @return the recruiter
+	 */
+	public String getRecruiter() {
+		return recruiter;
+	}
+	/**
+	 * @param recruiter the recruiter to set
+	 */
+	public void setRecruiter(String recruiter) {
+		this.recruiter = recruiter;
+	}
 	/**
 	 * @return the approvalStatus
 	 */
@@ -308,6 +319,8 @@ public class JobOpeningsDTO implements Serializable {
 		builder.append(lastModifiedDate);
 		builder.append(", approvalStatus=");
 		builder.append(approvalStatus);
+		builder.append(", recruiter=");
+		builder.append(recruiter);
 		builder.append(", jobSkills=");
 		builder.append(jobSkills);
 		builder.append(", jobQuestionsRels=");

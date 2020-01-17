@@ -186,7 +186,7 @@ public class JobServiceImpl implements JobService{
 	
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName,"Going to search Job Opening for location : "+ location + "and for title "+title);
 		
-		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'APPROVED'");
+		StringBuilder strQuery = new StringBuilder("SELECT JOBOPENINGID,HIRINGLEAD,CREATIONDATE,TITLE,JOBSTATUS,RECRUITER FROM TBLMJOBOPENING WHERE APPROVALSTATUS = 'APPROVED'");
 		
 		if(location != null && !"".equals(location)) {
 			isLocation = true;
@@ -216,6 +216,7 @@ public class JobServiceImpl implements JobService{
 					jobOpeningsDTO.setJobStatus(rs.getString("JOBSTATUS"));
 					jobOpeningsDTO.setJobOpeningid(rs.getLong("JOBOPENINGID"));
 					jobOpeningsDTO.setApprovalStatus("APPROVALSTATUS");
+					jobOpeningsDTO.setRecruiter("RECRUITER");
 					jobOpeningsDTO.setCandidateCount(getCandidateCountForOneJob(rs.getLong("JOBOPENINGID")));
 					listSearchJobOpenings.add(jobOpeningsDTO);
 				}
@@ -441,12 +442,13 @@ public class JobServiceImpl implements JobService{
 		
 		if(LOGGER.isDebugEnabled()) LOGGER.debugLog(CLASSNAME, strMethodName, CommonConstant.METHOD_START_LOG+ jobOpeningChangeStatusDTO);
 		
-		String strQuery = "UPDATE TBLMJOBOPENING SET APPROVALSTATUS = ? WHERE JOBOPENINGID = ? ";
+		String strQuery = "UPDATE TBLMJOBOPENING SET APPROVALSTATUS = ?,RECRUITER = ? WHERE JOBOPENINGID = ? ";
 		
 		try(Connection con = dbManager.getConnection(CacheConstant.DATASOURCE_NAME);
 				PreparedStatement pStmt = dbManager.getPreparedStatement(con, strQuery.toString());) {
 			int colIndex = 1;
 			pStmt.setString(colIndex++, jobOpeningChangeStatusDTO.getStatus());
+			pStmt.setString(colIndex++, jobOpeningChangeStatusDTO.getRecruiter());
 			pStmt.setString(colIndex++, jobOpeningChangeStatusDTO.getJobOpeningid());
 			
 			int iCount = pStmt.executeUpdate();

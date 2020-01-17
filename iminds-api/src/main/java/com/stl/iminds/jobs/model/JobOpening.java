@@ -56,6 +56,8 @@ public class JobOpening implements Serializable {
 	private Date lastModifiedDate;
 	
 	private String approvalStatus;
+	
+	private String recruiter;
 
 	@OneToMany(mappedBy="jobOpening", cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<JobSkills> jobSkills;
@@ -332,6 +334,22 @@ public class JobOpening implements Serializable {
 		this.approvalStatus = approvalStatus;
 	}
 
+	
+	
+	/**
+	 * @return the recruiter
+	 */
+	public String getRecruiter() {
+		return recruiter;
+	}
+
+	/**
+	 * @param recruiter the recruiter to set
+	 */
+	public void setRecruiter(String recruiter) {
+		this.recruiter = recruiter;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -367,6 +385,8 @@ public class JobOpening implements Serializable {
 		builder.append(lastModifiedDate);
 		builder.append(", approvalStatus=");
 		builder.append(approvalStatus);
+		builder.append(", recruiter=");
+		builder.append(recruiter);
 		builder.append(", jobSkills=");
 		builder.append(jobSkills);
 		builder.append(", jobQuestionsRels=");

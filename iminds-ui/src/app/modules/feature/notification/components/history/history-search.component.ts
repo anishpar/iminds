@@ -86,6 +86,7 @@ export class SearchHistoryComponent extends MasterComponent
     interviewTypes = [];
     interviewType = new InterviewType();
     jobOpeningId = null;
+    recruiter = null;
   
     jobSkill1 = new JobSkillRel();
     jobSkill2 = new JobSkillRel();
